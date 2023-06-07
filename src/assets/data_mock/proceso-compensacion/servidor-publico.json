@@ -1,0 +1,690 @@
+{
+    "listas": {
+        "persona": [
+            {
+                "id": 1,
+                "label": "ORBE GARCIA CARMEN",
+                "tipoDocumento": "109",
+                "numeroDocumento": "00000021"
+            },
+            {
+                "id": 2,
+                "label": "MARIN VARGAS ROGELIA",
+                "tipoDocumento": "109",
+                "numeroDocumento": "00000056"
+            },
+            {
+                "id": 3,
+                "label": "SAAVEDRA DE GARCIA ELVA SADITH",
+                "tipoDocumento": "109",
+                "numeroDocumento": "00000074"
+            },
+            {
+                "id": 4,
+                "label": "RENGIFO BARTRA RANDOLHF",
+                "tipoDocumento": "109",
+                "numeroDocumento": "00000075"
+            },
+            {
+                "id": 5,
+                "label": "MERA DE DIAZ CLARA",
+                "tipoDocumento": "109",
+                "numeroDocumento": "00000088"
+            },
+            {
+                "id": 6,
+                "label": "PACHECO AREVALO ADA PAQUITA",
+                "tipoDocumento": "109",
+                "numeroDocumento": "00000133"
+            },
+            {
+                "id": 7,
+                "label": "INGA GUZMAN WILMA ISABEL",
+                "tipoDocumento": "109",
+                "numeroDocumento": "00000155"
+            },
+            {
+                "id": 8,
+                "label": "SILVA QUIROZ MARISOL",
+                "tipoDocumento": "109",
+                "numeroDocumento": "00000232"
+            },
+            {
+                "id": 9,
+                "label": "PANDURO GUERRERO PABLO SEGUNDO",
+                "tipoDocumento": "109",
+                "numeroDocumento": "00000330"
+            },
+            {
+                "id": 10,
+                "label": "MOZOMBITE YUYARIMA ORLANDO",
+                "tipoDocumento": "109",
+                "numeroDocumento": "00000350"
+            }
+        ],
+        "regimenLaboral": [
+            {
+                "id": 1,
+                "label": "LEY 29944 - LEY DE REFORMA MAGISTERIAL",
+                "abreviatura": "LEY 29944-LRM"
+            },
+            {
+                "id": 2,
+                "label": "LEY 30512 - EDUCACION SUPERIOR NO UNIVERSITARIA NOMBRADOS",
+                "abreviatura": "LEY 30512-ESNU NOMBRADO"
+            },
+            {
+                "id": 3,
+                "label": "LEY 30328 - CONTRATO DE SERVICIO DOCENTE",
+                "abreviatura": "LEY 30328-DOC. CONTRATADO"
+            },
+            {
+                "id": 4,
+                "label": "LEY 30493 - AUXILIAR EDUCACIÓN",
+                "abreviatura": "LEY 30493-AUX. EDUCACION"
+            },
+            {
+                "id": 5,
+                "label": "DECRETO LEGISLATIVO 276 - CARRERA ADMINISTRATIVA",
+                "abreviatura": "D.LEG. 276-ADMIN"
+            },
+            {
+                "id": 6,
+                "label": "DECRETO LEGISLATIVO 1153 - PROFESIONALES DE LA SALUD",
+                "abreviatura": "D.LEG. 1153-PROSAL"
+            },
+            {
+                "id": 7,
+                "label": "DECRETO LEGISLATIVO 728 - REGIMEN PRIVADO",
+                "abreviatura": "D.LEG. 728"
+            },
+            {
+                "id": 8,
+                "label": "DECRETO LEGISLATIVO 1057 - CONTRATACIÓN ADMINISTRATIVA DE SERVICIO",
+                "abreviatura": "D.LEG. 1057-CAS"
+            },
+            {
+                "id": 9,
+                "label": "LEY 30057 - SERVICIO CIVIL - SERVIR",
+                "abreviatura": "LEY 30057-SERVIR"
+            },
+            {
+                "id": 10,
+                "label": "LEY 24029 - LEY DEL PROFESORADO",
+                "abreviatura": "LEY 24029"
+            },
+            {
+                "id": 11,
+                "label": "LEY 29062 - LEY DE LA CARRERA PUBLICA MAGISTERIAL",
+                "abreviatura": "LEY 29062"
+            },
+            {
+                "id": 12,
+                "label": "DECRETO LEGISLATIVO 559 - PROFESIONALES DE LA SALUD",
+                "abreviatura": "DL 559"
+            },
+            {
+                "id": 13,
+                "label": "LEY 23536 - PROFESIONALES DE LA SALUD",
+                "abreviatura": "LEY 23536-PS"
+            },
+            {
+                "id": 14,
+                "label": "LEY 30372 - EDUCACIÓN SUPERIOR NO UNIVERSITARIA CONTRATADOS (95° DCF)",
+                "abreviatura": "LEY 30372-ESNU CONTRATADO"
+            },
+            {
+                "id": 15,
+                "label": "DECRETO LEGISLATIVO 1024",
+                "abreviatura": "D.LEG. 1024"
+            },
+            { "id": 16, "label": "SIN RÉGIMEN", "abreviatura": "SIN RÉGIMEN" },
+            { "id": 17, "label": "MÚLTIPLE", "abreviatura": "MÚLTIPLE" },
+            {
+                "id": 18,
+                "label": "DECRETO LEY 20530 - RÉGIMEN DE PENSIONES",
+                "abreviatura": "LEY 20530-PENSIONES"
+            },
+            {
+                "id": 19,
+                "label": "DECRETO LEY 11192 - PALMAS MAGISTERIALES",
+                "abreviatura": "LEY 11192-PALMAS M."
+            },
+            {
+                "id": 20,
+                "label": "LEY 29029 - LEY DE LA MANCOMUNIDAD MUNICIPAL",
+                "abreviatura": "LEY 29029"
+            }
+        ],
+        "situacionLaboral": [
+            { "id": 20, "label": "INGRESOS" },
+            { "id": 21, "label": "ASIGNACIONES" },
+            { "id": 22, "label": "BONIFICIACIONES" },
+            { "id": 23, "label": "GRATIFICACIONES Y AGUINALDOS" },
+            { "id": 24, "label": "INDEMNIZACIONES" },
+            { "id": 25, "label": "CONCEPTOS VARIOS" },
+            { "id": 26, "label": "OTROS CONCEPTOS" },
+            { "id": 27, "label": "REGIMEN PUBLICO" },
+            { "id": 28, "label": "APORTACIONES DEL TRABAJADOR" },
+            { "id": 29, "label": "DESCUENTOS AL TRABAJADOR" },
+            { "id": 30, "label": "APORTACIONES A CARGO DEL EMPLEADOR" }
+        ],
+        "centroTrabajo": [
+            { "id": 1, "idTipoCentroTrabajo": 1, "IdUGEL": null},
+            { "id": 2, "idTipoCentroTrabajo": 2, "IdUGEL": 232 },
+            { "id": 3, "idTipoCentroTrabajo": 2, "IdUGEL": 233 },
+            { "id": 4, "idTipoCentroTrabajo": 2, "IdUGEL": 234 },
+            { "id": 5, "idTipoCentroTrabajo": 2, "IdUGEL": 235 },
+            { "id": 6, "idTipoCentroTrabajo": 2, "IdUGEL": 236 },
+            { "id": 7, "idTipoCentroTrabajo": 2, "IdUGEL": 237 },
+            { "id": 8, "idTipoCentroTrabajo": 2, "IdUGEL": 238 },
+            { "id": 9, "idTipoCentroTrabajo": 2, "IdUGEL": 239 },
+            { "id": 10, "idTipoCentroTrabajo": 2, "IdUGEL": 240 },
+            { "id": 11, "idTipoCentroTrabajo": 2, "IdUGEL": 241 },
+            { "id": 12, "idTipoCentroTrabajo": 2, "IdUGEL": 242 },
+            { "id": 13, "idTipoCentroTrabajo": 2, "IdUGEL": 243 },
+            { "id": 14, "idTipoCentroTrabajo": 2, "IdUGEL": 244 },
+            { "id": 15, "idTipoCentroTrabajo": 2, "IdUGEL": 245 },
+            { "id": 16, "idTipoCentroTrabajo": 2, "IdUGEL": 246 },
+            { "id": 17, "idTipoCentroTrabajo": 2, "IdUGEL": 247 },
+            { "id": 18, "idTipoCentroTrabajo": 2, "IdUGEL": 248 },
+            { "id": 19, "idTipoCentroTrabajo": 2, "IdUGEL": 249 },
+            { "id": 20, "idTipoCentroTrabajo": 2, "IdUGEL": 250 },
+            { "id": 21, "idTipoCentroTrabajo": 2, "IdUGEL": 251 }
+        ],
+        "unidadEjecutora": [
+            { "id": 1, "label": "USE 01 SAN JUAN DE MIRAFLORES" },
+            { "id": 2, "label": "USE 02 SAN MARTIN DE PORRAS" },
+            { "id": 3, "label": "USE 03 CERCADO" },
+            { "id": 4, "label": "USE 04 COMAS" },
+            { "id": 5, "label": "USE 05 SAN JUAN DE LURIGANCHO" },
+            { "id": 6, "label": "USE 06 VITARTE" },
+            { "id": 7, "label": "USE 07 SAN BORJA" },
+            { "id": 8, "label": "DIRECCION DE EDUCACION DE LIMA" },
+            { "id": 9, "label": "ESCUELA NACIONAL DE BELLAS ARTES" },
+            {
+                "id": 10,
+                "label": "INSTITUTO PEDAGOGICO NACIONAL DE MONTERRICO"
+            },
+            {
+                "id": 11,
+                "label": "ESCUELA NACIONAL SUPERIOR DE FOLKLORE  J.M.A"
+            },
+            { "id": 12, "label": "MINISTERIO DE EDUCACION-SEDE CENTRAL" },
+            { "id": 13, "label": "M.E. - ESCUELA NACIONAL SUPERIOR DE BALLET" },
+            {
+                "id": 14,
+                "label": "M.E. - ESCUELA NACIONAL SUPERIOR DE ARTE DRAMATICO GUILLERMO UGARTE CHAMORRO"
+            },
+            { "id": 15, "label": "REGION AMAZONAS-EDUCACION" },
+            { "id": 16, "label": "REGION AMAZONAS-EDUCACION BAGUA" },
+            { "id": 17, "label": "REGION AMAZONAS-EDUCACION CONDORCANQUI" },
+            { "id": 18, "label": "GOB.REG.AMAZONAS- EDUCACION BAGUA CAPITAL" },
+            { "id": 19, "label": "REGION ANCASH-EDUCACION ANCASH" },
+            { "id": 20, "label": "REGION ANCASH-EDUCACION SANTA" },
+            { "id": 21, "label": "REGION ANCASH-EDUCACION HUAYLAS" },
+            { "id": 22, "label": "REGION ANCASH-EDUCACION HUARMEY" },
+            { "id": 23, "label": "REGION ANCASH-EDUCACION AIJA" },
+            { "id": 24, "label": "REGION ANCASH-EDUCACION POMABAMBA" },
+            { "id": 25, "label": "REGION ANCASH-EDUCACION SIHUAS" },
+            {
+                "id": 26,
+                "label": "REGION ANCASH-EDUCACION CARLOS F. FITZCARRALD"
+            },
+            { "id": 27, "label": "REGION ANCASH-EDUCACION HUARI" },
+            { "id": 28, "label": "REGION ANCASH-EDUCACION PALLASCA" },
+            { "id": 29, "label": "REGION ANCASH - EDUCACION CASMA" },
+            { "id": 30, "label": "REGION ANCASH - EDUCACION HUARAZ" },
+            {
+                "id": 31,
+                "label": "GOB. REG. DE ANCASH- EDUCACION ANTONIO RAIMONDI"
+            },
+            { "id": 32, "label": "GOB.REG. DE ANCASH- EDUCACION BOLOGNESI" },
+            { "id": 33, "label": "GOB.REG. DE ANCASH- EDUCACION - ASUNCION" },
+            { "id": 34, "label": "GOB.REG. DE ANCASH- EDUCACION - CARHUAZ" },
+            {
+                "id": 35,
+                "label": "GOB.REG. DE ANCASH- EDUCACION - MARISCAL LUZURIAGA"
+            },
+            { "id": 36, "label": "GOB.REG. DE ANCASH- EDUCACION OCROS" },
+            { "id": 37, "label": "GOB.REG. DE ANCASH- EDUCACION RECUAY" },
+            { "id": 38, "label": "GOB.REG. DE ANCASH - EDUCACION YUNGAY" },
+            { "id": 39, "label": "GOB. REG. DE ANCASH- EDUCACION CORONGO" },
+            { "id": 40, "label": "REGION APURIMAC-EDUCACION APURIMAC" },
+            { "id": 41, "label": "REGION APURIMAC-EDUCACION CHANKA" },
+            { "id": 42, "label": "REGION APURIMAC-EDUCACION COTABAMBAS" },
+            { "id": 43, "label": "REGION APURIMAC-EDUCACION CHINCHEROS" },
+            { "id": 44, "label": "GOB.REG.APURIMAC- EDUCACION GRAU" },
+            { "id": 45, "label": "GOB.REG. APURIMAC- EDUCACION HUANCARAMA" },
+            { "id": 46, "label": "GOB.REG. DE APURIMAC- EDUCACION AYMARAES" },
+            { "id": 47, "label": "GOB. REG. APURIMAC- EDUCACION ABANCAY" },
+            { "id": 48, "label": "GOB. REG. APURIMAC - EDUCACION ANTABAMBA" },
+            { "id": 49, "label": "REGION AREQUIPA-EDUCACION" },
+            {
+                "id": 50,
+                "label": "REGION AREQUIPA-COLEGIO MILITAR FRANCISCO BOLOGNESI"
+            },
+            { "id": 51, "label": "REGION AREQUIPA-EDUCACION AREQUIPA NORTE" },
+            { "id": 52, "label": "REGION AREQUIPA-EDUCACION AREQUIPA SUR" },
+            { "id": 53, "label": "REGION AREQUIPA - UGEL CAMANA" },
+            { "id": 54, "label": "REGION AREQUIPA - UGEL CARAVELI" },
+            { "id": 55, "label": "REGION AREQUIPA - UGEL CASTILLA" },
+            { "id": 56, "label": "REGION AREQUIPA - UGEL CONDESUYOS" },
+            { "id": 57, "label": "REGION AREQUIPA - UGEL ISLAY" },
+            { "id": 58, "label": "REGION AREQUIPA - UGEL LA UNION" },
+            { "id": 59, "label": "REGION AREQUIPA - UGEL CAYLLOMA" },
+            { "id": 60, "label": "REGION AREQUIPA - UGEL LA JOYA" },
+            { "id": 61, "label": "REGION AYACUCHO-EDUCACION" },
+            { "id": 62, "label": "REGION AYACUCHO-EDUCACION CENTRO AYACUCHO" },
+            { "id": 63, "label": "REGION AYACUCHO-EDUCACION LUCANAS" },
+            { "id": 64, "label": "REGION AYACUCHO-EDUCACION SARA SARA" },
+            { "id": 65, "label": "GOB.REG. DE AYACUCHO- EDUCACION SUR PAUZA" },
+            { "id": 66, "label": "REGION AYACUCHO - EDUCACION HUANTA" },
+            {
+                "id": 67,
+                "label": "GOB.REG. DE AYACUCHO- EDUCACION VRAE LA MAR"
+            },
+            { "id": 68, "label": "GOB. REG. DE AYACUCHO- EDUCACION HUAMANGA" },
+            { "id": 69, "label": "GOB. REG. AYACUCHO- EDUCACION UGEL SUCRE" },
+            {
+                "id": 70,
+                "label": "GOB. REG. AYACUCHO - EDUCACION UGEL VICTOR FAJARDO"
+            },
+            { "id": 71, "label": "GOB. REG. AYACUCHO- EDUCACION VILCASHUAMAN" },
+            {
+                "id": 72,
+                "label": "GOB.REG. DE AYACUCHO- EDUCACION HUANCASANCOS"
+            },
+            { "id": 73, "label": "REGION CAJAMARCA-EDUCACION CAJAMARCA" },
+            { "id": 74, "label": "REGION CAJAMARCA-EDUCACION CHOTA" },
+            { "id": 75, "label": "REGION CAJAMARCA-EDUCACION CUTERVO" },
+            { "id": 76, "label": "REGION CAJAMARCA-EDUCACION JAEN" },
+            { "id": 77, "label": "REGION CAJAMARCA - EDUCACION SAN IGNACIO" },
+            {
+                "id": 78,
+                "label": "GOB.REG. DE CAJAMARCA- EDUCACION UGEL SANTA CRUZ"
+            },
+            {
+                "id": 79,
+                "label": "GOB.REG. DE CAJAMARCA- EDUCACION UGEL CAJABAMBA"
+            },
+            {
+                "id": 80,
+                "label": "GOB.REG. DE CAJAMARCA- EDUCACION UGEL BAMBAMARCA"
+            },
+            {
+                "id": 81,
+                "label": "GOB.REG. CAJAMARCA - EDUCACION UGEL CELENDIN"
+            },
+            {
+                "id": 82,
+                "label": "GOB. REG. CAJAMARCA - EDUCACION UGEL CAJAMARCA"
+            },
+            {
+                "id": 83,
+                "label": "GOB. REG. CAJAMARCA - EDUCACION UGEL SAN MARCOS"
+            },
+            {
+                "id": 84,
+                "label": "GOB. REG. CAJAMARCA - EDUCACION UGEL CONTUMAZA"
+            },
+            {
+                "id": 85,
+                "label": "GOB. REG. CAJAMARCA - EDUCACION UGEL SAN MIGUEL"
+            },
+            {
+                "id": 86,
+                "label": "GOB. REG. CAJAMARCA - EDUCACION UGEL SAN PABLO"
+            },
+            { "id": 87, "label": "REGION CUSCO-EDUCACION" },
+            { "id": 88, "label": "REGION CUSCO-EDUCACION CANCHIS" },
+            { "id": 89, "label": "REGION CUSCO - EDUCACION QUISPICANCHIS" },
+            { "id": 90, "label": "REGION CUSCO - EDUCACION LA CONVENCION" },
+            { "id": 91, "label": "REGION CUSCO - EDUCACION CHUMBIVILCAS" },
+            { "id": 92, "label": "GOB. REG. DPTO. CUSCO - EDUCACION PARURO" },
+            { "id": 93, "label": "GOB. REG. DPTO. CUSCO - EDUCACION URUBAMBA" },
+            { "id": 94, "label": "GOB.REG.DPTO. CUSCO- EDUCACION PAUCARTAMBO" },
+            { "id": 95, "label": "GOB.REG. DPTO. CUSCO- EDUCACION ESPINAR" },
+            { "id": 96, "label": "GOB.REG,DPTO. CUSCO- UGEL CALCA" },
+            { "id": 97, "label": "GOB. REG. DPTO. CUSCO - UGEL CUSCO" },
+            { "id": 98, "label": "GOB.REG.DPTO. DE CUSCO - EDUCACION CANAS" },
+            { "id": 99, "label": "GOB. REG. DPTO. CUSCO - EDUCACION ACOMAYO" },
+            { "id": 100, "label": "GOB. REG. DPTO. CUSCO - EDUCACION ANTA" },
+            {
+                "id": 101,
+                "label": "GOB. REG. DPTO. CUSCO - EDUCACION PICHARI KIMBIRI VILLA VIRGEN"
+            },
+            { "id": 102, "label": "REGION HUANCAVELICA-EDUCACION" },
+            {
+                "id": 103,
+                "label": "GOB. REG. HUANCAVELICA - EDUCACION UGEL ANGARAES"
+            },
+            { "id": 104, "label": "GOB. REG. HUANCAVELICA - UGEL SURCUBAMBA" },
+            { "id": 105, "label": "GOB. REG. HUANCAVELICA - UGEL ACOBAMBA" },
+            {
+                "id": 106,
+                "label": "GOB. REG. HUANCAVELICA - UGEL HUANCAVELICA"
+            },
+            { "id": 107, "label": "GOB. REG. HUANCAVELICA - UGEL HUAYTARA" },
+            { "id": 108, "label": "GOB. REG. HUANCAVELICA - UGEL TAYACAJA" },
+            {
+                "id": 109,
+                "label": "GOB. REG. HUANCAVELICA - UGEL CASTROVIRREYNA"
+            },
+            { "id": 110, "label": "GOB. REG. HUANCAVELICA - UGEL CHURCAMPA" },
+            { "id": 111, "label": "REGION HUANUCO-EDUCACION" },
+            { "id": 112, "label": "REGION HUANUCO-EDUCACION MARAÑON" },
+            { "id": 113, "label": "REGION HUANUCO - EDUCACION LEONCIO PRADO" },
+            { "id": 114, "label": "REGION HUANUCO - EDUCACION DOS DE MAYO" },
+            { "id": 115, "label": "GOB. REG. HUANUCO - EDUCACION PACHITEA" },
+            { "id": 116, "label": "GOB. REG. HUANUCO - EDUCACION HUAMALIES" },
+            { "id": 117, "label": "GOB. REG. HUANUCO - EDUCACION PUERTO INCA" },
+            {
+                "id": 118,
+                "label": "GOB. REG. HUANUCO - EDUCACION UGEL HUACAYBAMBA"
+            },
+            { "id": 119, "label": "GOB. REG. HUANUCO - EDUCAC ION UGEL AMBO" },
+            {
+                "id": 120,
+                "label": "GOB. REG. HUANUCO - EDUCACION UGEL LAURICOCHA"
+            },
+            {
+                "id": 121,
+                "label": "GOB. REG. HUANUCO - EDUCACION - UGEL YAROWILCA"
+            },
+            {
+                "id": 122,
+                "label": "GOB. REG. HUANUCO - EDUCACION- UGEL HUANUCO"
+            },
+            { "id": 123, "label": "REGION ICA-EDUCACION" },
+            { "id": 124, "label": "REGION ICA-EDUCACION CHINCHA" },
+            { "id": 125, "label": "REGION ICA-EDUCACION - NASCA" },
+            { "id": 126, "label": "GOB. REG. ICA - EDUCACION PISCO" },
+            { "id": 127, "label": "REGION ICA - EDUCACION PALPA" },
+            { "id": 128, "label": "REGION JUNIN-EDUCACION" },
+            { "id": 129, "label": "REGION JUNIN - EDUCACION TARMA" },
+            { "id": 130, "label": "REGION JUNIN - EDUCACION SATIPO" },
+            { "id": 131, "label": "GOB. REG. DE JUNIN- EDUCACION CHANCHAMAYO" },
+            { "id": 132, "label": "GOB. REG. DE JUNIN - EDUCACION HUANCAYO" },
+            { "id": 133, "label": "GOB. REG. DE JUNIN - EDUCACION CONCEPCION" },
+            { "id": 134, "label": "GOB. REG. DE JUNIN - EDUCACION CHUPACA" },
+            { "id": 135, "label": "GOB. REG. DE JUNIN - EDUCACION JAUJA" },
+            {
+                "id": 136,
+                "label": "GOB. REG. DE JUNIN - EDUCACION YAULI- LA OROYA"
+            },
+            {
+                "id": 137,
+                "label": "GOB. REG. DE JUNIN - EDUCACION PROVINCIA DE JUNIN"
+            },
+            { "id": 138, "label": "GOB. REG. DE JUNIN - EDUCACION PICHANAKI" },
+            { "id": 139, "label": "GOB. REG. DE JUNIN - EDUCACION PANGOA" },
+            { "id": 140, "label": "GOB. REG. DE JUNIN - EDUCACION RIO TAMBO" },
+            { "id": 141, "label": "REGION LA LIBERTAD-EDUCACION" },
+            { "id": 142, "label": "REGION LA LIBERTAD-EDUCACION CHEPEN" },
+            { "id": 143, "label": "REGION LA LIBERTAD-EDUCACION PACASMAYO" },
+            { "id": 144, "label": "REGION LA LIBERTAD-EDUCACION ASCOPE" },
+            { "id": 145, "label": "REGION LA LIBERTAD-EDUCACION GRAN CHIMU" },
+            { "id": 146, "label": "REGION LA LIBERTAD-EDUCACION OTUZCO" },
+            {
+                "id": 147,
+                "label": "REGION LA LIBERTAD-EDUCACION SANTIAGO DE CHUCO"
+            },
+            {
+                "id": 148,
+                "label": "REGION LA LIBERTAD-EDUCACION SANCHEZ CARRION"
+            },
+            { "id": 149, "label": "REGION LA LIBERTAD-EDUCACION PATAZ" },
+            { "id": 150, "label": "REGION LA LIBERTAD-EDUCACION BOLIVAR" },
+            {
+                "id": 151,
+                "label": "REGION LA LIBERTAD-COLEGIO MILITAR RAMON CASTILLA"
+            },
+            { "id": 152, "label": "REGION LA LIBERTAD-EDUCACION JULCAN" },
+            { "id": 153, "label": "REGION LA LIBERTAD- EDUCACION VIRU" },
+            {
+                "id": 154,
+                "label": "GOB. REG. DE LA LIBERTAD - EDUCACION EL PORVENIR"
+            },
+            {
+                "id": 155,
+                "label": "GOB. REG. DE LA LIBERTAD - EDUCACION LA ESPERANZA"
+            },
+            {
+                "id": 156,
+                "label": "GOB. REG. DE LA LIBERTAD - EDUCACION TRUJILLO NOR OESTE"
+            },
+            {
+                "id": 157,
+                "label": "GOB. REG. DE LA LIBERTAD - EDUCACION TRUJILLO SUR ESTE"
+            },
+            { "id": 158, "label": "REGION LAMBAYEQUE-EDUCACION CHICLAYO" },
+            {
+                "id": 159,
+                "label": "REGION LAMBAYEQUE-COLEGIO MILITAR ELIAS AGUIRRE"
+            },
+            { "id": 160, "label": "REGION LAMBAYEQUE - EDUCACION LAMBAYEQUE" },
+            { "id": 161, "label": "REGION LAMBAYEQUE - EDUCACION FERREÑAFE" },
+            { "id": 162, "label": "REGION LORETO-EDUCACION" },
+            { "id": 163, "label": "REGION LORETO-EDUCACION ALTO AMAZONAS" },
+            {
+                "id": 164,
+                "label": "REGION LORETO-EDUCACION UCAYALI-CONTAMANA LORETO"
+            },
+            {
+                "id": 165,
+                "label": "REGION LORETO-EDUCACION MARISCAL RAMON CASTILLA"
+            },
+            { "id": 166, "label": "REGION LORETO-EDUCACION REQUENA" },
+            { "id": 167, "label": "REGION LORETO-EDUCACION NAUTA" },
+            {
+                "id": 168,
+                "label": "REGION LORETO - EDUCACION DATEM DEL MARAÑON"
+            },
+            { "id": 169, "label": "GOB. REG. DE LORETO - EDUCACION PUTUMAYO" },
+            { "id": 170, "label": "REGION MADRE DE DIOS-EDUCACION" },
+            { "id": 171, "label": "REGION MOQUEGUA-EDUCACION" },
+            { "id": 172, "label": "REGION MOQUEGUA - EDUCACION ILO" },
+            {
+                "id": 173,
+                "label": "REGION MOQUEGUA - EDUCACION MARISCAL NIETO"
+            },
+            { "id": 174, "label": "REGION MOQUEGUA - EDUCACION SANCHEZ CERRO" },
+            { "id": 175, "label": "REGION PASCO-EDUCACION" },
+            { "id": 176, "label": "REGION PASCO - EDUCACION OXAPAMPA" },
+            {
+                "id": 177,
+                "label": "REGION PASCO - EDUCACION DANIEL A. CARRION"
+            },
+            { "id": 178, "label": "GOB. REG. DE PASCO - UGEL PASCO" },
+            { "id": 179, "label": "REGION PIURA-EDUCACION" },
+            {
+                "id": 180,
+                "label": "REGION PIURA-COLEGIO MILITAR PEDRO RUIZ GALLO"
+            },
+            {
+                "id": 181,
+                "label": "REGION PIURA-EDUCACION LUCIANO CASTILLO COLONNA"
+            },
+            { "id": 182, "label": "REGION PIURA - EDUCACION ALTO PIURA" },
+            {
+                "id": 183,
+                "label": "GOB. REG. DE PIURA- EDUCACION UGEL DE PAITA"
+            },
+            {
+                "id": 184,
+                "label": "GOB. REG. DE PIURA - EDUCACION UGEL DE TALARA"
+            },
+            {
+                "id": 185,
+                "label": "GOB. REG. DE PIURA - EDUCACION UGEL MORROPON"
+            },
+            {
+                "id": 186,
+                "label": "GOB. REG. DE PIURA - EDUCACION UGEL AYABACA"
+            },
+            {
+                "id": 187,
+                "label": "GOB.REGIONAL DPTO.PIURA- UNIDAD DE GESTION EDUCATIVA LOCAL-UGEL HUANCABAMBA"
+            },
+            {
+                "id": 188,
+                "label": "GOB.REG. DPTO. PIURA- EDUCACION UGEL HUARMACA"
+            },
+            { "id": 189, "label": "REGION PUNO-EDUCACION PUNO" },
+            { "id": 190, "label": "REGION PUNO-EDUCACION SAN ROMAN" },
+            { "id": 191, "label": "REGION PUNO-EDUCACION MELGAR" },
+            { "id": 192, "label": "REGION PUNO-EDUCACION AZANGARO" },
+            { "id": 193, "label": "REGION PUNO-EDUCACION HUANCANE" },
+            { "id": 194, "label": "REGION PUNO-EDUCACION PUTINA" },
+            { "id": 195, "label": "REGION PUNO-EDUCACION COLLAO" },
+            { "id": 196, "label": "REGION PUNO-EDUCACION CHUCUITO-JULI" },
+            { "id": 197, "label": "REGION PUNO-EDUCACION YUNGUYO" },
+            { "id": 198, "label": "REGION PUNO-EDUCACION CARABAYA-MACUSANI" },
+            { "id": 199, "label": "REGION PUNO- EDUCACION SANDIA" },
+            { "id": 200, "label": "GOB. REG. DE PUNO- UGEL PUNO" },
+            { "id": 201, "label": "GOB. REG. DPTO. DE PUNO - EDUCACION LAMPA" },
+            { "id": 202, "label": "GOB. REG. DPTO. DE PUNO - EDUCACION MOHO" },
+            {
+                "id": 203,
+                "label": "GOB. REG. DPTO. DE PUNO- EDUCACION CRUCERO"
+            },
+            { "id": 204, "label": "REGION SAN MARTIN-EDUCACION" },
+            { "id": 205, "label": "REGION SAN MARTIN-EDUCACION BAJO MAYO" },
+            {
+                "id": 206,
+                "label": "REGION SAN MARTIN-EDUCACION HUALLAGA CENTRAL"
+            },
+            { "id": 207, "label": "REGION SAN MARTIN-EDUCACION ALTO HUALLAGA" },
+            { "id": 208, "label": "GOB.REG.DPTO. SAN MARTIN- EDUCACION LAMAS" },
+            {
+                "id": 209,
+                "label": "GOB.REG. DPTO. SAN MARTIN - EDUCACION RIOJA"
+            },
+            {
+                "id": 210,
+                "label": "GOB.REG. DPTO. SAN MARTIN- EDUCACION BELLAVISTA"
+            },
+            { "id": 211, "label": "REGION TACNA-EDUCACION" },
+            { "id": 212, "label": "GOB. REG. DE TACNA - UGEL TACNA" },
+            { "id": 213, "label": "REGION TUMBES-EDUCACION" },
+            {
+                "id": 214,
+                "label": "GOB. REG. DE TUMBES - EDUCACION UGEL TUMBES"
+            },
+            {
+                "id": 215,
+                "label": "GOB. REG. DE TUMBES - EDUCACION UGEL CONTRALMIRANTE VILLAR- ZORRITOS"
+            },
+            {
+                "id": 216,
+                "label": "GOB. REG. DE TUMBES - EDUCACION UGEL ZARUMILLA"
+            },
+            { "id": 217, "label": "REGION UCAYALI-EDUCACION" },
+            { "id": 218, "label": "GOB. REG. DE UCAYALI - EDUCACION PURUS" },
+            { "id": 219, "label": "GOB. REG. DE UCAYALI - EDUCACION ATALAYA" },
+            {
+                "id": 220,
+                "label": "GOB. REG. DE UCAYALI - EDUCACION CORONEL PORTILLO"
+            },
+            {
+                "id": 221,
+                "label": "GOB. REG. DE UCAYALI - EDUCACION PADRE ABAD"
+            },
+            { "id": 222, "label": "REGION LIMA - EDUCACION LIMA PROVINCIAS" },
+            { "id": 223, "label": "REGION LIMA - EDUCACION CAÑETE" },
+            { "id": 224, "label": "REGION LIMA - EDUCACION HUAURA" },
+            { "id": 225, "label": "REGION LIMA - EDUCACION HUARAL" },
+            { "id": 226, "label": "REGION LIMA - EDUCACION CAJATAMBO" },
+            { "id": 227, "label": "REGION LIMA - EDUCACION CANTA" },
+            { "id": 228, "label": "REGION LIMA - EDUCACION YAUYOS" },
+            { "id": 229, "label": "REGION LIMA - EDUCACION OYON" },
+            { "id": 230, "label": "REGION LIMA - EDUCACION HUAROCHIRI" },
+            { "id": 231, "label": "REGION LIMA - EDUCACION BARRANCA" },
+            { "id": 232, "label": "REGION CALLAO - EDUCACION CALLAO" },
+            {
+                "id": 233,
+                "label": "REGION CALLAO - COLEGIO MILITAR LEONCIO PRADO"
+            },
+            { "id": 234, "label": "REGION CALLAO - EDUCACION VENTANILLA" },
+            { "id": 235, "label": "UNIVERSIDAD NACIONAL DE MÚSICA" },
+            { "id": 236, "label": "UNIVERSIDAD NACIONAL DANIEL ALOMIA ROBLES" }
+        ]
+    },
+    "data": [
+        {
+            "publicServantId": 1,
+            "personId": 1,
+            "laborRegimeId": 1,
+            "placeCode": "1195114030Z0",
+            "workplaceId": 1,
+            "admissionDate": "2022-10-14T00:00:00",
+            "endDate": null,
+            "laborSituationId": 133
+        }
+    ],
+    "detalle":{
+        "id":1,
+        "tipeOfPay":"Planilla Ordinaria",
+        "typeDocument":"DNI",
+        "documentNumber":"41515253",
+        "situation":"Habilitado",
+        "admissionDate":"01/01/2012",
+        "endDate":"",
+        "firstSurname":"AGUILAR",
+        "secondSurname":"RETAMOZO",
+        "name":"PAUL",
+        "civilStatus":"Casado(a)",
+        "sex":"Masculino",
+        "birthDate":"01/05/1971",
+
+        "educationManagement":"UGEL 01 - San Juan de Miraflores",
+        "modularCode":"0417659",
+        "workplace":"0147 Luis Alberto Garcia",
+        "modality":"EBR",
+        "educationLevel":"Secundaria",
+        "position":"Profesor",
+        "workday":"30 horas",
+        "specialty":"Matemática",
+        "codePlaza":"782861219912",
+        "magisterialScale":"Escala magisterial 3",
+        "laborRegime":"Ley 29944 - Ley de reforma magisterial",
+        "payMode":"Banco",
+        "bank":"Banco de la nación",
+        "currentAccount":"1921681521",
+        "pensionRegister":"Sist. Privado Pens.",
+        "afp":"AFP Integra",
+        "commissionType":"Mixto",
+
+        "email":"aguilaretamozo@gmail.com",
+        "cellphone":"959315142",
+        "telephone":"3152415",
+
+        "payrollList":[{
+            "action":"encargatura",
+            "reason":"Necesidad institucional",
+            "startDate":"01/03/2015",
+            "endDate":"",
+            "position":"Profesor",
+            "originWorkCenter":"0076 Maria Auxiliadora",
+            "destinationWorkCenter":"0147 Luis Alberto Garcia"
+        },{
+            "action":"encargatura",
+            "reason":"Necesidad institucional",
+            "startDate":"01/03/2015",
+            "endDate":"",
+            "position":"Profesor",
+            "originWorkCenter":"0076 Maria Auxiliadora",
+            "destinationWorkCenter":"0147 Luis Alberto Garcia"
+        },{
+            "action":"encargatura",
+            "reason":"Necesidad institucional",
+            "startDate":"01/03/2015",
+            "endDate":"",
+            "position":"Profesor",
+            "originWorkCenter":"0076 Maria Auxiliadora",
+            "destinationWorkCenter":"0147 Luis Alberto Garcia"
+        }]
+
+    }
+}

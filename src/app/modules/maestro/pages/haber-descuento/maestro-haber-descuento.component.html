@@ -1,0 +1,261 @@
+<!-- <div class="page-layout carded fullwidth inner-scroll p-16" mineduPerfectScrollbar> -->
+    <div fxFlex="100">
+        <div fxFlex="100">
+    <!-- <div class="page-layout carded left-sidebar inner-scroll"> -->
+        <div class="p-8" fxLayout="column">
+            <!-- Inicio Breadcrumb -->
+            <div fxLayout="row wrap" fxFlex="100" fxLayoutAlign="space-between center" class="mb-6">
+                <div fxFlex>
+                    <div class="text-2xl font-medium tracking-tight leading-8">Maestro de haberes y descuentos</div>
+                </div>
+                <div fxFlex>
+                    <ol class="breadcrumb pull-right">
+                        <li><a [routerLink]="['/ayni/personal/inicio']" class="text-blue-500"><mat-icon color="accent" class="s-18 text-blue-500" >home</mat-icon>Inicio</a></li>
+                        <li><a [routerLink]="['/ayni/personal/inicio']">Compensaciones</a></li>
+                        <li class="active"><a>Maestro de haberes y descuentos</a></li>
+                    </ol>
+                </div>
+
+            </div>
+            <!-- Fin Breadcrumb -->
+            <div fxLayout="row"  fxFlex="100">
+                <div class="bg-card shadow fullwidth inner-scroll p-6" fxFlex="100" fxLayout="column">
+                    <div class="page-layout carded left-sidebar inner-scroll">
+                        <div class="center">
+                            <div class="panel">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Criterios de búsqueda</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <form autocomplete="off" novalidate [formGroup]="form">
+                                        <div fxLayout="row wrap" fxLayout.lt-md="column" fxFlex="100%" fxLayoutGap="12px"
+                                            fxLayoutGap.lt-md="0">
+                                                <mat-form-field appearance="fill" fxFlex="calc(33% - 12px)" fxFlex.lt-md="100%">
+                                                <mat-label>Régimen
+                                                    laboral
+                                                </mat-label>
+                                                <mat-select formControlName="idRegimenLaboral">
+                                                    <mat-option value="">TODOS</mat-option>
+                                                    <mat-option *ngFor="let item of listas?.estado"
+                                                        [value]="item?.id">
+                                                        {{item?.descripcion}}
+                                                    </mat-option>
+                                                </mat-select>
+                                                <mat-error>
+
+                                                </mat-error>
+                                            </mat-form-field>
+                                            <mat-form-field appearance="fill" fxFlex="calc(33% - 12px)"fxFlex.lt-md="100%"
+                                            >
+                                            <mat-label >Tipo de concepto
+                                            </mat-label>
+                                            <mat-select formControlName="idTipoConcepto">
+                                                <mat-option value="">TODOS</mat-option>
+                                                <mat-option *ngFor="let item of listas?.tipoConcepto"
+                                                [value]="item?.id">
+                                                {{item?.descripcion}}
+                                                </mat-option>
+                                            </mat-select>
+                                            <mat-error>
+
+                                            </mat-error>
+                                        </mat-form-field>
+                                        <mat-form-field appearance="fill" fxFlex="calc(33% - 12px)" fxFlex.lt-md="100%"
+                                     >
+                                        <mat-label >Tipo de pago
+                                        </mat-label>
+                                        <mat-select formControlName="idTipoPago">
+                                            <mat-option value="">TODOS</mat-option>
+                                            <mat-option *ngFor="let item of listas?.tipoPago"
+                                            [value]="item?.id">
+                                            {{item?.descripcion}}
+                                            </mat-option>
+                                        </mat-select>
+                                        <mat-error>
+
+                                        </mat-error>
+                                    </mat-form-field>
+                                    <mat-form-field appearance="fill" fxFlex="calc(33% - 12px)" fxFlex.lt-md="100%"
+                                   >
+                                    <mat-label >Grupo cálculo
+                                    </mat-label>
+                                    <mat-select formControlName="idGrupoCalculo">
+                                        <mat-option value="">TODOS</mat-option>
+                                        <mat-option *ngFor="let item of listas?.tipoGrupoCalculo"
+                                        [value]="item?.id">
+                                        {{item?.descripcion}}
+                                        </mat-option>
+                                    </mat-select>
+                                    <mat-error>
+
+                                    </mat-error>
+                                </mat-form-field>
+                                <mat-form-field appearance="fill" fxFlex="calc(33% - 12px)" fxFlex.lt-md="100%"
+                                >
+                                <mat-label>Tipo de cálculo
+                                </mat-label>
+                                <mat-select formControlName="idTipoCalculo">
+                                    <mat-option value="">TODOS</mat-option>
+                                    <mat-option *ngFor="let item of listas?.tipoCalculo"
+                                    [value]="item?.id">
+                                    {{item?.descripcion}}
+                                    </mat-option>
+                                </mat-select>
+                                <mat-error>
+
+                                </mat-error>
+                            </mat-form-field>
+                                         <div fxFlex="calc(33% - 12px)" fxFlex.xs="100%"></div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="panel-footer">
+                                    <div fxLayout="row" fxLayoutAlign="center center">
+                                        <div class="p-0" fxLayout="row">
+                                            <button mat-raised-button color="primary" disabled="true" class="rounded-none shadow-none" (click)="handleLimpiar()">Limpiar</button>
+                                        </div>
+                                        <div class="pl-6" fxLayout="row">
+                                            <button mat-raised-button color="primary" disabled="true" class="rounded-none shadow-none" (click)="handleBuscar()">Buscar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                        <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="5px" class="pb-10px">
+                            <div class="pl-2" fxLayout="row">
+                                <!-- <button mat-raised-button color="primary" class="" (click)="handleCrear()"
+                                    [@animate]="{value:'*', params:{delay:'300ms',scale:'.2'}}" *ngIf="permisoGeneral?.nuevoProceso">
+                                    <span class="material-icons">add_circle</span> Nuevo Proceso
+                                </button> -->
+                                <button mat-raised-button color="primary" disabled="true" class="rounded-none shadow-none" (click)="handleCrear()"
+
+                             >
+                                <span class="material-icons">add_circle</span> Nuevo
+                            </button>
+                            </div>
+                            <div class="pl-2" fxLayout="row">
+                                <button mat-stroked-button disabled="true" color="primary"
+                                    (click)="handleExportar()" class="rounded-none shadow-none"><span class="material-icons">get_app</span>
+                                    Exportar</button>
+                            </div>
+                    </div>
+                    <div ngClass.lt-lg="scroll-grid-lt-lg" fxFlex="100" fxLayout="column" class="overflow-x-auto overflow-y-hidden">
+                        <table mat-table class="minedu-table" [dataSource]="dataSource" fxFlex="100">
+                            <ng-container matColumnDef="index">
+                                <th mat-header-cell *matHeaderCellDef>N°</th>
+                                <td mat-cell *matCellDef="let row; index as i">{{paginator.pageSize * paginator.pageIndex + i + 1}}</td>
+                            </ng-container>
+
+
+                            <ng-container matColumnDef="concepto">
+                                <th mat-header-cell *matHeaderCellDef>concepto</th>
+                                <td mat-cell *matCellDef="let row">
+                                    {{row.conceptCode}}
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="descripcion_concepto">
+                                <th mat-header-cell *matHeaderCellDef>descripción de concepto</th>
+                                <td mat-cell *matCellDef="let row">
+                                   {{row.description}}
+                                </td>
+                            </ng-container>
+
+                             <ng-container matColumnDef="tipo_concepto">
+                                <th mat-header-cell *matHeaderCellDef>Tipo de concepto</th>
+                                <td mat-cell *matCellDef="let row">
+                                    {{row.conceptType}}
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="grupo_calculo">
+                                <th mat-header-cell *matHeaderCellDef>grupo cálculo</th>
+                                <td mat-cell *matCellDef="let row">
+                                    {{row.calculationGroup}}
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="tipo_pago">
+                                <th mat-header-cell *matHeaderCellDef>tipo de pago</th>
+                                <td mat-cell *matCellDef="let row">
+                                    {{row.paymentType}}
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="fecha_inicio">
+                                <th mat-header-cell *matHeaderCellDef>fecha inicio</th>
+                                <td mat-cell *matCellDef="let row">
+                                   {{row.startDateValidity | date:'dd/MM/yyyy' }}
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="fecha_fin">
+                                <th mat-header-cell *matHeaderCellDef>fecha fin</th>
+                                <td mat-cell *matCellDef="let row">
+                                    {{row.endDateValidity| date:'dd/MM/yyyy'}}
+                                </td>
+                            </ng-container>
+
+
+                            <ng-container matColumnDef="estado">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">Estado</th>
+                                <td mat-cell *matCellDef="let row">
+                                    <div fxLayout="row" fxLayoutAlign="center center">
+                                    <div class="text-white w-20 text-center bg-blue-600" [ngClass]="
+                                        {'bg-green-600':row.stateId === 7,
+                                        'bg-red-500' :row.stateId === 8,
+                                        'bg-red-400' :row.stateId === 9}
+                                     ">
+                                        {{row.state}}</div>
+                                    </div>
+                                </td>
+                            </ng-container>
+
+                            <ng-container matColumnDef="opciones">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">Acciones</th>
+                                <td mat-cell *matCellDef="let row; let  i = index;">
+                                    <div fxLayout="row" fxLayoutAlign="space-evenly center">
+                                        <div class="mat-icon-table">
+                                            <button mat-stroked-button color="primary" class="sidebar-toggle btn-sm"
+                                                (click)="row.isView?obtenerDetalle(row):handleModificar(row)"
+                                                 [matTooltip]="row.isView?'Ver detalle':'Modificar'">
+                                                <mat-icon class="" *ngIf="!row.isView">create</mat-icon>
+                                                <mat-icon class="" *ngIf="row.isView">remove_red_eye</mat-icon>
+                                            </button>
+                                        </div>
+                                        <div class="mat-icon-table">
+                                            <button disabled="true" mat-stroked-button color="warn" class="sidebar-toggle btn-sm ml-2"
+                                                 (click)="handleEliminar(row, i)"
+                                                aria-label="Eliminar" matTooltip="Eliminar">
+                                                <mat-icon class="">restore_from_trash</mat-icon>
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </td>
+                            </ng-container>
+
+                            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="no-results"
+                        [style.display]="dataSource?.data.length === 0 ? '' : 'none'">
+                        No se encontraron registros
+                    </div>
+                    <!-- <div fxLayout="column" fxLayoutAlign="center center" class="spinner-container">
+                        <mat-spinner diameter="50"></mat-spinner>
+                    </div> -->
+                    <mat-paginator #paginator  [pageIndex]="0" [pageSize]="10" fxLayoutAlign="center center"
+                        [pageSizeOptions]="[5, 10, 15, 20]"></mat-paginator>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+

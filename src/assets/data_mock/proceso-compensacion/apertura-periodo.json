@@ -1,0 +1,215 @@
+{
+    "listas": [],
+    "data": [
+        {
+            "tipo_planilla": "Anual",
+            "planilla": "Planilla A",
+            "tipo_pago": "Transferencia",
+            "correlativo": 125,
+            "estado": true
+        },
+        {
+            "tipo_planilla": "Mensual",
+            "planilla": "Planilla B",
+            "tipo_pago": "Efectivo",
+            "correlativo": 454,
+            "estado": false
+        },
+        {
+            "tipo_planilla": "Anual",
+            "planilla": "Planilla B",
+            "tipo_pago": "Transferencia",
+            "correlativo": 897,
+            "estado": true
+        },
+        {
+            "tipo_planilla": "Anual",
+            "planilla": "Planilla A",
+            "tipo_pago": "Cheque",
+            "correlativo": 229,
+            "estado": false
+        },
+        {
+            "tipo_planilla": "Mensual",
+            "planilla": "Planilla B",
+            "tipo_pago": "Cheque",
+            "correlativo": 538,
+            "estado": false
+        },
+        {
+            "tipo_planilla": "Anual",
+            "planilla": "Planilla C",
+            "tipo_pago": "Efectivo",
+            "correlativo": 577,
+            "estado": true
+        },
+        {
+            "tipo_planilla": "Mensual",
+            "planilla": "Planilla C",
+            "tipo_pago": "Transferencia",
+            "correlativo": 667,
+            "estado": false
+        },
+        {
+            "tipo_planilla": "Quincenal",
+            "planilla": "Planilla B",
+            "tipo_pago": "Efectivo",
+            "correlativo": 923,
+            "estado": false
+        },
+        {
+            "tipo_planilla": "Anual",
+            "planilla": "Planilla C",
+            "tipo_pago": "Efectivo",
+            "correlativo": 233,
+            "estado": false
+        },
+        {
+            "tipo_planilla": "Anual",
+            "planilla": "Planilla B",
+            "tipo_pago": "Efectivo",
+            "correlativo": 188,
+            "estado": false
+        },
+        {
+            "tipo_planilla": "Quincenal",
+            "planilla": "Planilla C",
+            "tipo_pago": "Transferencia",
+            "correlativo": 172,
+            "estado": false
+        },
+        {
+            "tipo_planilla": "Quincenal",
+            "planilla": "Planilla C",
+            "tipo_pago": "Efectivo",
+            "correlativo": 624,
+            "estado": true
+        },
+        {
+            "tipo_planilla": "Anual",
+            "planilla": "Planilla C",
+            "tipo_pago": "Cheque",
+            "correlativo": 529,
+            "estado": false
+        },
+        {
+            "tipo_planilla": "Quincenal",
+            "planilla": "Planilla B",
+            "tipo_pago": "Transferencia",
+            "correlativo": 980,
+            "estado": false
+        },
+        {
+            "tipo_planilla": "Anual",
+            "planilla": "Planilla A",
+            "tipo_pago": "Transferencia",
+            "correlativo": 904,
+            "estado": true
+        },
+        {
+            "tipo_planilla": "Anual",
+            "planilla": "Planilla B",
+            "tipo_pago": "Cheque",
+            "correlativo": 909,
+            "estado": false
+        },
+        {
+            "tipo_planilla": "Anual",
+            "planilla": "Planilla B",
+            "tipo_pago": "Cheque",
+            "correlativo": 239,
+            "estado": false
+        },
+        {
+            "tipo_planilla": "Anual",
+            "planilla": "Planilla A",
+            "tipo_pago": "Efectivo",
+            "correlativo": 555,
+            "estado": true
+        },
+        {
+            "tipo_planilla": "Quincenal",
+            "planilla": "Planilla C",
+            "tipo_pago": "Transferencia",
+            "correlativo": 489,
+            "estado": true
+        },
+        {
+            "tipo_planilla": "Anual",
+            "planilla": "Planilla A",
+            "tipo_pago": "Transferencia",
+            "correlativo": 768,
+            "estado": true
+        },
+        {
+            "tipo_planilla": "Quincenal",
+            "planilla": "Planilla B",
+            "tipo_pago": "Efectivo",
+            "correlativo": 944,
+            "estado": true
+        },
+        {
+            "tipo_planilla": "Anual",
+            "planilla": "Planilla B",
+            "tipo_pago": "Efectivo",
+            "correlativo": 172,
+            "estado": false
+        },
+        {
+            "tipo_planilla": "Anual",
+            "planilla": "Planilla C",
+            "tipo_pago": "Efectivo",
+            "correlativo": 759,
+            "estado": false
+        },
+        {
+            "tipo_planilla": "Mensual",
+            "planilla": "Planilla B",
+            "tipo_pago": "Cheque",
+            "correlativo": 10,
+            "estado": true
+        },
+        {
+            "tipo_planilla": "Anual",
+            "planilla": "Planilla B",
+            "tipo_pago": "Transferencia",
+            "correlativo": 79,
+            "estado": false
+        },
+        {
+            "tipo_planilla": "Mensual",
+            "planilla": "Planilla A",
+            "tipo_pago": "Efectivo",
+            "correlativo": 690,
+            "estado": true
+        },
+        {
+            "tipo_planilla": "Mensual",
+            "planilla": "Planilla B",
+            "tipo_pago": "Efectivo",
+            "correlativo": 190,
+            "estado": true
+        },
+        {
+            "tipo_planilla": "Quincenal",
+            "planilla": "Planilla C",
+            "tipo_pago": "Efectivo",
+            "correlativo": 520,
+            "estado": false
+        },
+        {
+            "tipo_planilla": "Quincenal",
+            "planilla": "Planilla C",
+            "tipo_pago": "Transferencia",
+            "correlativo": 539,
+            "estado": true
+        },
+        {
+            "tipo_planilla": "Mensual",
+            "planilla": "Planilla B",
+            "tipo_pago": "Cheque",
+            "correlativo": 726,
+            "estado": true
+        }
+    ]
+}

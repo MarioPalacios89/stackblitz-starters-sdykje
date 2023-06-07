@@ -1,0 +1,700 @@
+<div class="page-layout dialog-content-wrapper">
+    <mat-toolbar matDialogTitle class="mat-accent m-0">
+        <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <span class="title dialog-title">{{ title }}</span>
+            </div>
+            <button
+                mat-icon-button
+                (click)="matDialogRef.close()"
+                aria-label="Close dialog"
+            >
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div mat-dialog-content class="p-8 pb-0 m-0">
+        <form
+            autocomplete="off"
+            novalidate
+            [formGroup]="form"
+            fxLayout="column"
+            style="max-height: 55vh"
+        >
+            <fieldset class="fieldset-border m-0 mb-6" fxFlex="100">
+                <legend>Planilla</legend>
+
+                <div
+                    fxLayout="row wrap"
+                    fxLayout.lt-md="column"
+                    fxFlex="grow"
+                    fxLayoutGap="8px"
+                    fxLayoutGap.lt-md="0"
+                >
+                    <div
+                        fxFlex="calc(20% - 8px)"
+                        fxFlex.lt-lg="calc(50%-8px)"
+                        fxFlex.lt-md="100%"
+                    >
+                        <div class="form-group">
+                            <label class="label" class="font-semibold">Tipo pago</label>
+                            <p class="form-control-static mt-3">{{ registros.tipeOfPay }}</p>
+                        </div>
+                    </div>
+                    <mat-form-field
+                        fxFlex="calc(20% - 8px)"
+                        fxFlex.lt-lg="calc(50%-8px)"
+                        fxFlex.lt-md="100%"
+                    >
+                        <mat-label class="font-semibold">Situación laboral </mat-label>
+                        <mat-select formControlName="employment_situation">
+                            <mat-option value="">Seleccione</mat-option>
+                            <mat-option
+                                *ngFor="
+                                    let item of listas?.employment_situation
+                                "
+                                [value]="item"
+                            >
+                                {{ item }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div
+                        fxLayout="row wrap"
+                        fxLayoutAlign="space-around center"
+                        fxLayoutAlign.lt-lg="space-between center"
+                        fxFlex="calc(60% - 8px)"
+                        fxFlex.lt-xl="100%"
+                    >
+                        <div
+                            fxFlex="auto"
+                            fxFlex.lt-lg="calc(50%-12px)"
+                            fxFlex.lt-md="100"
+                            [ngClass.lg]="'mb-6'"
+                            fxLayoutAlign="center"
+                            *ngFor="let item of botonesCarga"
+                        >
+                            <button
+                                type="button"
+                                mat-raised-button
+                                color="primary"
+                                class="rounded-none shadow-none"
+                                [ngClass.lt-lg]="'w-full m-2'"
+                                [disabled]="item.disabled"
+                            >
+                                <span class="material-icons">{{
+                                    item.icon
+                                }}</span
+                                >&nbsp;{{ item.label }}
+                            </button>
+                        </div>
+                    </div>
+
+                    <fieldset class="fieldset-border m-0 mb-6" fxFlex="100">
+                        <legend>Datos personales</legend>
+                        <div
+                            fxLayout="row wrap"
+                            fxFlex="auto"
+                            fxLayoutGap="8px"
+                            fxLayoutGap.lt-md="0"
+                        >
+                            <div
+                                fxFlex="calc(20% - 12px)"
+                                fxFlex.lt-xl="calc(50%-8px)"
+                                fxFlex.lt-md="100%"
+                            >
+                                <div class="form-group">
+                                    <label class="label" class="font-semibold"
+                                        >Tipo de documento</label
+                                    >
+                                    <p class="form-control-static mt-3">{{ registros.typeDocument }}</p>
+                                </div>
+                            </div>
+                            <div
+                                fxFlex="calc(20% - 12px)"
+                                fxFlex.lt-xl="calc(50%-8px)"
+                                fxFlex.lt-md="100%"
+                            >
+                                <div class="form-group">
+                                    <label class="label" class="font-semibold"
+                                        >Número de documento</label
+                                    >
+                                    <p class="form-control-static mt-3">{{ registros.documentNumber }}</p>
+                                </div>
+                            </div>
+                            <div
+                                fxFlex="calc(20% - 12px)"
+                                fxFlex.lt-xl="calc(50%-8px)"
+                                fxFlex.lt-md="100%"
+                            >
+                                <div class="form-group">
+                                    <label class="label" class="font-semibold">Situación</label>
+                                    <p class="form-control-static mt-3">{{ registros.situation }}</p>
+                                </div>
+                            </div>
+                            <div
+                                fxFlex="calc(20% - 12px)"
+                                fxFlex.lt-xl="calc(50%-8px)"
+                                fxFlex.lt-md="100%"
+                            >
+                                <div class="form-group">
+                                    <label class="label" class="font-semibold"
+                                        >Fecha de ingreso</label
+                                    >
+                                    <p class="form-control-static mt-3">{{ registros.admissionDate }}</p>
+                                </div>
+                            </div>
+                            <div
+                                fxFlex="calc(20% - 12px)"
+                                fxFlex.lt-xl="calc(50%-8px)"
+                                fxFlex.lt-md="100%"
+                            >
+                                <div class="form-group">
+                                    <label class="label" class="font-semibold"
+                                        >Fecha de termino</label
+                                    >
+                                    <p class="form-control-static mt-3">{{ registros.endDate }}</p>
+                                </div>
+                            </div>
+                            <div
+                                fxFlex="calc(20% - 12px)"
+                                fxFlex.lt-xl="calc(50%-8px)"
+                                fxFlex.lt-md="100%"
+                            >
+                                <div class="form-group">
+                                    <label class="label" class="font-semibold">Primer apellido</label>
+                                    <p class="form-control-static mt-3">{{ registros.firstSurname }}</p>
+                                </div>
+                            </div>
+                            <div
+                                fxFlex="calc(20% - 12px)"
+                                fxFlex.lt-xl="calc(50%-8px)"
+                                fxFlex.lt-md="100%"
+                            >
+                                <div class="form-group">
+                                    <label class="label" class="font-semibold"
+                                        >Segundo apellido</label
+                                    >
+                                    <p class="form-control-static mt-3">{{ registros.secondSurname }}</p>
+                                </div>
+                            </div>
+                            <div
+                                fxFlex="calc(20% - 12px)"
+                                fxFlex.lt-xl="calc(50%-8px)"
+                                fxFlex.lt-md="100%"
+                            >
+                                <div class="form-group">
+                                    <label class="label" class="font-semibold">Nombres</label>
+                                    <p class="form-control-static mt-3">{{ registros.name }}</p>
+                                </div>
+                            </div>
+                            <div
+                                fxFlex="calc(20% - 12px)"
+                                fxFlex.lt-xl="calc(50%-8px)"
+                                fxFlex.lt-md="100%"
+                            >
+                                <div class="form-group">
+                                    <label class="label" class="font-semibold">Estado civil</label>
+                                    <p class="form-control-static mt-3">{{ registros.civilStatus }}</p>
+                                </div>
+                            </div>
+                            <div
+                                fxFlex="calc(20% - 12px)"
+                                fxFlex.lt-xl="calc(50%-8px)"
+                                fxFlex.lt-md="100%"
+                            >
+                                <div class="form-group">
+                                    <label class="label" class="font-semibold">Sexo</label>
+                                    <p class="form-control-static mt-3">{{ registros.sex }}</p>
+                                </div>
+                            </div>
+                            <div
+                                fxFlex="calc(20% - 12px)"
+                                fxFlex.lt-xl="calc(50%-8px)"
+                                fxFlex.lt-md="100%"
+                            >
+                                <div class="form-group">
+                                    <label class="label" class="font-semibold"
+                                        >Fecha de nacimiento</label
+                                    >
+                                    <p class="form-control-static mt-3">{{ registros.birthDate }}</p>
+                                </div>
+                            </div>
+                            <!-- <div fxFlex="calc(80% - 12px)" fxFlex.lt-xl="calc(50%-8px)" fxHide.lt-md></div> -->
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="fieldset-border m-0 mb-6" fxFlex="100">
+                        <legend>Datos de la plaza</legend>
+                        <div
+                            fxLayout="row wrap"
+                            fxFlex="auto"
+                            fxLayoutGap="8px"
+                            fxLayoutGap.lt-md="0"
+                        >
+                            <div
+                                fxFlex="calc(20% - 12px)"
+                                fxFlex.lt-xl="calc(50%-8px)"
+                                fxFlex.lt-md="100%"
+                            >
+                                <div class="form-group">
+                                    <label class="label" class="font-semibold"
+                                        >Instancia de gestión educativa
+                                        descentralizada</label
+                                    >
+                                    <p class="form-control-static mt-3">{{registros.educationManagement}}</p>
+                                </div>
+                            </div>
+                            <div
+                                fxFlex="calc(20% - 12px)"
+                                fxFlex.lt-xl="calc(50%-8px)"
+                                fxFlex.lt-md="100%"
+                            >
+                                <div class="form-group">
+                                    <label class="label" class="font-semibold">Código modular</label>
+                                    <p class="form-control-static mt-3">{{registros.modularCode}}</p>
+                                </div>
+                            </div>
+                            <div
+                                fxFlex="calc(20% - 12px)"
+                                fxFlex.lt-xl="calc(50%-8px)"
+                                fxFlex.lt-md="100%"
+                            >
+                                <div class="form-group">
+                                    <label class="label" class="font-semibold"
+                                        >Centro de trabajo</label
+                                    >
+                                    <p class="form-control-static mt-3">{{registros.workplace}}</p>
+                                </div>
+                            </div>
+                            <div
+                                fxFlex="calc(20% - 12px)"
+                                fxFlex.lt-xl="calc(50%-8px)"
+                                fxFlex.lt-md="100%"
+                            >
+                                <div class="form-group">
+                                    <label class="label" class="font-semibold">Modalidad</label>
+                                    <p class="form-control-static mt-3">{{registros.modality}}</p>
+                                </div>
+                            </div>
+                            <div
+                                fxFlex="calc(20% - 12px)"
+                                fxFlex.lt-xl="calc(50%-8px)"
+                                fxFlex.lt-md="100%"
+                            >
+                                <div class="form-group">
+                                    <label class="label" class="font-semibold">Nivel educativo</label>
+                                    <p class="form-control-static mt-3">{{registros.educationLevel}}</p>
+                                </div>
+                            </div>
+                            <div
+                                fxFlex="calc(20% - 12px)"
+                                fxFlex.lt-xl="calc(50%-8px)"
+                                fxFlex.lt-md="100%"
+                            >
+                                <div class="form-group">
+                                    <label class="label" class="font-semibold">Cargo</label>
+                                    <p class="form-control-static mt-3">{{registros.position}}</p>
+                                </div>
+                            </div>
+                            <div
+                                fxFlex="calc(20% - 12px)"
+                                fxFlex.lt-xl="calc(50%-8px)"
+                                fxFlex.lt-md="100%"
+                            >
+                                <div class="form-group">
+                                    <label class="label" class="font-semibold">Jornada laboral</label>
+                                    <p class="form-control-static mt-3">{{registros.workday}}</p>
+                                </div>
+                            </div>
+                            <div
+                                fxFlex="calc(20% - 12px)"
+                                fxFlex.lt-xl="calc(50%-8px)"
+                                fxFlex.lt-md="100%"
+                            >
+                                <div class="form-group">
+                                    <label class="label" class="font-semibold">Especialidad</label>
+                                    <p class="form-control-static mt-3">{{registros.specialty}}</p>
+                                </div>
+                            </div>
+                            <div
+                                fxFlex="calc(20% - 12px)"
+                                fxFlex.lt-xl="calc(50%-8px)"
+                                fxFlex.lt-md="100%"
+                            >
+                                <div class="form-group">
+                                    <label class="label" class="font-semibold">Código de plaza</label>
+                                    <p class="form-control-static mt-3">{{registros.codePlaza}}</p>
+                                </div>
+                            </div>
+                            <div
+                                fxFlex="calc(20% - 12px)"
+                                fxFlex.lt-xl="calc(50%-8px)"
+                                fxFlex.lt-md="100%"
+                            >
+                                <div class="form-group">
+                                    <label class="label" class="font-semibold"
+                                        >Escala magisterial</label
+                                    >
+                                    <p class="form-control-static mt-3">{{registros.magisterialScale}}</p>
+                                </div>
+                            </div>
+                            <div
+                                fxFlex="calc(20% - 12px)"
+                                fxFlex.lt-xl="calc(50%-8px)"
+                                fxFlex.lt-md="100%"
+                            >
+                                <div class="form-group">
+                                    <label class="label" class="font-semibold">Regimen laboral</label>
+                                    <p class="form-control-static mt-3">{{registros.laborRegime}}</p>
+                                </div>
+                            </div>
+
+                            <div
+                                fxFlex="calc(80% - 12px)"
+                                fxFlex.lt-xl="calc(50%-8px)"
+                                fxHide.lt-md
+                            ></div>
+                            <div
+                                fxFlex="calc(20% - 12px)"
+                                fxFlex.lt-xl="calc(50%-8px)"
+                                fxFlex.lt-md="100%"
+                            >
+                                <div class="form-group">
+                                    <label class="label" class="font-semibold">Modo pago</label>
+                                    <p class="form-control-static mt-3">{{registros.payMode}}</p>
+                                </div>
+                            </div>
+                            <div
+                                fxFlex="calc(20% - 12px)"
+                                fxFlex.lt-xl="calc(50%-8px)"
+                                fxFlex.lt-md="100%"
+                            >
+                                <div class="form-group">
+                                    <label class="label" class="font-semibold">Banco</label>
+                                    <p class="form-control-static mt-3">{{registros.bank}}</p>
+                                </div>
+                            </div>
+                            <div
+                                fxFlex="calc(20% - 12px)"
+                                fxFlex.lt-xl="calc(50%-8px)"
+                                fxFlex.lt-md="100%"
+                            >
+                                <div class="form-group">
+                                    <label class="label" class="font-semibold"
+                                        >Cuenta corriente</label
+                                    >
+                                    <p class="form-control-static mt-3">{{registros.currentAccount}}</p>
+                                </div>
+                            </div>
+                            <div
+                                fxFlex="calc(20% - 12px)"
+                                fxFlex.lt-xl="calc(50%-8px)"
+                                fxFlex.lt-md="100%"
+                                fxLayoutAlign="start center"
+                            >
+                                <button
+                                    type="button"
+                                    mat-raised-button
+                                    color="primary"
+                                    class="rounded-none shadow-none"
+                                    (click)="(null)"
+                                    [disabled]="true"
+                                >
+                                    <span class="material-icons"
+                                        >account_balance</span
+                                    >
+                                    Detalle banco
+                                </button>
+                            </div>
+                            <div
+                                fxFlex="calc(20% - 12px)"
+                                fxFlex.lt-xl="calc(50%-8px)"
+                                fxFlex.lt-md="100%"
+                                fxLayoutAlign="start center"
+                            >
+                                <mat-checkbox formControlName="retention"
+                                    >Sin retención 5ta</mat-checkbox
+                                >
+                            </div>
+
+                            <div
+                                fxFlex="calc(20% - 12px)"
+                                fxFlex.lt-xl="calc(50%-8px)"
+                                fxFlex.lt-md="100%"
+                                fxLayoutAlign="start center"
+                            >
+                                <button
+                                    type="button"
+                                    mat-raised-button
+                                    color="primary"
+                                    class="rounded-none shadow-none"
+                                    (click)="(null)"
+                                    [disabled]="true"
+                                >
+                                    <span class="material-icons">add</span>
+                                    Declaración 5ta
+                                </button>
+                            </div>
+                            <div
+                                fxFlex="calc(20% - 12px)"
+                                fxFlex.lt-xl="calc(50%-8px)"
+                                fxFlex.lt-md="100%"
+                            >
+                                <div class="form-group">
+                                    <label class="label" class="font-semibold"
+                                        >Reg. pensionario</label
+                                    >
+                                    <p class="form-control-static mt-3">{{registros.pensionRegister}}</p>
+                                </div>
+                            </div>
+                            <div
+                                fxFlex="calc(20% - 12px)"
+                                fxFlex.lt-xl="calc(50%-8px)"
+                                fxFlex.lt-md="100%"
+                            >
+                                <div class="form-group">
+                                    <label class="label" class="font-semibold">AFP</label>
+                                    <p class="form-control-static mt-3">{{registros.afp}}</p>
+                                </div>
+                            </div>
+                            <div
+                                fxFlex="calc(20% - 12px)"
+                                fxFlex.lt-xl="calc(50%-8px)"
+                                fxFlex.lt-md="100%"
+                            >
+                                <div class="form-group">
+                                    <label class="label" class="font-semibold"
+                                        >Tipo de comisión</label
+                                    >
+                                    <p class="form-control-static mt-3">{{registros.commissionType}}</p>
+                                </div>
+                            </div>
+                            <div
+                                fxFlex="calc(20% - 12px)"
+                                fxFlex.lt-xl="calc(50%-8px)"
+                                fxFlex.lt-md="100%"
+                                fxLayoutAlign="start center"
+                            >
+                                <button
+                                    type="button"
+                                    mat-raised-button
+                                    color="primary"
+                                    class="rounded-none shadow-none"
+                                    (click)="(null)"
+                                    [disabled]="true"
+                                >
+                                    <span class="material-icons"
+                                        >assignment</span
+                                    >
+                                    Detalle sist. pensionario
+                                </button>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="fieldset-border m-0 mb-6" fxFlex="100">
+                        <legend>Datos de contacto</legend>
+                        <div
+                            fxLayout="row wrap"
+                            fxFlex="auto"
+                            fxLayoutGap="8px"
+                            fxLayoutGap.lt-md="0"
+                        >
+                            <div
+                                fxFlex="calc(20% - 12px)"
+                                fxFlex.lt-xl="calc(50%-8px)"
+                                fxFlex.lt-md="100%"
+                            >
+                                <div class="form-group">
+                                    <label class="label" class="font-semibold"
+                                        >Correo electrónico (*)</label
+                                    >
+                                    <p class="form-control-static mt-3">{{registros.email}}</p>
+                                </div>
+                            </div>
+                            <div
+                                fxFlex="calc(20% - 12px)"
+                                fxFlex.lt-xl="calc(50%-8px)"
+                                fxFlex.lt-md="100%"
+                            >
+                                <div class="form-group">
+                                    <label class="label" class="font-semibold">Celular (*)</label>
+                                    <p class="form-control-static mt-3">{{registros.cellphone}}</p>
+                                </div>
+                            </div>
+                            <div
+                                fxFlex="calc(20% - 12px)"
+                                fxFlex.lt-xl="calc(50%-8px)"
+                                fxFlex.lt-md="100%"
+                            >
+                                <div class="form-group">
+                                    <label class="label" class="font-semibold">Telefono fijo</label>
+                                    <p class="form-control-static mt-3">{{registros.telephone}}</p>
+                                </div>
+                            </div>
+                            <div
+                                fxFlex="calc(40% - 12px)"
+                                fxFlex.lt-xl="calc(50%-8px)"
+                                fxHide.lt-md
+                            ></div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="fieldset-border m-0 mb-6" fxFlex="100">
+                        <legend>Anotaciones</legend>
+                        <div
+                            fxLayout="row wrap"
+                            fxLayout.lt-md="column"
+                            fxFlex="100%"
+                            fxLayoutGap="8px"
+                            fxLayoutGap.lt-md="0"
+                        >
+                            <mat-form-field appearance="fill" fxFlex="100%">
+                                <mat-label></mat-label>
+                                <input
+                                    type="text"
+                                    name="annotation"
+                                    formControlName="annotation"
+                                    matInput
+                                />
+                            </mat-form-field>
+                        </div>
+                    </fieldset>
+
+                    <div class="table-wrp block max-h-64 overflor-x-auto" fxFlex="100">
+                        <table class="w-full">
+                            <thead class="bg-white border-b sticky top-0">
+                                <tr
+                                    class="mat-header-row cdk-header-row ng-tns-c388-15 ng-star-inserted"
+                                >
+                                    <th
+                                        class="mat-header-cell cdk-header-cell ng-tns-c386-4 ng-star-inserted w-1/12"
+                                    >
+                                        Item
+                                    </th>
+                                    <th
+                                        class="mat-header-cell cdk-header-cell ng-tns-c386-4 ng-star-inserted w-1/12"
+                                    >
+                                        Acción
+                                    </th>
+                                    <th
+                                        class="mat-header-cell cdk-header-cell ng-tns-c386-4 ng-star-inserted w-3/12"
+                                    >
+                                        Motivo de acción
+                                    </th>
+                                    <th
+                                        class="mat-header-cell cdk-header-cell ng-tns-c386-4 ng-star-inserted w-1/12"
+                                    >
+                                        Fecha inicio
+                                    </th>
+                                    <th
+                                        class="mat-header-cell cdk-header-cell ng-tns-c386-4 ng-star-inserted w-1/12"
+                                    >
+                                        Fecha fin
+                                    </th>
+                                    <th
+                                        class="mat-header-cell cdk-header-cell ng-tns-c386-4 ng-star-inserted w-1/12"
+                                    >
+                                        Cargo
+                                    </th>
+                                    <th
+                                        class="mat-header-cell cdk-header-cell ng-tns-c386-4 ng-star-inserted w-2/12"
+                                    >
+                                        Centro de trabajo origen
+                                    </th>
+                                    <th
+                                        class="mat-header-cell cdk-header-cell ng-tns-c386-4 ng-star-inserted w-2/12"
+                                    >
+                                        Centro de trabajo destino
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody
+                                class="overflow-y-auto"
+                                [ngClass]="dataTable.length > 10 ? 'h-64' : ''"
+                            >
+                                <tr
+                                    class="mat-row cdk-row ng-tns-c386-4 ng-trigger ng-trigger-animate ng-star-inserted"
+                                    *ngFor="
+                                        let item of dataTable;
+                                        let i = index
+                                    "
+                                >
+                                    <td
+                                        class="mat-cell cdk-cell ng-tns-c386-4 ng-star-inserted text-center"
+                                    >
+                                        {{ i + 1 }}
+                                    </td>
+                                    <td
+                                        class="mat-cell cdk-cell ng-tns-c386-4 ng-star-inserted"
+                                    >
+                                        {{ item.action }}
+                                    </td>
+                                    <td
+                                        class="mat-cell cdk-cell ng-tns-c386-4 ng-star-inserted text-center"
+                                    >
+                                        {{ item.reason }}
+                                    </td>
+                                    <td
+                                        class="mat-cell cdk-cell ng-tns-c386-4 ng-star-inserted text-center"
+                                    >
+                                        {{ item.startDate }}
+                                    </td>
+                                    <td
+                                        class="mat-cell cdk-cell ng-tns-c386-4 ng-star-inserted"
+                                    >
+                                        {{ item.endDate }}
+                                    </td>
+                                    <td
+                                        class="mat-cell cdk-cell ng-tns-c386-4 ng-star-inserted text-center"
+                                    >
+                                        {{ item.position }}
+                                    </td>
+                                    <td
+                                        class="mat-cell cdk-cell ng-tns-c386-4 ng-star-inserted text-center"
+                                    >
+                                        {{ item.originWorkCenter }}
+                                    </td>
+                                    <td
+                                        class="mat-cell cdk-cell ng-tns-c386-4 ng-star-inserted text-center"
+                                    >
+                                        {{ item.destinationWorkCenter }}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+    <mat-divider class="mt-6"></mat-divider>
+    <div
+        mat-dialog-actions
+        class="panel-footer m-0 pr-12"
+        fxLayout="row"
+        fxLayoutAlign="end center"
+    >
+        <button
+            type="button"
+            mat-raised-button
+            color="primary"
+            class="rounded-none shadow-none"
+            (click)="(null)"
+            *ngIf="isSaveActive"
+            [disabled]="true"
+        >
+            <span class="material-icons">save</span> Guardar
+        </button>
+        <button
+            mat-stroked-button
+            class="rounded-none shadow-none"
+            (click)="matDialogRef.close()"
+        >
+            <span class="material-icons">cancel</span> Cerrar
+        </button>
+    </div>
+</div>

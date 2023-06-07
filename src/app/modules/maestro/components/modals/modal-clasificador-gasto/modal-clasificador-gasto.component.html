@@ -1,0 +1,161 @@
+<div class="page-layout dialog-content-wrapper">
+    <mat-toolbar matDialogTitle class="mat-accent m-0">
+        <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <span class="title dialog-title"
+                    >Nuevo Clasificador de gasto</span
+                >
+            </div>
+            <button
+                mat-icon-button
+                (click)="matDialogRef.close()"
+                aria-label="Close dialog"
+            >
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div mat-dialog-content class="p-8 pb-0 m-0">
+        <form
+            autocomplete="off"
+            novalidate
+            [formGroup]="form"
+            fxLayout="row wrap"
+            fxLayout.lt-md="column"
+            fxFlex="100%"
+            fxLayoutGap="8px"
+            fxLayoutGap.lt-md="0"
+        >
+            <mat-form-field
+                appearance="fill"
+                fxFlex="calc(32% - 8px)"
+                fxFlexOffset.lt-md="0"
+                fxFlex.lt-md="100%"
+            >
+                <mat-label>Año </mat-label>
+                <mat-select formControlName="ano">
+                    <mat-option value="">Seleccione</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <div fxFlex="calc(68% - 8px)" fxHide.lt-md></div>
+            <mat-form-field
+                appearance="fill"
+                fxFlex="calc(32% - 8px)"
+                fxFlexOffset.lt-md="0"
+                fxFlex.lt-md="100%"
+            >
+                <mat-label>Código </mat-label>
+                <input
+                    type="text"
+                    name="codigo"
+                    formControlName="codigo"
+                    matInput
+                    disabled
+                    readonly="true"
+                />
+            </mat-form-field>
+            <div fxFlex="calc(34% - 8px)" fxHide.lt-md></div>
+            <mat-checkbox
+                fxFlex="calc(32% - 8px)"
+                fxFlexOffset.lt-md="0"
+                fxFlex.lt-md="100%"
+                formControlName="asociar_concepto"
+                fxLayoutAlign="end center"
+                >Asociar concepto</mat-checkbox
+            >
+            <mat-form-field
+                appearance="fill"
+                fxFlex="calc(100% - 8px)"
+                fxFlex.lt-md="100%"
+            >
+                <mat-label>Descripción </mat-label>
+                <input
+                    type="text"
+                    name="descripcion"
+                    formControlName="descripcion"
+                    matInput
+                    readonly="true"
+                />
+            </mat-form-field>
+            <mat-form-field
+                appearance="fill"
+                fxFlex="calc(32% - 8px)"
+                fxFlexOffset.lt-md="0"
+                fxFlex.lt-md="100%"
+            >
+                <mat-label>Codigo gasto padre </mat-label>
+                <mat-select formControlName="gasto_padre">
+                    <mat-option value="">Seleccione</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field
+                appearance="fill"
+                fxFlex="calc(68% - 8px)"
+                fxFlex.lt-md="100%"
+            >
+                <mat-label> </mat-label>
+                <input
+                    type="text"
+                    name="gasto_padre_descripcion"
+                    formControlName="gasto_padre_descripcion"
+                    matInput
+                    disabled
+                    readonly="true"
+                />
+            </mat-form-field>
+            <mat-form-field
+                appearance="fill"
+                fxFlex="calc(32% - 8px)"
+                fxFlexOffset.lt-md="0"
+                fxFlex.lt-md="100%"
+            >
+                <mat-label>Estado </mat-label>
+                <mat-select formControlName="estado">
+                    <mat-option value="">Seleccione</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field
+                appearance="fill"
+                fxFlex="calc(68% - 8px)"
+                fxFlex.lt-md="100%"
+            >
+                <mat-label> Motivo de anulación </mat-label>
+                <input
+                    type="text"
+                    name="motivo_anulacion"
+                    formControlName="motivo_anulacion"
+                    matInput
+                    disabled
+                    readonly="true"
+                />
+            </mat-form-field>
+        </form>
+    </div>
+
+    <mat-divider class="mt-6"></mat-divider>
+    <div
+        mat-dialog-actions
+        class="panel-footer m-0 pr-12"
+        fxLayout="row"
+        fxLayoutAlign="end center"
+    >
+        <button
+            type="button"
+            mat-raised-button
+            color="primary"
+            class="rounded-none shadow-none"
+            (click)="(null)"
+            disabled
+        >
+            <span class="material-icons">save</span> Guardar
+        </button>
+        <button
+            mat-stroked-button
+            class="rounded-none shadow-none"
+            (click)="matDialogRef.close()"
+        >
+            <span class="material-icons">cancel</span> Cerrar
+        </button>
+    </div>
+</div>

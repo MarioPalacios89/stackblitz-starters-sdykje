@@ -1,0 +1,1498 @@
+<div class="page-layout dialog-content-wrapper">
+    <mat-toolbar matDialogTitle class="mat-accent m-0">
+        <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <span class="title dialog-title">{{title}}</span>
+            </div>
+            <button
+                mat-icon-button
+                (click)="matDialogRef.close()"
+                aria-label="Close dialog"
+            >
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <div mat-dialog-content class="p-8 pb-0 m-0">
+        <mat-tab-group animationDuration="0ms">
+            <mat-tab label="Detalle" class="overflow-auto" >
+                <form
+                    autocomplete="off"
+                    novalidate
+                    [formGroup]="form"
+                    fxLayout="column"
+                    style="max-height: 55vh;"
+                >
+                    <fieldset class="fieldset-border m-0">
+                        <legend>Concepto</legend>
+
+                        <div fxFlex="100%" fxLayout="column">
+                            <div
+                                fxLayout="row wrap"
+                                fxLayout.lt-lg="column"
+                                fxFlex="100%"
+                                fxLayoutGap="8px"
+                                fxLayoutGap.lt-lg="0"
+                            >
+                                <mat-form-field
+                                    appearance="fill"
+                                    fxFlex="calc(25% - 8px)"
+                                    fxFlex.lt-lg="100%"
+                                >
+                                    <mat-label>Régimen laboral </mat-label>
+                                    <mat-select
+                                        formControlName="regimenLaboral"
+                                    >
+                                        <mat-option value=""
+                                            >SELECCIONE</mat-option
+                                        >
+                                        <mat-option *ngFor="let item of listas?.regimenLaboral"
+                                        [value]="item?.id">
+                                        {{item?.descripcion}}
+                                    </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field
+                                    appearance="fill"
+                                    fxFlex="calc(25% - 8px)"
+                                    fxFlex.lt-lg="100%"
+                                >
+                                    <mat-label>Código </mat-label>
+                                    <input
+                                        type="text"
+                                        name="codigo"
+                                        formControlName="codigo"
+                                        matInput
+                                    />
+                                </mat-form-field>
+                                <mat-form-field
+                                    appearance="fill"
+                                    fxFlex="calc(50% - 8px)"
+                                    fxFlex.lt-lg="100%"
+                                >
+                                    <mat-label>Descripción </mat-label>
+                                    <input
+                                        type="text"
+                                        name="descripcion"
+                                        formControlName="descripcion"
+                                        matInput
+                                    />
+                                </mat-form-field>
+                            </div>
+                            <div
+                                fxLayout="row wrap"
+                                fxLayout.lt-lg="column"
+                                fxFlex="100%"
+                                fxLayoutGap="8px"
+                                fxLayoutGap.lt-lg="0"
+                                fxLayoutAlign.gt-md="center center"
+                            >
+                                <mat-form-field
+                                    appearance="fill"
+                                    fxFlex="calc(50% - 8px)"
+                                    fxFlex.lt-lg="100%"
+                                >
+                                    <mat-label>Descripción corta </mat-label>
+                                    <input
+                                        type="text"
+                                        name="descripcionCorta"
+                                        formControlName="descripcionCorta"
+                                        matInput
+                                    />
+                                </mat-form-field>
+                                <fieldset
+                                    class="fieldset-border m-0 mb-8"
+                                    fxFlex="calc(50% - 8px)"
+                                    fxFlex.lt-lg="100%"
+                                >
+                                    <legend>Visualización</legend>
+                                    <div
+                                        fxLayout="row wrap"
+                                        fxLayout.lt-lg="column"
+                                        fxFlex="100%"
+                                        fxLayoutGap="2px"
+                                        fxLayoutGap.lt-lg="0"
+                                    >
+                                        <mat-checkbox
+                                            fxFlex="calc(50% - 2px)"
+                                            fxFlex.lt-lg="100%"
+                                            formControlName="verEnBoleta"
+                                            [value]="true"
+                                            >Ver en Boleta</mat-checkbox
+                                        >
+                                        <mat-form-field
+                                            appearance="fill"
+                                            fxFlex="calc(50% - 8px)"
+                                            fxFlex.lt-lg="100%"
+                                        >
+                                            <mat-label
+                                                >Orden Presentación
+                                            </mat-label>
+                                            <input
+                                                type="text"
+                                                name="ordenPresentacion"
+                                                formControlName="ordenPresentacion"
+                                                matInput
+                                            />
+                                        </mat-form-field>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div
+                                fxLayout="row wrap"
+                                fxLayout.lt-lg="column"
+                                fxFlex="100%"
+                                fxLayoutGap="8px"
+                                fxLayoutGap.lt-lg="0"
+                            >
+                                <mat-form-field
+                                    appearance="fill"
+                                    fxFlex="calc(20% - 8px)"
+                                    fxFlex.lt-lg="100%"
+                                >
+                                    <mat-label>Tipo de Concepto </mat-label>
+                                    <mat-select formControlName="tipoConcepto">
+                                        <mat-option value=""
+                                            >NINGUNO</mat-option
+                                        >
+                                        <mat-option *ngFor="let item of listas?.tipoConcepto"
+                                        [value]="item?.id">
+                                        {{item?.descripcion}}
+                                    </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field
+                                    appearance="fill"
+                                    fxFlex="calc(20% - 8px)"
+                                    fxFlex.lt-lg="100%"
+                                >
+                                    <mat-label>Grupo Calculo </mat-label>
+                                    <mat-select formControlName="grupoCalculo">
+                                        <mat-option value=""
+                                            >SELECCIONE</mat-option
+                                        >
+                                        <mat-option *ngFor="let item of listas?.tipoGrupoCalculo"
+                                        [value]="item?.id">
+                                        {{item?.descripcion}}
+                                    </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field
+                                    appearance="fill"
+                                    fxFlex="calc(20% - 8px)"
+                                    fxFlex.lt-lg="100%"
+                                >
+                                    <mat-label>Prioridad Cálculo </mat-label>
+                                    <input
+                                        type="text"
+                                        name="prioridadCalculo"
+                                        formControlName="prioridadCalculo"
+                                        matInput
+                                    />
+                                </mat-form-field>
+                                <div fxFlex="calc(40% - 8px)" fxHide.lt-lg></div>
+                                <!-- <mat-form-field
+                                    appearance="fill"
+                                    fxFlex="calc(20% - 8px)"
+                                    fxFlex.lt-lg="100%"
+                                >
+                                    <mat-label>Grupo Descuento </mat-label>
+                                    <mat-select
+                                        formControlName="grupoDescuento"
+                                    >
+                                        <mat-option value="-1"
+                                            >TODOS</mat-option
+                                        >
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field
+                                    appearance="fill"
+                                    fxFlex="calc(20% - 8px)"
+                                    fxFlex.lt-lg="100%"
+                                >
+                                    <mat-label
+                                        >Prioridad dentro del Grupo Descuento
+                                    </mat-label>
+                                    <input
+                                        type="text"
+                                        name="prioridadDentroGrupoDescuento"
+                                        formControlName="prioridadDentroGrupoDescuento"
+                                        matInput
+                                        disabled
+                                        readonly="true"
+                                    />
+                                </mat-form-field> -->
+                            </div>
+                            <div
+                                fxLayout="row wrap"
+                                fxLayout.lt-lg="column"
+                                fxFlex="100%"
+                                fxLayoutGap="8px"
+                                fxLayoutGap.lt-lg="0"
+                                fxLayoutAlign.gt-md="center center"
+                            >
+                                <mat-form-field
+                                    appearance="fill"
+                                    fxFlex="calc(20% - 8px)"
+                                    fxFlex.lt-lg="100%"
+                                    [ngClass.gt-md]="'mt-6'"
+                                >
+                                    <mat-label>Fecha de inicio</mat-label>
+                                    <input
+                                        matInput
+                                        [matDatepicker]="fechaInicio"
+                                        readonly
+                                        [formControl]="form.get('fechaInicio')"
+                                        (click)="fechaInicio.open()"
+                                        (focus)="fechaInicio.open()"
+                                    />
+                                    <mat-datepicker-toggle
+                                        matSuffix
+                                        [for]="fechaInicio"
+                                    ></mat-datepicker-toggle>
+                                    <mat-datepicker
+                                        #fechaInicio
+                                    ></mat-datepicker>
+                                </mat-form-field>
+                                <mat-form-field
+                                    appearance="fill"
+                                    fxFlex="calc(20% - 8px)"
+                                    fxFlex.lt-lg="100%"
+                                    [ngClass.gt-md]="'mt-6'"
+                                >
+                                    <mat-label>Fecha de Fin</mat-label>
+                                    <input
+                                        matInput
+                                        [matDatepicker]="fechaFin"
+                                        readonly
+                                        [formControl]="form.get('fechaFin')"
+                                        (click)="fechaFin.open()"
+                                        (focus)="fechaFin.open()"
+                                    />
+                                    <mat-datepicker-toggle
+                                        matSuffix
+                                        [for]="fechaFin"
+                                    ></mat-datepicker-toggle>
+                                    <mat-datepicker #fechaFin></mat-datepicker>
+                                </mat-form-field>
+                                <mat-form-field
+                                    appearance="fill"
+                                    fxFlex="calc(20% - 8px)"
+                                    fxFlex.lt-lg="100%"
+                                    [ngClass.gt-md]="'mt-6'"
+                                >
+                                    <mat-label>Estado </mat-label>
+                                    <mat-select formControlName="estado">
+                                        <mat-option value=""
+                                            >SELECCIONE</mat-option
+                                        >
+                                        <mat-option *ngFor="let item of listas?.estado"
+                                        [value]="item?.id">
+                                        {{item?.descripcion}}
+                                    </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <fieldset
+                                    class="fieldset-border"
+                                    fxFlex="calc(40% - 8px)"
+                                    fxFlex.lt-lg="100%"
+                                >
+                                    <legend>Planilla - Tipo Pago</legend>
+                                    <div
+                                        fxLayout="row wrap"
+                                        fxLayout.lt-lg="column"
+                                        fxFlex="100%"
+                                        fxLayoutGap="2px"
+                                        fxLayoutGap.lt-lg="0"
+                                        fxLayoutAlign.gt-md="space-between center"
+                                    >
+                                    <label formArrayName="planillaTipoPago" *ngFor="let item of planillaTipoPagoFormArray.controls; let i = index">
+                                        <mat-checkbox
+                                            fxFlex="auto"
+                                            fxFlex.lt-lg="100%"
+                                            [formControlName]="i"
+                                            >{{
+                                                listas.tipoPago[i].descripcion
+                                            }}</mat-checkbox
+                                        >
+                                        </label>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div
+                                fxLayout="row wrap"
+                                fxLayout.lt-lg="column"
+                                fxFlex="100%"
+                                fxLayoutGap="8px"
+                                fxLayoutGap.lt-lg="0"
+                                fxLayoutAlign.gt-md="center center"
+                            >
+                                <fieldset
+                                    class="fieldset-border"
+                                    fxFlex="calc(60% - 8px)"
+                                    fxFlex.lt-lg="100%"
+                                >
+                                    <legend>Tipo de Calculo</legend>
+                                    <div
+                                        fxLayout="row wrap"
+                                        fxLayout.lt-lg="column"
+                                        fxFlex="100%"
+                                        fxLayoutGap="2px"
+                                        fxLayoutGap.lt-lg="0"
+                                        fxLayoutAlign.gt-md="space-between center"
+                                    >
+                                    <mat-form-field
+                                    appearance="fill"
+                                    fxFlex="calc(20% - 8px)"
+                                    fxFlex.lt-lg="100%"
+                                >
+                                    <!-- <mat-label>Tipo de Concepto </mat-label> -->
+                                    <mat-select formControlName="tipoCalculo">
+                                        <mat-option value=""
+                                            >SELECCIONE</mat-option
+                                        >
+                                        <mat-option *ngFor="let item of listas?.tipoCalculo"
+                                        [value]="item?.id">
+                                        {{item?.descripcion}}
+                                    </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+
+
+                                        <div
+
+                                            fxLayout.lt-lg="column"
+                                            fxFlex="calc(20% - 8px)"
+                                            fxFlex.lt-lg="100%"
+                                            [ngClass.gt-md]="'mb-4'"
+                                        >
+                                        <mat-checkbox value="1"
+                                                fxFlex="auto"
+                                                fxFlex.lt-lg="100%"
+                                                formControlName="registroManual"
+                                            >
+                                                Permite registro manual
+                            </mat-checkbox>
+                                            </div>
+                                    </div>
+                                </fieldset>
+                                <fieldset
+                                    class="fieldset-border"
+                                    fxFlex="calc(30% - 8px)"
+                                    fxFlex.lt-lg="100%"
+                                >
+                                    <legend>Ingreso de Información</legend>
+                                    <div
+                                        fxLayout="row wrap"
+                                        fxLayout.lt-lg="column"
+                                        fxFlex="100%"
+                                        fxLayoutGap="2px"
+                                        fxLayoutGap.lt-lg="0"
+                                        fxLayoutAlign.gt-md="space-between center"
+                                    >
+                                        <mat-checkbox
+                                            *ngFor="
+                                                let item of listas.ingresoInformacion
+                                            "
+                                            fxFlex="auto"
+                                            fxFlex.lt-lg="100%"
+                                            formControlName="ingresoInformacion"
+                                            >{{
+                                                item.descripcion
+                                            }}</mat-checkbox
+                                        >
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset class="fieldset-border m-0">
+                        <legend>Marco Legal</legend>
+
+                        <div fxFlex="100%" fxLayout="column">
+                            <div
+                                fxLayout="row wrap"
+                                fxLayout.lt-lg="column"
+                                fxFlex="100%"
+                                fxLayoutGap="8px"
+                                fxLayoutGap.lt-lg="0"
+                            >
+                                <mat-form-field
+                                    appearance="fill"
+                                    fxFlex="calc(50% - 8px)"
+                                    fxFlex.lt-lg="100%"
+                                >
+                                    <mat-label> </mat-label>
+                                    <input
+                                        type="text"
+                                        name="marcoLegal"
+                                        formControlName="marcoLegal"
+                                        matInput
+
+                                    />
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset class="fieldset-border m-0">
+                        <legend>Anotaciones</legend>
+
+                        <div fxFlex="100%" fxLayout="column">
+                            <div
+                                fxLayout="row wrap"
+                                fxLayout.lt-lg="column"
+                                fxFlex="100%"
+                                fxLayoutGap="8px"
+                                fxLayoutGap.lt-lg="0"
+                            >
+                                <mat-form-field
+                                    appearance="fill"
+                                    fxFlex="calc(50% - 8px)"
+                                    fxFlex.lt-lg="100%"
+                                >
+                                    <mat-label> </mat-label>
+                                    <input
+                                        type="text"
+                                        name="anotaciones"
+                                        formControlName="anotaciones"
+                                        matInput
+
+                                    />
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset class="fieldset-border m-0">
+                        <legend>Equivalencia MCPP</legend>
+
+                        <div fxFlex="100%" fxLayout="column">
+                            <div
+                                fxLayout="row wrap"
+                                fxLayout.lt-lg="column"
+                                fxFlex="100%"
+                                fxLayoutGap="8px"
+                                fxLayoutGap.lt-lg="0"
+                            >
+                                <mat-form-field
+                                    appearance="fill"
+                                    fxFlex="calc(20% - 8px)"
+                                    fxFlex.lt-lg="100%"
+                                >
+                                    <mat-label>Código </mat-label>
+                                    <mat-select
+                                        formControlName="equivalenciaCodigoMCPP"
+                                    >
+                                        <mat-option value=""
+                                            >SELECCIONE</mat-option
+                                        >
+                                        <mat-option *ngFor="let item of listas?.conceptosMCPP"
+                                        [value]="item?.id">
+                                        {{item?.descripcion}}
+                                    </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field
+                                    appearance="fill"
+                                    fxFlex="calc(80% - 8px)"
+                                    fxFlex.lt-lg="100%"
+                                >
+                                    <mat-label> </mat-label>
+                                    <input
+                                        type="text"
+                                        name="equivalenciaDescripcionMCPP"
+                                        formControlName="equivalenciaDescripcionMCPP"
+                                        matInput
+
+                                    />
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div
+                        fxLayout="row"
+                        fxLayout.lt-lg="column"
+                        fxLayoutGap="8px"
+                    >
+                        <fieldset
+                            class="fieldset-border mb-3"
+                            fxFlex="50"
+                            fxFlex.xs="100"
+                        >
+                            <legend>Equivalencia SUNAT</legend>
+
+                            <div fxFlex="100%" fxLayout="column">
+                                <div
+                                    fxLayout="row wrap"
+                                    fxLayout.lt-lg="column"
+                                    fxFlex="100%"
+                                    fxLayoutGap="8px"
+                                    fxLayoutGap.lt-lg="0"
+                                >
+                                    <mat-form-field
+                                        appearance="fill"
+                                        fxFlex="calc(40% - 8px)"
+                                        fxFlex.lt-lg="100%"
+                                    >
+                                        <mat-label>Código </mat-label>
+                                        <mat-select
+                                            formControlName="equivalenciaCodigoSUNAT"
+                                        >
+                                        <mat-option value=""
+                                        >SELECCIONE</mat-option
+                                    >
+                                    <mat-option *ngFor="let item of listas?.conceptosPLAME"
+                                    [value]="item?.id">
+                                    {{item?.descripcion}}
+                                </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                    <mat-form-field
+                                        appearance="fill"
+                                        fxFlex="calc(60% - 8px)"
+                                        fxFlex.lt-lg="100%"
+                                    >
+                                        <mat-label> </mat-label>
+                                        <input
+                                            type="text"
+                                            name="equivalenciaDescripcionSUNAT"
+                                            formControlName="equivalenciaDescripcionSUNAT"
+                                            matInput
+
+                                        />
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset
+                            class="fieldset-border mb-3"
+                            fxFlex="50"
+                            fxFlex.xs="100"
+                        >
+                            <legend>Clasificador de Gasto</legend>
+
+                            <div fxFlex="100%" fxLayout="column">
+                                <div
+                                    fxLayout="row wrap"
+                                    fxLayout.lt-lg="column"
+                                    fxFlex="100%"
+                                    fxLayoutGap="8px"
+                                    fxLayoutGap.lt-lg="0"
+                                >
+                                    <mat-form-field
+                                        appearance="fill"
+                                        fxFlex="calc(40% - 8px)"
+                                        fxFlex.lt-lg="100%"
+                                    >
+                                        <mat-label>Clasificador </mat-label>
+                                        <mat-select
+                                            formControlName="clasificadorGasto"
+                                        >
+                                        <mat-option value=""
+                                        >SELECCIONE</mat-option
+                                    >
+                                    <mat-option *ngFor="let item of listas?.clasificadorGasto"
+                                    [value]="item?.id">
+                                    {{item?.descripcion}}
+                                </mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </form>
+            </mat-tab>
+            <mat-tab label="Formulas" class="overflow-auto" [disabled]="true">
+                <form
+                    autocomplete="off"
+                    novalidate
+                    [formGroup]="form2"
+                    fxLayout="column"
+                    style="max-height: 55vh;"
+                >
+                    <fieldset class="fieldset-border m-0">
+                        <legend>Concepto</legend>
+                        <div fxFlex="100%" fxLayout="column">
+                            <div
+                                fxLayout="row wrap"
+                                fxLayout.lt-lg="column"
+                                fxFlex="100%"
+                                fxLayoutGap="8px"
+                                fxLayoutGap.lt-lg="0"
+                            >
+                                <div
+                                    fxLayoutAlign="start start"
+                                    fxFlex="calc(25%-8px)"
+                                    fxFlex.lt-lg="100%"
+                                    fxFlex.xs="100%"
+                                >
+                                    <div class="form-group">
+                                        <label class="label" for=""
+                                            >Regimen</label
+                                        >
+                                        <p class="form-control-static">
+                                            LEY 29944 - Ley de Reforma
+                                            Magisterial
+                                        </p>
+                                    </div>
+                                </div>
+                                <div
+                                    fxLayoutAlign="start start"
+                                    fxFlex="calc(25%-8px)"
+                                    fxFlex.lt-lg="100%"
+                                    fxFlex.xs="100%"
+                                >
+                                    <div class="form-group">
+                                        <label class="label" for=""
+                                            >Código</label
+                                        >
+                                        <p class="form-control-static">
+                                            Sueldo_basico
+                                        </p>
+                                    </div>
+                                </div>
+                                <div
+                                    fxLayoutAlign="start start"
+                                    fxFlex="calc(25%-8px)"
+                                    fxFlex.lt-lg="100%"
+                                    fxFlex.xs="100%"
+                                >
+                                    <div class="form-group">
+                                        <label class="label" for=""
+                                            >Descripción</label
+                                        >
+                                        <p class="form-control-static">
+                                            Sueldo Básico
+                                        </p>
+                                    </div>
+                                </div>
+                                <div fxFlex="calc(25%-8px)" fxHide.lt-lg></div>
+                                <div
+                                    fxLayoutAlign="start start"
+                                    fxFlex="calc(25%-8px)"
+                                    fxFlex.lt-lg="100%"
+                                    fxFlex.xs="100%"
+                                >
+                                    <div class="form-group">
+                                        <label class="label" for=""
+                                            >Tipo de pago</label
+                                        >
+                                        <p class="form-control-static">
+                                            Remuneración Mensual
+                                        </p>
+                                    </div>
+                                </div>
+                                <div
+                                    fxLayoutAlign="start start"
+                                    fxFlex="calc(25%-8px)"
+                                    fxFlex.lt-lg="100%"
+                                    fxFlex.xs="100%"
+                                >
+                                    <div class="form-group">
+                                        <label class="label" for=""
+                                            >Tipo de concepto</label
+                                        >
+                                        <p class="form-control-static">
+                                            Ingreso
+                                        </p>
+                                    </div>
+                                </div>
+                                <div
+                                    fxLayoutAlign="start start"
+                                    fxFlex="calc(25%-8px)"
+                                    fxFlex.lt-lg="100%"
+                                    fxFlex.xs="100%"
+                                >
+                                    <div class="form-group">
+                                        <label class="label" for=""
+                                            >Grupo de cálculo</label
+                                        >
+                                        <p class="form-control-static">
+                                            Concepto teorico
+                                        </p>
+                                    </div>
+                                </div>
+                                <div
+                                    fxLayoutAlign="start start"
+                                    fxFlex="calc(25%-8px)"
+                                    fxFlex.lt-lg="100%"
+                                    fxFlex.xs="100%"
+                                >
+                                    <div class="form-group">
+                                        <label class="label" for=""
+                                            >Estado</label
+                                        >
+                                        <p class="form-control-static">
+                                            Activo
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset class="fieldset-border m-0 mb-6">
+                        <legend>Parametro Elemento</legend>
+
+                        <div fxFlex="100%" fxLayout="column">
+                            <div
+                                fxLayout="row wrap"
+                                fxLayout.lt-lg="column"
+                                fxFlex="100%"
+                                fxLayoutGap="8px"
+                                fxLayoutGap.lt-lg="0"
+                            >
+                                <mat-form-field
+                                    appearance="fill"
+                                    fxFlex="calc(25% - 8px)"
+                                    fxFlex.lt-lg="100%"
+                                >
+                                    <mat-label>Ficha personal </mat-label>
+                                    <mat-select formControlName="fichaPersonal">
+                                        <mat-option value=""
+                                            >TODOS</mat-option
+                                        >
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field
+                                    appearance="fill"
+                                    fxFlex="calc(25% - 8px)"
+                                    fxFlex.lt-lg="100%"
+                                >
+                                    <mat-label> AFP del trabajador </mat-label>
+                                    <input
+                                        type="text"
+                                        name="fichaPersonalDescripcion"
+                                        formControlName="fichaPersonalDescripcion"
+                                        matInput
+                                        disabled
+                                        readonly="true"
+                                    />
+                                </mat-form-field>
+                                <mat-form-field
+                                    appearance="fill"
+                                    fxFlex="calc(25% - 8px)"
+                                    fxFlex.lt-lg="100%"
+                                >
+                                    <mat-label>Conceptos </mat-label>
+                                    <mat-select formControlName="conceptos">
+                                        <mat-option value=""
+                                            >TODOS</mat-option
+                                        >
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field
+                                    appearance="fill"
+                                    fxFlex="calc(25% - 8px)"
+                                    fxFlex.lt-lg="100%"
+                                >
+                                    <mat-label> Sueldo Basico </mat-label>
+                                    <input
+                                        type="text"
+                                        name="conceptosDescripcion"
+                                        formControlName="conceptosDescripcion"
+                                        matInput
+                                        disabled
+                                        readonly="true"
+                                    />
+                                </mat-form-field>
+                                <mat-form-field
+                                    appearance="fill"
+                                    fxFlex="calc(25% - 8px)"
+                                    fxFlex.lt-lg="100%"
+                                >
+                                    <mat-label>Variables </mat-label>
+                                    <mat-select formControlName="variables">
+                                        <mat-option value=""
+                                            >TODOS</mat-option
+                                        >
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field
+                                    appearance="fill"
+                                    fxFlex="calc(25% - 8px)"
+                                    fxFlex.lt-lg="100%"
+                                >
+                                    <mat-label>
+                                        Fecha inicio periodo
+                                    </mat-label>
+                                    <input
+                                        type="text"
+                                        name="variablesDescripcion"
+                                        formControlName="variablesDescripcion"
+                                        matInput
+                                        disabled
+                                        readonly="true"
+                                    />
+                                </mat-form-field>
+                                <mat-form-field
+                                    appearance="fill"
+                                    fxFlex="calc(25% - 8px)"
+                                    fxFlex.lt-lg="100%"
+                                >
+                                    <mat-label>Afectaciones </mat-label>
+                                    <mat-select formControlName="afectaciones">
+                                        <mat-option value=""
+                                            >TODOS</mat-option
+                                        >
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field
+                                    appearance="fill"
+                                    fxFlex="calc(25% - 8px)"
+                                    fxFlex.lt-lg="100%"
+                                >
+                                    <mat-label> Base Afecta AFP </mat-label>
+                                    <input
+                                        type="text"
+                                        name="afectacionesDescripcion"
+                                        formControlName="afectacionesDescripcion"
+                                        matInput
+                                        disabled
+                                        readonly="true"
+                                    />
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div
+                        fxLayout="row wrap"
+                        fxLayoutAlign="space-between center"
+                        fxFlex="100"
+                        fxLayoutGap="8px"
+                    >
+                        <mat-form-field
+                            appearance="fill"
+                            fxFlex="25%"
+                            fxFlex.lt-lg="100%"
+                        >
+                            <mat-label>Situación </mat-label>
+                            <mat-select formControlName="situacion">
+                                <mat-option value="">TODOS</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <div fxFlex="25%" fxLayoutAlign="end center">
+                            <button type="button" mat-raised-button color="primary" class="rounded-none shadow-none">
+                                <span class="material-icons">add_circle</span>
+                                Nuevo
+                            </button>
+                        </div>
+                    </div>
+                    <fieldset class="fieldset-border m-0">
+                        <legend>Formula</legend>
+
+                        <div
+                            fxFlex="100%"
+                            fxLayout="row wrap"
+                            fxLayout.lt-lg="column"
+                            fxLayoutGap="8px"
+                            fxLayoutAlign="space-between start"
+                        >
+                            <div fxFlex="40%">
+                                <fieldset class="fieldset-border m-0">
+                                    <legend>Detalle</legend>
+
+                                    <div fxFlex="100%" fxLayout="column">
+                                        <div
+                                            fxLayout="row wrap"
+                                            fxLayout.lt-lg="column"
+                                            fxFlex="100%"
+                                            fxLayoutGap="8px"
+                                            fxLayoutGap.lt-lg="0"
+                                        >
+                                            <mat-form-field
+                                                appearance="fill"
+                                                fxFlex="calc(35% - 8px)"
+                                                fxFlex.lt-lg="100%"
+                                            >
+                                                <mat-label>N° Paso </mat-label>
+                                                <input
+                                                    type="text"
+                                                    name="paso"
+                                                    formControlName="paso"
+                                                    matInput
+                                                    disabled
+                                                    readonly="true"
+                                                />
+                                            </mat-form-field>
+                                            <div
+                                                fxFlex="calc(65% - 8px)"
+                                                fxHide.lt-lg
+                                            ></div>
+                                            <mat-form-field
+                                                appearance="fill"
+                                                fxFlex="calc(35% - 8px)"
+                                                fxFlex.lt-lg="100%"
+                                            >
+                                                <mat-label>Operador </mat-label>
+                                                <mat-select
+                                                    formControlName="operador"
+                                                >
+                                                    <mat-option value=""
+                                                        >TODOS</mat-option
+                                                    >
+                                                </mat-select>
+                                            </mat-form-field>
+                                            <mat-form-field
+                                                appearance="fill"
+                                                fxFlex="calc(65% - 8px)"
+                                                fxFlex.lt-lg="100%"
+                                            >
+                                                <mat-label>
+                                                    Multiplicar
+                                                </mat-label>
+                                                <input
+                                                    type="text"
+                                                    name="operadorDescripcion"
+                                                    formControlName="operadorDescripcion"
+                                                    matInput
+                                                    disabled
+                                                    readonly="true"
+                                                />
+                                            </mat-form-field>
+                                            <mat-form-field
+                                                appearance="fill"
+                                                fxFlex="calc(100% - 8px)"
+                                                fxFlex.lt-lg="100%"
+                                            >
+                                                <mat-label>
+                                                    Elementos
+                                                </mat-label>
+                                                <textarea
+                                                    matInput
+                                                    formControlName="elementos"
+                                                    row="8"
+                                                    style="
+                                                        resize: none;
+                                                        height: 100px;
+                                                    "
+                                                ></textarea>
+                                            </mat-form-field>
+                                            <mat-form-field
+                                                appearance="fill"
+                                                fxFlex="calc(35% - 8px)"
+                                                fxFlex.lt-lg="100%"
+                                            >
+                                                <mat-label>Alterno </mat-label>
+                                                <input
+                                                    type="text"
+                                                    name="alterno"
+                                                    formControlName="alterno"
+                                                    matInput
+                                                    disabled
+                                                    readonly="true"
+                                                />
+                                            </mat-form-field>
+                                            <div
+                                                fxFlex="calc(65% - 8px)"
+                                                fxHide.lt-lg
+                                            ></div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div
+                                class="content-table scroll-grid"
+                                fxFlex="55%"
+                                fxLayout="row wrap"
+                                ngClass.lt-lg="scroll-grid"
+                            >
+                                <table
+                                    class="minedu-table"
+                                    role="grid"
+                                    fxFlex="100"
+                                    style="width: 100%"
+                                >
+                                    <thead role="rowgroup">
+                                        <tr
+                                            class="mat-header-row cdk-header-row ng-tns-c388-15 ng-star-inserted"
+                                        >
+                                            <th
+                                                class="mat-header-cell cdk-header-cell ng-tns-c386-4 ng-star-inserted"
+                                            >
+                                                Paso
+                                            </th>
+                                            <th
+                                                class="mat-header-cell cdk-header-cell ng-tns-c386-4 ng-star-inserted"
+                                            >
+                                                Operador
+                                            </th>
+                                            <th
+                                                class="mat-header-cell cdk-header-cell ng-tns-c386-4 ng-star-inserted"
+                                            >
+                                                Detalle
+                                            </th>
+                                            <th
+                                                class="mat-header-cell cdk-header-cell ng-tns-c386-4 ng-star-inserted"
+                                            >
+                                                Guardar parámetro
+                                            </th>
+                                            <th
+                                                class="mat-header-cell cdk-header-cell ng-tns-c386-4 ng-star-inserted"
+                                            >
+                                                Paso alterna
+                                            </th>
+                                            <th
+                                                width="50"
+                                                class="mat-header-cell cdk-header-cell ng-tns-c386-4 ng-star-inserted"
+                                            >
+                                                Acciones
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody role="rowgroup">
+                                        <tr
+                                            class="mat-row cdk-row ng-tns-c386-4 ng-trigger ng-trigger-animate ng-star-inserted"
+                                        >
+                                            <td
+                                                class="mat-cell cdk-cell ng-tns-c386-4 ng-star-inserted"
+                                            >
+                                                1
+                                            </td>
+                                            <td
+                                                class="mat-cell cdk-cell ng-tns-c386-4 ng-star-inserted"
+                                            >
+                                                MUL
+                                            </td>
+                                            <td
+                                                class="mat-cell cdk-cell ng-tns-c386-4 ng-star-inserted"
+                                            >
+                                                PAR_VHT, SERV_JORNADA_LABORAL,
+                                                SERV_NIVEL_CATEGORIA
+                                            </td>
+                                            <td
+                                                class="mat-cell cdk-cell ng-tns-c386-4 ng-star-inserted"
+                                            >
+                                                RESULTADO_1
+                                            </td>
+                                            <td
+                                                class="mat-cell cdk-cell ng-tns-c386-4 ng-star-inserted"
+                                            ></td>
+                                            <td
+                                                class="mat-cell cdk-cell ng-tns-c386-4 ng-star-inserted"
+                                            >
+                                                <a
+                                                    class="submit-button btn btn-outline-secondary btn-sm fuse-ripple-ready"
+                                                    role="button"
+                                                    rel="tooltip"
+                                                    data-placement="bottom"
+                                                    title="Modificar"
+                                                    data-toggle="modal"
+                                                    data-target="#modalModificarPaso"
+                                                    ><span
+                                                        class="material-icons fa-lg"
+                                                        >create</span
+                                                    ></a
+                                                >
+                                            </td>
+                                        </tr>
+                                        <tr
+                                            class="mat-row cdk-row ng-tns-c386-4 ng-trigger ng-trigger-animate ng-star-inserted"
+                                        >
+                                            <td
+                                                class="mat-cell cdk-cell ng-tns-c386-4 ng-star-inserted"
+                                            >
+                                                1
+                                            </td>
+                                            <td
+                                                class="mat-cell cdk-cell ng-tns-c386-4 ng-star-inserted"
+                                            >
+                                                MUL
+                                            </td>
+                                            <td
+                                                class="mat-cell cdk-cell ng-tns-c386-4 ng-star-inserted"
+                                            >
+                                                PAR_VHT, SERV_JORNADA_LABORAL,
+                                                SERV_NIVEL_CATEGORIA
+                                            </td>
+                                            <td
+                                                class="mat-cell cdk-cell ng-tns-c386-4 ng-star-inserted"
+                                            >
+                                                RESULTADO_1
+                                            </td>
+                                            <td
+                                                class="mat-cell cdk-cell ng-tns-c386-4 ng-star-inserted"
+                                            ></td>
+                                            <td
+                                                class="mat-cell cdk-cell ng-tns-c386-4 ng-star-inserted"
+                                            >
+                                                <a
+                                                    class="submit-button btn btn-outline-secondary btn-sm fuse-ripple-ready"
+                                                    role="button"
+                                                    rel="tooltip"
+                                                    data-placement="bottom"
+                                                    title="Modificar"
+                                                    data-toggle="modal"
+                                                    data-target="#modalModificarPaso"
+                                                    ><span
+                                                        class="material-icons fa-lg"
+                                                        >create</span
+                                                    ></a
+                                                >
+                                            </td>
+                                        </tr>
+                                        <tr
+                                            class="mat-row cdk-row ng-tns-c386-4 ng-trigger ng-trigger-animate ng-star-inserted"
+                                        >
+                                            <td
+                                                class="mat-cell cdk-cell ng-tns-c386-4 ng-star-inserted"
+                                            >
+                                                1
+                                            </td>
+                                            <td
+                                                class="mat-cell cdk-cell ng-tns-c386-4 ng-star-inserted"
+                                            >
+                                                MUL
+                                            </td>
+                                            <td
+                                                class="mat-cell cdk-cell ng-tns-c386-4 ng-star-inserted"
+                                            >
+                                                PAR_VHT, SERV_JORNADA_LABORAL,
+                                                SERV_NIVEL_CATEGORIA
+                                            </td>
+                                            <td
+                                                class="mat-cell cdk-cell ng-tns-c386-4 ng-star-inserted"
+                                            >
+                                                RESULTADO_1
+                                            </td>
+                                            <td
+                                                class="mat-cell cdk-cell ng-tns-c386-4 ng-star-inserted"
+                                            ></td>
+                                            <td
+                                                class="mat-cell cdk-cell ng-tns-c386-4 ng-star-inserted"
+                                            >
+                                                <a
+                                                    class="submit-button btn btn-outline-secondary btn-sm fuse-ripple-ready"
+                                                    role="button"
+                                                    rel="tooltip"
+                                                    data-placement="bottom"
+                                                    title="Modificar"
+                                                    data-toggle="modal"
+                                                    data-target="#modalModificarPaso"
+                                                    ><span
+                                                        class="material-icons fa-lg"
+                                                        >create</span
+                                                    ></a
+                                                >
+                                            </td>
+                                        </tr>
+                                        <tr
+                                            class="mat-row cdk-row ng-tns-c386-4 ng-trigger ng-trigger-animate ng-star-inserted"
+                                        >
+                                            <td
+                                                class="mat-cell cdk-cell ng-tns-c386-4 ng-star-inserted"
+                                            >
+                                                1
+                                            </td>
+                                            <td
+                                                class="mat-cell cdk-cell ng-tns-c386-4 ng-star-inserted"
+                                            >
+                                                MUL
+                                            </td>
+                                            <td
+                                                class="mat-cell cdk-cell ng-tns-c386-4 ng-star-inserted"
+                                            >
+                                                PAR_VHT, SERV_JORNADA_LABORAL,
+                                                SERV_NIVEL_CATEGORIA
+                                            </td>
+                                            <td
+                                                class="mat-cell cdk-cell ng-tns-c386-4 ng-star-inserted"
+                                            >
+                                                RESULTADO_1
+                                            </td>
+                                            <td
+                                                class="mat-cell cdk-cell ng-tns-c386-4 ng-star-inserted"
+                                            ></td>
+                                            <td
+                                                class="mat-cell cdk-cell ng-tns-c386-4 ng-star-inserted"
+                                            >
+                                                <a
+                                                    class="submit-button btn btn-outline-secondary btn-sm fuse-ripple-ready"
+                                                    role="button"
+                                                    rel="tooltip"
+                                                    data-placement="bottom"
+                                                    title="Modificar"
+                                                    data-toggle="modal"
+                                                    data-target="#modalModificarPaso"
+                                                    ><span
+                                                        class="material-icons fa-lg"
+                                                        >create</span
+                                                    ></a
+                                                >
+                                            </td>
+                                        </tr>
+                                        <tr
+                                            class="mat-row cdk-row ng-tns-c386-4 ng-trigger ng-trigger-animate ng-star-inserted"
+                                        >
+                                            <td
+                                                class="mat-cell cdk-cell ng-tns-c386-4 ng-star-inserted"
+                                            >
+                                                1
+                                            </td>
+                                            <td
+                                                class="mat-cell cdk-cell ng-tns-c386-4 ng-star-inserted"
+                                            >
+                                                MUL
+                                            </td>
+                                            <td
+                                                class="mat-cell cdk-cell ng-tns-c386-4 ng-star-inserted"
+                                            >
+                                                PAR_VHT, SERV_JORNADA_LABORAL,
+                                                SERV_NIVEL_CATEGORIA
+                                            </td>
+                                            <td
+                                                class="mat-cell cdk-cell ng-tns-c386-4 ng-star-inserted"
+                                            >
+                                                RESULTADO_1
+                                            </td>
+                                            <td
+                                                class="mat-cell cdk-cell ng-tns-c386-4 ng-star-inserted"
+                                            ></td>
+                                            <td
+                                                class="mat-cell cdk-cell ng-tns-c386-4 ng-star-inserted"
+                                            >
+                                                <a
+                                                    class="submit-button btn btn-outline-secondary btn-sm fuse-ripple-ready"
+                                                    role="button"
+                                                    rel="tooltip"
+                                                    data-placement="bottom"
+                                                    title="Modificar"
+                                                    data-toggle="modal"
+                                                    data-target="#modalModificarPaso"
+                                                    ><span
+                                                        class="material-icons fa-lg"
+                                                        >create</span
+                                                    ></a
+                                                >
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </mat-tab>
+            <mat-tab label="Afectaciones" class="overflow-auto" [disabled]="true">
+                <form
+                autocomplete="off"
+                novalidate
+                [formGroup]="form3"
+                fxLayout.lt-lg="column"
+                style="max-height: 55vh;"
+            >
+                    <fieldset class="fieldset-border m-0">
+                        <legend>Concepto</legend>
+                        <div fxFlex="100%" fxLayout="column">
+                            <div
+                                fxLayout="row wrap"
+                                fxLayout.lt-lg="column"
+                                fxFlex="100%"
+                                fxLayoutGap="8px"
+                                fxLayoutGap.lt-lg="0"
+                            >
+                                <div
+                                    fxLayoutAlign="start start"
+                                    fxFlex="calc(25%-8px)"
+                                    fxFlex.lt-lg="100%"
+                                    fxFlex.xs="100%"
+                                >
+                                    <div class="form-group">
+                                        <label class="label" for=""
+                                            >Regimen</label
+                                        >
+                                        <p class="form-control-static">
+                                            LEY 29944 - Ley de Reforma
+                                            Magisterial
+                                        </p>
+                                    </div>
+                                </div>
+                                <div
+                                    fxLayoutAlign="start start"
+                                    fxFlex="calc(25%-8px)"
+                                    fxFlex.lt-lg="100%"
+                                    fxFlex.xs="100%"
+                                >
+                                    <div class="form-group">
+                                        <label class="label" for=""
+                                            >Código</label
+                                        >
+                                        <p class="form-control-static">
+                                            Sueldo_basico
+                                        </p>
+                                    </div>
+                                </div>
+                                <div
+                                    fxLayoutAlign="start start"
+                                    fxFlex="calc(25%-8px)"
+                                    fxFlex.lt-lg="100%"
+                                    fxFlex.xs="100%"
+                                >
+                                    <div class="form-group">
+                                        <label class="label" for=""
+                                            >Descripción</label
+                                        >
+                                        <p class="form-control-static">
+                                            Sueldo Básico
+                                        </p>
+                                    </div>
+                                </div>
+                                <div fxFlex="calc(25%-8px)" fxHide.lt-lg></div>
+                                <div
+                                    fxLayoutAlign="start start"
+                                    fxFlex="calc(25%-8px)"
+                                    fxFlex.lt-lg="100%"
+                                    fxFlex.xs="100%"
+                                >
+                                    <div class="form-group">
+                                        <label class="label" for=""
+                                            >Tipo de pago</label
+                                        >
+                                        <p class="form-control-static">
+                                            Remuneración Mensual
+                                        </p>
+                                    </div>
+                                </div>
+                                <div
+                                    fxLayoutAlign="start start"
+                                    fxFlex="calc(25%-8px)"
+                                    fxFlex.lt-lg="100%"
+                                    fxFlex.xs="100%"
+                                >
+                                    <div class="form-group">
+                                        <label class="label" for=""
+                                            >Tipo de concepto</label
+                                        >
+                                        <p class="form-control-static">
+                                            Ingreso
+                                        </p>
+                                    </div>
+                                </div>
+                                <div
+                                    fxLayoutAlign="start start"
+                                    fxFlex="calc(25%-8px)"
+                                    fxFlex.lt-lg="100%"
+                                    fxFlex.xs="100%"
+                                >
+                                    <div class="form-group">
+                                        <label class="label" for=""
+                                            >Grupo de cálculo</label
+                                        >
+                                        <p class="form-control-static">
+                                            Concepto teorico
+                                        </p>
+                                    </div>
+                                </div>
+                                <div
+                                    fxLayoutAlign="start start"
+                                    fxFlex="calc(25%-8px)"
+                                    fxFlex.lt-lg="100%"
+                                    fxFlex.xs="100%"
+                                >
+                                    <div class="form-group">
+                                        <label class="label" for=""
+                                            >Estado</label
+                                        >
+                                        <p class="form-control-static">
+                                            Activo
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset class="fieldset-border m-0">
+                                    <legend>El concepto está afecto a</legend>
+                                    <div fxFlex="100%" fxLayout="column">
+                                    <div
+                                    fxLayout="row wrap"
+                                    fxLayout.lt-lg="column"
+                                    fxFlex="100%"
+                                    fxLayoutGap="2px"
+                                    fxLayoutGap.lt-lg="0"
+                                    fxLayoutAlign="start center"
+                                    class="mb-6"
+                                >
+                                    <mat-checkbox
+                                        *ngFor="
+                                            let item of listas.tipoPago
+                                        "
+                                        [fxFlex]="
+                                            'calc(' +
+                                            100 /
+                                                listas.tipoPago
+                                                    .length -
+                                            10 +
+                                            '% - 10px)'
+                                        "
+                                        fxFlex.lt-lg="100%"
+                                        formControlName="idConcepto"
+                                        >{{
+                                            item.descripcion
+                                        }}</mat-checkbox
+                                    >
+                                </div>
+                                <div
+                            fxFlex="100%"
+                            fxLayout="row wrap"
+                            fxLayout.lt-lg="column"
+                            fxLayoutGap="8px"
+                            fxLayoutAlign="space-between center"
+                        >
+                        <div fxFlex="40" fxFlexAlign="stretch">
+                            <mat-selection-list class="border-2 overflow-auto" style="height: 20vh;" #list1 [compareWith]="compareFunction">
+                                <mat-list-option *ngFor="let item of listaAfectacion.in" [selected]="item.check" [value]="item.id">
+                                  {{item.label}}
+                                </mat-list-option>
+                              </mat-selection-list>
+                            </div>
+                            <div fxFlex="10" fxLayout="column" fxLayoutGap="8px">
+                                <button
+                                type="button"
+                                mat-raised-button color="primary" class="rounded-none shadow-none"
+                                (click)="moverOpcionAfection(list1,true)"
+                            >
+                                <span class="material-icons">arrow_forward</span>
+                            </button>
+                            <button
+                            type="button"
+                            mat-raised-button color="primary" class="rounded-none shadow-none"
+                            (click)="moverOpcionAfection(list2,false)"
+                        >
+                            <span class="material-icons">arrow_back</span>
+                        </button>
+                            </div>
+                            <div fxFlex="40" fxFlexAlign="stretch">
+                                <mat-selection-list class="border-2 overflow-auto" style="height: 20vh;" #list2 [compareWith]="compareFunction">
+                                    <mat-list-option *ngFor="let item of listaAfectacion.out" [selected]="item.check" [value]="item.id">
+                                      {{item.label}}
+                                    </mat-list-option>
+                                  </mat-selection-list>
+                            </div>
+                        </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
+<mat-divider class="mt-6"></mat-divider>
+    <div
+        mat-dialog-actions
+        class="panel-footer m-0 pr-12"
+        fxLayout="row"
+        fxLayoutAlign="end center"
+    >
+        <button
+            type="button"
+            mat-raised-button color="primary" class="rounded-none shadow-none"
+            (click)="(null)"
+            *ngIf="isSaveActive"
+            [disabled]="true"
+        >
+            <span class="material-icons">save</span> Guardar
+        </button>
+        <button mat-stroked-button class="rounded-none shadow-none" (click)="matDialogRef.close()">
+            <span class="material-icons">cancel</span> Cerrar
+        </button>
+    </div>
+</div>

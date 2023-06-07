@@ -1,0 +1,9 @@
+include:
+  - project: "arquitectura/devops-architecture/continuous-automation"
+    ref: "main"
+    file: "/pipelines/fe-aws-k8s-pipeline.yaml"
+
+variables:
+  BUNDLE: dist
+  K8S_SERVICE_NAME: web-ap-offsets
+  K8S_REGISTRY_SECRET: apcrsecret

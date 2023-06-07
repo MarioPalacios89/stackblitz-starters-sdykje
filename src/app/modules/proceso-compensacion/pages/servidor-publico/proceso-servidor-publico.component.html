@@ -1,0 +1,479 @@
+<div fxFlex="100">
+    <div fxFlex="100">
+        <div class="p-8" fxLayout="column">
+            <div
+                fxLayout="row wrap"
+                fxFlex="100"
+                fxLayoutAlign="space-between center"
+                class="mb-6"
+            >
+                <div fxFlex>
+                    <div class="text-2xl font-medium tracking-tight leading-8">
+                        Consulta servidor público
+                    </div>
+                </div>
+                <div fxFlex>
+                    <ol class="breadcrumb pull-right">
+                        <li>
+                            <a
+                                [routerLink]="['/ayni/personal/inicio']"
+                                class="text-blue-500"
+                            >
+                                <mat-icon
+                                    color="accent"
+                                    class="s-18 text-blue-500"
+                                    >home</mat-icon
+                                >Inicio
+                            </a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/ayni/personal/inicio']"
+                                >Compensaciones</a
+                            >
+                        </li>
+                        <li class="active"><a>Consulta servidor público</a></li>
+                    </ol>
+                </div>
+            </div>
+            <div fxLayout="row" fxFlex="100">
+                <div
+                    class="bg-card shadow fullwidth inner-scroll p-6"
+                    fxFlex="100"
+                    fxLayout="column"
+                >
+                    <div class="page-layout carded left-sidebar inner-scroll mb-6">
+                        <div class="center">
+                            <div class="panel">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        Criterios de búsqueda
+                                    </h3>
+                                </div>
+                                <div class="panel-body">
+                                    <form
+                                        autocomplete="off"
+                                        novalidate
+                                        [formGroup]="form"
+                                    >
+                                        <div
+                                            fxLayout="row wrap"
+                                            fxLayout.lt-md="column"
+                                            fxFlex="100%"
+                                            fxLayoutGap="12px"
+                                            fxLayoutGap.lt-md="0"
+                                        >
+                                            <mat-form-field
+                                                appearance="fill"
+                                                fxFlex="calc(20% - 12px)"
+                                                fxFlex.lt-md="100%"
+                                            >
+                                                <mat-label
+                                                    >Tipo de Documento
+                                                </mat-label>
+                                                <mat-select
+                                                    formControlName="tipo_documento"
+                                                >
+                                                    <mat-option value=""
+                                                        >TODOS</mat-option
+                                                    >
+                                                    <mat-option
+                                                        *ngFor="
+                                                            let item of combo?.lista
+                                                        "
+                                                        [value]="item"
+                                                    >
+                                                        {{ item }}
+                                                    </mat-option>
+                                                </mat-select>
+                                                <mat-error>
+                                                </mat-error> </mat-form-field
+                                            ><mat-form-field
+                                                appearance="fill"
+                                                fxFlex="calc(20% - 12px)"
+                                                fxFlex.lt-md="100%"
+                                            >
+                                                <mat-label
+                                                    >Número de documento
+                                                </mat-label>
+                                                <input
+                                                    type="text"
+                                                    name="numero_documento"
+                                                    formControlName="numero_documento"
+                                                    matInput
+                                                /> </mat-form-field
+                                            ><mat-form-field
+                                                appearance="fill"
+                                                fxFlex="calc(20% - 12px)"
+                                                fxFlex.lt-md="100%"
+                                            >
+                                                <mat-label
+                                                    >Primer apellido
+                                                </mat-label>
+                                                <input
+                                                    type="text"
+                                                    name="primer_apellido"
+                                                    formControlName="primer_apellido"
+                                                    matInput
+                                                /> </mat-form-field
+                                            ><mat-form-field
+                                                appearance="fill"
+                                                fxFlex="calc(20% - 12px)"
+                                                fxFlex.lt-md="100%"
+                                            >
+                                                <mat-label
+                                                    >Segundo apellido
+                                                </mat-label>
+                                                <input
+                                                    type="text"
+                                                    name="segundo_apellido"
+                                                    formControlName="segundo_apellido"
+                                                    matInput
+                                                /> </mat-form-field
+                                            ><mat-form-field
+                                                appearance="fill"
+                                                fxFlex="calc(20% - 12px)"
+                                                fxFlex.lt-md="100%"
+                                            >
+                                                <mat-label>Nombres </mat-label>
+                                                <input
+                                                    type="text"
+                                                    name="nombres"
+                                                    formControlName="nombres"
+                                                    matInput
+                                                />
+                                            </mat-form-field>
+
+                                            <mat-accordion
+                                                fxFlex="100"
+                                                class="mb-6 border-2 rounded-lg"
+                                            >
+                                                <mat-expansion-panel>
+                                                    <mat-expansion-panel-header>
+                                                        <mat-panel-title>
+                                                            Busqueda avanzada
+                                                        </mat-panel-title>
+                                                        <mat-panel-description>
+                                                        </mat-panel-description>
+                                                    </mat-expansion-panel-header>
+                                                    <div
+                                                        fxLayout="row wrap"
+                                                        fxLayout.lt-md="column"
+                                                        fxFlex="100%"
+                                                        fxLayoutGap="12px"
+                                                        fxLayoutGap.lt-md="0"
+                                                    >
+                                                        <mat-form-field
+                                                            appearance="fill"
+                                                            fxFlex="calc(33% - 12px)"
+                                                            fxFlex.lt-md="100%"
+                                                        >
+                                                            <mat-label
+                                                                >Cargo
+                                                            </mat-label>
+                                                            <input
+                                                                type="text"
+                                                                name="cargo"
+                                                                formControlName="cargo"
+                                                                matInput
+                                                            /> </mat-form-field
+                                                        ><mat-form-field
+                                                            appearance="fill"
+                                                            fxFlex="calc(33% - 12px)"
+                                                            fxFlex.lt-md="100%"
+                                                        >
+                                                            <mat-label
+                                                                >Unidad
+                                                                ejecutora
+                                                            </mat-label>
+                                                            <input
+                                                                type="text"
+                                                                name="unidad_ejecutora"
+                                                                formControlName="unidad_ejecutora"
+                                                                matInput
+                                                            /> </mat-form-field
+                                                        ><mat-form-field
+                                                            appearance="fill"
+                                                            fxFlex="calc(33% - 12px)"
+                                                            fxFlex.lt-md="100%"
+                                                        >
+                                                            <mat-label
+                                                                >Código modular
+                                                            </mat-label>
+                                                            <input
+                                                                type="text"
+                                                                name="codigo_modular"
+                                                                formControlName="codigo_modular"
+                                                                matInput
+                                                            />
+                                                        </mat-form-field>
+                                                    </div>
+                                                </mat-expansion-panel>
+                                            </mat-accordion>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="panel-footer">
+                                    <div
+                                        fxLayout="row"
+                                        fxLayoutAlign="center center"
+                                    >
+                                        <div class="p-0" fxLayout="row">
+                                            <button
+                                                mat-raised-button
+                                                color="primary"
+                                                class="rounded-none shadow-none"
+                                                (click)="handleLimpiar()"
+                                                disabled
+                                            >
+                                                Limpiar
+                                            </button>
+                                        </div>
+                                        <div class="pl-6" fxLayout="row">
+                                            <button
+                                                mat-raised-button
+                                                color="primary"
+                                                class="rounded-none shadow-none"
+                                                (click)="handleBuscar()"
+                                            >
+                                                Buscar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        ngClass.lt-lg="scroll-grid-lt-lg"
+                        fxFlex="100"
+                        fxLayout="column"
+                        class="overflow-x-auto overflow-y-hidden"
+                    >
+                        <table
+                            mat-table
+                            class="minedu-table"
+                            [dataSource]="dataSource"
+                            fxFlex="100"
+                        >
+                            <ng-container matColumnDef="index">
+                                <th
+                                    mat-header-cell
+                                    *matHeaderCellDef
+                                    class="text-center"
+                                >
+                                    N°
+                                </th>
+                                <td mat-cell *matCellDef="let row; index as i">
+                                    {{
+                                        paginator.pageSize *
+                                            paginator.pageIndex +
+                                            i +
+                                            1
+                                    }}
+                                </td> </ng-container
+                            ><ng-container matColumnDef="documento">
+                                <th
+                                    mat-header-cell
+                                    *matHeaderCellDef
+                                    class="text-center"
+                                >
+                                    Documento
+                                </th>
+                                <td mat-cell *matCellDef="let row">
+                                    <p>{{ row.documento }}</p>
+                                </td> </ng-container
+                            ><ng-container matColumnDef="apellidos_nombres">
+                                <th
+                                    mat-header-cell
+                                    *matHeaderCellDef
+                                    class="text-center"
+                                >
+                                    Apellidos y nombres
+                                </th>
+                                <td mat-cell *matCellDef="let row">
+                                    <p>{{ row.apellidos_nombres }}</p>
+                                </td> </ng-container
+                            ><ng-container matColumnDef="unidad_ejecutora">
+                                <th
+                                    mat-header-cell
+                                    *matHeaderCellDef
+                                    class="text-center"
+                                >
+                                    Unidad ejecutora
+                                </th>
+                                <td mat-cell *matCellDef="let row">
+                                    <p>{{ row.unidad_ejecutora }}</p>
+                                </td> </ng-container
+                            ><ng-container matColumnDef="regimen_laboral">
+                                <th
+                                    mat-header-cell
+                                    *matHeaderCellDef
+                                    class="text-center"
+                                >
+                                    Regimen laboral
+                                </th>
+                                <td mat-cell *matCellDef="let row">
+                                    <p>{{ row.regimen_laboral }}</p>
+                                </td> </ng-container
+                            ><ng-container matColumnDef="codigo_plaza">
+                                <th
+                                    mat-header-cell
+                                    *matHeaderCellDef
+                                    class="text-center"
+                                >
+                                    Código plaza
+                                </th>
+                                <td mat-cell *matCellDef="let row">
+                                    <p>{{ row.codigo_plaza }}</p>
+                                </td> </ng-container
+                            ><ng-container matColumnDef="centro_trabajo">
+                                <th
+                                    mat-header-cell
+                                    *matHeaderCellDef
+                                    class="text-center"
+                                >
+                                    Centro de trabajo
+                                </th>
+                                <td mat-cell *matCellDef="let row">
+                                    <p>{{ row.centro_trabajo }}</p>
+                                </td> </ng-container
+                            ><ng-container matColumnDef="fecha_ingreso">
+                                <th
+                                    mat-header-cell
+                                    *matHeaderCellDef
+                                    class="text-center"
+                                >
+                                    Fecha ingreso
+                                </th>
+                                <td mat-cell *matCellDef="let row" class="text-center">
+                                    {{ row.fecha_ingreso |date:'dd/MM/yyyy'}}
+                                </td> </ng-container
+                            ><ng-container matColumnDef="fecha_termino">
+                                <th
+                                    mat-header-cell
+                                    *matHeaderCellDef
+                                    class="text-center"
+                                >
+                                    Fecha termino
+                                </th>
+                                <td mat-cell *matCellDef="let row" class="text-center">
+                                {{ row.fecha_termino| date:'dd/MM/yyyy' }}
+                                </td> </ng-container
+                            ><ng-container matColumnDef="situacion">
+                                <th
+                                    mat-header-cell
+                                    *matHeaderCellDef
+                                    class="text-center"
+                                >
+                                    Situación
+                                </th>
+                                <td mat-cell *matCellDef="let row">
+                                    <p>{{ row.situacion }}</p>
+                                </td> </ng-container
+                            ><ng-container matColumnDef="boleta">
+                                <th
+                                    mat-header-cell
+                                    *matHeaderCellDef
+                                    class="text-center"
+                                >
+                                    Boleta
+                                </th>
+                                <td
+                                    mat-cell
+                                    *matCellDef="let row"
+                                    class="text-center"
+                                >
+                                    <button
+                                        mat-stroked-button
+                                        color="warn"
+                                        class="sidebar-toggle btn-sm ml-2"
+                                        (click)="handleEliminar(row, i)"
+                                        aria-label="Eliminar"
+                                        matTooltip="Eliminar"
+                                        disabled
+                                    >
+                                        <mat-icon class="">list_alt</mat-icon>
+                                    </button>
+                                </td> </ng-container
+                            ><ng-container matColumnDef="opciones">
+                                <th
+                                    mat-header-cell
+                                    *matHeaderCellDef
+                                    class="text-center"
+                                >
+                                    Acciones
+                                </th>
+                                <td
+                                    mat-cell
+                                    *matCellDef="let row; let i = index"
+                                >
+                                    <div
+                                        fxLayout="row"
+                                        fxLayoutAlign="space-evenly center"
+                                    >
+                                        <div class="mat-icon-table">
+                                            <button
+                                                mat-stroked-button
+                                                color="primary"
+                                                class="sidebar-toggle btn-sm"
+                                                (click)="obtenerDetalle(row)"
+                                                aria-label="Ver detalle"
+                                                matTooltip="Ver detalle"
+                                            >
+                                                <mat-icon class=""
+                                                    >remove_red_eye</mat-icon
+                                                >
+                                            </button>
+                                        </div>
+                                        <div class="mat-icon-table">
+                                            <button
+                                                mat-stroked-button
+                                                color="warn"
+                                                class="sidebar-toggle btn-sm ml-2"
+                                                (click)="handleEliminar(row, i)"
+                                                aria-label="Eliminar"
+                                                matTooltip="Eliminar"
+                                                disabled
+                                            >
+                                                <mat-icon class=""
+                                                    >restore_from_trash</mat-icon
+                                                >
+                                            </button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </ng-container>
+                            <tr
+                                mat-header-row
+                                *matHeaderRowDef="
+                                    displayedColumns;
+                                    sticky: true
+                                "
+                            ></tr>
+                            <tr
+                                mat-row
+                                *matRowDef="let row; columns: displayedColumns"
+                            ></tr>
+                        </table>
+                    </div>
+                    <div
+                        class="no-results"
+                        [style.display]="
+                            dataSource?.data.length === 0 ? '' : 'none'
+                        "
+                    >
+                        No se encontraron registros
+                    </div>
+                    <mat-paginator
+                        #paginator
+                        [pageIndex]="0"
+                        [pageSize]="10"
+                        fxLayoutAlign="center center"
+                        [pageSizeOptions]="[5, 10, 15, 20]"
+                    ></mat-paginator>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- s -->

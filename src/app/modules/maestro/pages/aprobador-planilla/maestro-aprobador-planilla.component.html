@@ -1,0 +1,312 @@
+<div fxFlex="100">
+    <div fxFlex="100">
+        <div class="p-8" fxLayout="column">
+            <div
+                fxLayout="row wrap"
+                fxFlex="100"
+                fxLayoutAlign="space-between center"
+                class="mb-6"
+            >
+                <div fxFlex>
+                    <div
+                        class="text-2xl font-medium tracking-tight leading-8"
+                    >
+                        Maestro de aprobadores de planilla
+                    </div>
+                </div>
+                <div fxFlex>
+                    <ol class="breadcrumb pull-right">
+                        <li>
+                            <a [routerLink]="['/ayni/personal/inicio']" class="text-blue-500">
+                                <mat-icon color="accent" class="s-18 text-blue-500"
+                                    >home</mat-icon
+                                >Inicio
+                            </a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/ayni/personal/inicio']"
+                                >Compensaciones</a
+                            >
+                        </li>
+                        <li class="active">
+                            <a>Maestro de aprobadores de planilla</a>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+            <div fxLayout="row" fxFlex="100">
+                <div
+                    class="bg-card shadow fullwidth inner-scroll p-6"
+                    fxFlex="100"
+                    fxLayout="column"
+                >
+                    <div class="page-layout carded left-sidebar inner-scroll">
+                        <div class="center">
+                            <div class="panel">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        Criterios de búsqueda
+                                    </h3>
+                                </div>
+                                <div class="panel-body">
+                                    <form
+                                        autocomplete="off"
+                                        novalidate
+                                        [formGroup]="form"
+                                    >
+                                        <div
+                                            fxLayout="row wrap"
+                                            fxLayout.lt-md="column"
+                                            fxFlex="100%"
+                                            fxLayoutGap="12px"
+                                            fxLayoutGap.lt-md="0"
+                                        >
+                                            <mat-form-field
+                                                appearance="fill"
+                                                fxFlex="calc(33% - 12px)"
+                                                fxFlex.lt-md="100%"
+                                            >
+                                                <mat-label>Usuario </mat-label>
+                                                <input
+                                                    type="text"
+                                                    name="usuario"
+                                                    formControlName="usuario"
+                                                    matInput
+                                                />
+                                            </mat-form-field>
+                                            <div fxFlex="calc(66% - 12px)" fxHide.lt-md></div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="panel-footer">
+                                    <div
+                                        fxLayout="row"
+                                        fxLayoutAlign="center center"
+                                    >
+                                        <div class="p-0" fxLayout="row">
+                                            <button
+                                                mat-raised-button
+                                                color="primary"
+                                                class="rounded-none shadow-none"
+                                                (click)="handleLimpiar()"
+                                            >
+                                                Limpiar
+                                            </button>
+                                        </div>
+                                        <div class="pl-6" fxLayout="row">
+                                            <button
+                                                mat-raised-button
+                                                color="primary"
+                                                class="rounded-none shadow-none"
+                                                (click)="handleBuscar()"
+                                            >
+                                                Buscar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        fxLayout="row wrap"
+                        fxLayoutAlign="space-between center"
+                        fxLayoutGap="5px"
+                        class="pb-10px"
+                    >
+                        <!-- <div fxFlex>
+    <div class="pl-2" fxLayout="row">
+        <button mat-raised-button color="primary" class="rounded-none shadow-none" (click)="handleCrear()"
+
+     >
+        <span class="material-icons">add_circle</span> Carga masiva
+    </button>
+    </div>
+</div> -->
+                        <div fxFlex fxLayout="row" fxLayoutAlign="end center">
+                            <div class="pl-2" fxLayout="row">
+                                <button
+                                    mat-raised-button
+                                    color="primary"
+                                    class="rounded-none shadow-none"
+                                    (click)="handleCrear()"
+                                >
+                                    <span class="material-icons"
+                                        >add_circle</span
+                                    >
+                                    Nuevo
+                                </button>
+                            </div>
+                            <div class="pl-2" fxLayout="row">
+                                <button
+                                    mat-stroked-button
+                                    color="primary"
+                                    (click)="handleExportar()"
+                                    [disabled]="export"
+                                    class="rounded-none shadow-none"
+                                >
+                                    <span class="material-icons">get_app</span>
+                                    Exportar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        ngClass.lt-lg="scroll-grid-lt-lg"
+                        fxFlex="100"
+                        fxLayout="column"
+                        class="overflow-x-auto overflow-y-hidden"
+                    >
+                        <table
+                            mat-table
+                            class="minedu-table"
+                            [dataSource]="dataSource"
+                            fxFlex="100"
+                        >
+                            <ng-container matColumnDef="index">
+                                <th mat-header-cell *matHeaderCellDef>N°</th>
+                                <td mat-cell *matCellDef="let row; index as i">
+                                    {{
+                                        paginator.pageSize *
+                                            paginator.pageIndex +
+                                            i +
+                                            1
+                                    }}
+                                </td> </ng-container
+                            ><ng-container matColumnDef="unidad_ejecutora">
+                                <th mat-header-cell *matHeaderCellDef>
+                                    unidad_ejecutora
+                                </th>
+                                <td mat-cell *matCellDef="let row">
+                                    <p>{{ row.unidad_ejecutora }}</p>
+                                </td> </ng-container
+                            ><ng-container matColumnDef="rol">
+                                <th mat-header-cell *matHeaderCellDef>rol</th>
+                                <td mat-cell *matCellDef="let row">
+                                    <p>{{ row.rol }}</p>
+                                </td> </ng-container
+                            ><ng-container matColumnDef="tipo_pago">
+                                <th mat-header-cell *matHeaderCellDef>
+                                    Tipo pago
+                                </th>
+                                <td mat-cell *matCellDef="let row">
+                                    <p>{{ row.tipo_pago }}</p>
+                                </td> </ng-container
+                            ><ng-container matColumnDef="nivel_aprobacion">
+                                <th mat-header-cell *matHeaderCellDef>
+                                    Nivel de aprobación
+                                </th>
+                                <td mat-cell *matCellDef="let row">
+                                    <p>{{ row.nivel_aprobacion }}</p>
+                                </td> </ng-container
+                            ><ng-container matColumnDef="usuario">
+                                <th mat-header-cell *matHeaderCellDef>
+                                    Usuario
+                                </th>
+                                <td mat-cell *matCellDef="let row">
+                                    <p>{{ row.usuario }}</p>
+                                </td> </ng-container
+                            ><ng-container matColumnDef="estado">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">Estado</th>
+                                <td mat-cell *matCellDef="let row">
+                                    <div fxLayout="row" fxLayoutAlign="center center">
+                                    <div class="text-white w-20 text-center" [ngClass]="
+                                        {'bg-green-600':row.estado === true,
+                                        'bg-red-500' :row.estado === false}
+                                     ">
+                                        {{row.estado?'ACTIVO':'INACTIVO'}}</div>
+                                    </div>
+                                </td>
+                            </ng-container><ng-container matColumnDef="fecha_inicio">
+                                <th mat-header-cell *matHeaderCellDef>
+                                    Fecha inicio
+                                </th>
+                                <td mat-cell *matCellDef="let row">
+                                    <p>{{ row.fecha_inicio }}</p>
+                                </td> </ng-container
+                            ><ng-container matColumnDef="fecha_fin">
+                                <th mat-header-cell *matHeaderCellDef>
+                                    Fecha fin
+                                </th>
+                                <td mat-cell *matCellDef="let row">
+                                    <p>{{ row.fecha_fin }}</p>
+                                </td> </ng-container
+                            ><ng-container matColumnDef="opciones">
+                                <th mat-header-cell *matHeaderCellDef class="text-center">
+                                    Acciones
+                                </th>
+                                <td
+                                    mat-cell
+                                    *matCellDef="let row; let i = index"
+                                >
+                                    <div
+                                        fxLayout="row"
+                                        fxLayoutAlign="space-evenly center"
+                                    >
+                                        <div class="mat-icon-table">
+                                            <button
+                                                mat-stroked-button
+                                                color="primary"
+                                                class="sidebar-toggle btn-sm"
+                                                (click)="handleModificar(row)"
+                                                aria-label="Modificar"
+                                                matTooltip="Modificar"
+                                            >
+                                                <mat-icon class=""
+                                                    >create</mat-icon
+                                                >
+                                            </button>
+                                        </div>
+                                        <div class="mat-icon-table">
+                                            <button
+                                                mat-stroked-button
+                                                color="warn"
+                                                class="sidebar-toggle btn-sm ml-2"
+                                                (click)="handleEliminar(row, i)"
+                                                aria-label="Eliminar"
+                                                matTooltip="Eliminar"
+                                            >
+                                                <mat-icon class=""
+                                                    >restore_from_trash</mat-icon
+                                                >
+                                            </button>
+                                        </div>
+                                    </div>
+                                </td>
+                            </ng-container>
+                            <tr
+                                mat-header-row
+                                *matHeaderRowDef="
+                                    displayedColumns;
+                                    sticky: true
+                                "
+                            ></tr>
+                            <tr
+                                mat-row
+                                *matRowDef="let row; columns: displayedColumns"
+                                (click)="selection.toggle(row)"
+                                (mouseover)="row.hovered = true"
+                                (mouseout)="row.hovered = false"
+                            ></tr>
+                        </table>
+                    </div>
+                    <div
+                        class="no-results"
+                        [style.display]="
+                            dataSource?.data.length === 0 ? '' : 'none'
+                        "
+                    >
+                        No se encontraron registros
+                    </div>
+                    <mat-paginator
+                        #paginator
+                        [pageIndex]="0"
+                        [pageSize]="10"
+                        fxLayoutAlign="center center"
+                        [pageSizeOptions]="[5, 10, 15, 20]"
+                    ></mat-paginator>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
