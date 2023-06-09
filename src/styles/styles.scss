@@ -450,3 +450,11 @@ border:0;
 border-left:5px solid rgb(21 128 61 /1) !important;
 }
 
+.responsive-modal {
+
+    @media screen and (max-width: 959px){
+      width: 95% !important;
+      max-width: 100% !important;
+    }
+  }
+

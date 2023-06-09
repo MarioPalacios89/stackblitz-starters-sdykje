@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { ModalEstructuraProgramaticaUeComponent } from '../../components/modals/modal-estructura-programatica-ue/modal-estructura-programatica-ue.component';
 
 @Component({
     selector: 'estructura-programatica-ue',
@@ -312,7 +313,27 @@ export class EstructuraProgramaticaUeComponent {
         this.dataSource.paginator = this.paginator;
     }
 
-    handleCrear(): void {}
+    handleCrear(): void {
+        sessionStorage.setItem('loading', 'Obteniendo detalle');
+        this.dialogRef = this.materialDialog
+        .open(ModalEstructuraProgramaticaUeComponent, {
+            disableClose: true,
+            width: '75%',
+            data: {
+                title: 'Nueva estructura programatica UE',
+                listas: this.combo,
+                operation:"create",
+                isSaveActive:false,
+            },
+        })
+        .afterOpened()
+        .subscribe((responseDialog) => {
+            setTimeout(() => {
+                sessionStorage.removeItem('loading');
+            }, 500);
+
+        });
+    }
 
     handleExportar(): void {}
 

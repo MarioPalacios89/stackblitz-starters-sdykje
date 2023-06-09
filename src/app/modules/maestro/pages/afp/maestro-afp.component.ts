@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { ModalAfpComponent } from '../../components/modals/modal-afp/modal-afp.component';
+import { ModalAfpComponent } from '../../components/modals/afp/modal-afp/modal-afp.component';
 
 @Component({
   selector: 'maestro-afp',
@@ -82,6 +82,8 @@ export class MaestroAfpComponent {
   handleCrear():void{
     this.dialogRef = this.materialDialog.open(ModalAfpComponent, {
         disableClose: true,
+        width: '70%',
+        panelClass:'responsive-modal',
         data: {
           modal: {
             icon: "save",

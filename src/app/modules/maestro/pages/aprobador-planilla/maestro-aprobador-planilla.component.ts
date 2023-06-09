@@ -3,11 +3,27 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { ModalAprobadorPlanillaComponent } from '../../components/modals/modal-aprobador-planilla/modal-aprobador-planilla.component';
+import { MAT_DATE_FORMATS } from '@angular/material/core';
+
+export const MY_DATE_FORMATS = {
+    parse: {
+        dateInput: 'DD/MM/YYYY',
+    },
+    display: {
+        dateInput: 'DD/MM/YYYY',
+        monthYearLabel: 'MMMM YYYY',
+        dateA11yLabel: 'LL',
+        monthYearA11yLabel: 'MMMM YYYY',
+    },
+};
+
 
 @Component({
     selector: 'maestro-aprobador-planilla',
     templateUrl: './maestro-aprobador-planilla.component.html',
     styleUrls: ['./maestro-aprobador-planilla.component.scss'],
+    providers: [{ provide: MAT_DATE_FORMATS, useValue: MY_DATE_FORMATS }],
 })
 export class MaestroAprobadorPlanillaComponent {
     form: FormGroup;
@@ -265,7 +281,27 @@ export class MaestroAprobadorPlanillaComponent {
         this.dataSource.paginator = this.paginator;
     }
 
-    handleCrear(): void {}
+    handleCrear(): void {
+        sessionStorage.setItem('loading', 'Obteniendo detalle');
+        this.dialogRef = this.materialDialog
+        .open(ModalAprobadorPlanillaComponent, {
+            disableClose: true,
+            width: '75%',
+            data: {
+                title: 'Nuevo aprobador de planilla',
+                listas: this.combo,
+                operation:"create",
+                isSaveActive:false,
+            },
+        })
+        .afterOpened()
+        .subscribe((responseDialog) => {
+            setTimeout(() => {
+                sessionStorage.removeItem('loading');
+            }, 500);
+
+        });
+    }
 
     handleExportar(): void {}
 
