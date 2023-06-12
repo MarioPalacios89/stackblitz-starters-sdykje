@@ -1,3 +1,4 @@
+import { ConfiguracionesGeneralesModule } from './configuraciones-generales/configuraciones-generales.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaestroModule } from './maestro/maestro.module';
@@ -11,7 +12,8 @@ import { ProcesoCompensacionModule } from './proceso-compensacion/proceso-compen
   imports: [
     CommonModule,
     MaestroModule,
-    ProcesoCompensacionModule
+    ProcesoCompensacionModule,
+    ConfiguracionesGeneralesModule
   ],
   providers: []
 })

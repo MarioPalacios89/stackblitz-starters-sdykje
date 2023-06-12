@@ -15,6 +15,8 @@ import { ModalConceptoPlameComponent } from './modals/modal-concepto-plame/modal
 import { ModalIndiceIncrementoCategoriaComponent } from './modals/modal-indice-incremento-categoria/modal-indice-incremento-categoria.component';
 import { ModalEstructuraProgramaticaComponent } from './modals/modal-estructura-programatica/modal-estructura-programatica.component';
 import { ModalEstructuraProgramaticaUeComponent } from './modals/modal-estructura-programatica-ue/modal-estructura-programatica-ue.component';
+import { ModalTerceroComponent } from './modals/tercero/modal-tercero/modal-tercero.component';
+import { DetalleTerceroComponent } from './modals/tercero/detalle-tercero/detalle-tercero.component';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { ModalEstructuraProgramaticaUeComponent } from './modals/modal-estructur
     ModalConceptoPlameComponent,
     ModalIndiceIncrementoCategoriaComponent,
     ModalEstructuraProgramaticaComponent,
-    ModalEstructuraProgramaticaUeComponent
+    ModalEstructuraProgramaticaUeComponent,
+    ModalTerceroComponent,
+    DetalleTerceroComponent
   ],
   imports: [
     CommonModule,

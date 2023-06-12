@@ -1,0 +1,192 @@
+<div class="page-layout dialog-content-wrapper">
+    <mat-toolbar matDialogTitle class="mat-accent m-0">
+        <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <span class="title dialog-title">{{ title }}</span>
+            </div>
+            <button
+                mat-icon-button
+                (click)="matDialogRef.close()"
+                aria-label="Close dialog"
+            >
+                <mat-icon>close</mat-icon>
+            </button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+
+    <div mat-dialog-content class="p-8 pb-0 m-0">
+        <fieldset class="fieldset-border m-0 mb-3">
+            <legend>Criterios de busqueda</legend>
+
+            <div fxFlex="100%" fxLayout="column">
+                <form
+                    autocomplete="off"
+                    novalidate
+                    [formGroup]="form"
+                    fxLayout="row wrap"
+                    fxLayout.lt-md="column"
+                    fxFlex="100%"
+                    fxLayoutGap="8px"
+                    fxLayoutGap.lt-md="0"
+                >
+                    <mat-form-field
+                        appearance="fill"
+                        fxFlex="calc(30% - 12px)"
+                        fxFlex.lt-md="100%"
+                    >
+                        <mat-label>Código </mat-label>
+                        <input
+                            type="text"
+                            name="code"
+                            formControlName="code"
+                            matInput
+                        />
+                    </mat-form-field>
+                    <div fxFlex="calc(70% - 12px)" fxFlex.lt-md="100%"></div>
+                    <mat-form-field
+                        appearance="fill"
+                        fxFlex="calc(70% - 12px)"
+                        fxFlex.lt-md="100%"
+                    >
+                        <mat-label>Nombre </mat-label>
+                        <input
+                            type="text"
+                            name="name"
+                            formControlName="name"
+                            matInput
+                        />
+                    </mat-form-field>
+                    <div fxFlex="calc(30% - 12px)" fxFlex.lt-md="100%"></div>
+                    <mat-form-field
+                        appearance="fill"
+                        fxFlex="calc(30% - 12px)"
+                        fxFlex.lt-md="100%"
+                    >
+                        <mat-label>Unidad ejecutora </mat-label>
+                        <mat-select formControlName="executingUnit">
+                            <mat-option value="">Seleccionar</mat-option>
+                            <mat-option
+                                *ngFor="let item of listas?.executingUnit"
+                                [value]="item"
+                            >
+                                {{ item }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div fxFlex="calc(70% - 12px)" fxFlex.lt-md="100%"></div>
+                </form>
+            </div>
+        </fieldset>
+        <div fxLayout="row" fxLayoutAlign="center center" class="mb-3">
+            <div class="p-0" fxLayout="row">
+                <button
+                    mat-raised-button
+                    color="primary"
+                    disabled="true"
+                    class="rounded-none shadow-none"
+                    (click)="(null)"
+                >
+                    Limpiar
+                </button>
+            </div>
+            <div class="pl-6" fxLayout="row">
+                <button
+                    mat-raised-button
+                    color="primary"
+                    disabled="true"
+                    class="rounded-none shadow-none"
+                    (click)="(null)"
+                >
+                    Buscar
+                </button>
+            </div>
+        </div>
+
+        <div
+            fxLayout="row wrap"
+            fxLayout.lt-lg="column"
+            fxLayoutGap="8px"
+            fxLayoutAlign="space-between center"
+        >
+            <div fxFlex="40" fxFlexAlign="stretch">
+                <mat-selection-list
+                    class="border-2 overflow-auto"
+                    style="height: 20vh"
+                    #list1
+                    [compareWith]="compareFunction"
+                >
+                    <mat-list-option
+                        *ngFor="let item of listaAfectacion.in"
+                        [selected]="item.check"
+                        [value]="item.id"
+                    >
+                        {{ item.label }}
+                    </mat-list-option>
+                </mat-selection-list>
+            </div>
+            <div fxFlex="10" fxLayout="column" fxLayoutGap="8px">
+                <button
+                    type="button"
+                    mat-raised-button
+                    color="primary"
+                    class="rounded-none shadow-none"
+                    (click)="moverOpcionAfection(list1, true)"
+                >
+                    <span class="material-icons">arrow_forward</span>
+                </button>
+                <button
+                    type="button"
+                    mat-raised-button
+                    color="primary"
+                    class="rounded-none shadow-none"
+                    (click)="moverOpcionAfection(list2, false)"
+                >
+                    <span class="material-icons">arrow_back</span>
+                </button>
+            </div>
+            <div fxFlex="40" fxFlexAlign="stretch">
+                <mat-selection-list
+                    class="border-2 overflow-auto"
+                    style="height: 20vh"
+                    #list2
+                    [compareWith]="compareFunction"
+                >
+                    <mat-list-option
+                        *ngFor="let item of listaAfectacion.out"
+                        [selected]="item.check"
+                        [value]="item.id"
+                    >
+                        {{ item.label }}
+                    </mat-list-option>
+                </mat-selection-list>
+            </div>
+        </div>
+    </div>
+
+    <mat-divider class="mt-6"></mat-divider>
+    <div
+        mat-dialog-actions
+        class="panel-footer m-0 pr-12"
+        fxLayout="row"
+        fxLayoutAlign="end center"
+    >
+        <button
+            type="button"
+            mat-raised-button
+            color="primary"
+            class="rounded-none shadow-none"
+            (click)="(null)"
+            *ngIf="isSaveActive"
+            [disabled]="true"
+        >
+            <span class="material-icons">save</span> Guardar
+        </button>
+        <button
+            mat-stroked-button
+            class="rounded-none shadow-none"
+            (click)="matDialogRef.close()"
+        >
+            <span class="material-icons">cancel</span> Cerrar
+        </button>
+    </div>
+</div>

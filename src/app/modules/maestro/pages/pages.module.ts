@@ -18,7 +18,6 @@ import { MaestroTerceroComponent } from './tercero/maestro-tercero.component';
 import { MaestroConceptoPlameComponent } from './concepto-plame/maestro-concepto-plame.component';
 
 import { MomentDateModule } from '@angular/material-moment-adapter';
-import { FuseAlertModule } from '@fuse/components/alert';
 
 const routes: Routes = [
     {
@@ -71,18 +70,6 @@ const routes: Routes = [
     },
 
 ];
-
-const MY_DATE_FORMATS = {
-    parse: {
-      dateInput: 'DD/MM/YYYY',
-    },
-    display: {
-      dateInput: 'MMM DD, YYYY',
-      monthYearLabel: 'MMMM YYYY',
-      dateA11yLabel: 'LL',
-      monthYearA11yLabel: 'MMMM YYYY'
-    },
-};
 
 @NgModule({
   declarations: [

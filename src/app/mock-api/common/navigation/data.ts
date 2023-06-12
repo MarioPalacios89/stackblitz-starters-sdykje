@@ -108,6 +108,33 @@ export const defaultNavigation: FuseNavigationItem[] = [
                     }
 
                 ]
+            },
+            {
+                id: 'configuraciones-generales',
+                title: 'Configuraciones generales',
+                type: 'collapsable',
+                icon: 'settings',
+                children: [
+                    {
+                        id: 'configuraciones-generales-parametros-planilla',
+                        title: 'Parametros planilla',
+                        type: 'basic',
+                        link: '/ayni/configuraciones-generales/parametros-planilla',
+                    },
+                    {
+                        id: 'configuraciones-generales-gestionar-cronograma-anual',
+                        title: 'Gestión cronograma anual de pagos',
+                        type: 'basic',
+                        link: '/ayni/configuraciones-generales/gestionar-cronograma-anual',
+                    },
+                    {
+                        id: 'configuraciones-generales-gestionar-cronograma-planilla',
+                        title: 'Gestión cronograma de planillas',
+                        type: 'basic',
+                        link: '/ayni/configuraciones-generales/gestionar-cronograma-planilla',
+                    }
+
+                ]
             }
         ],
     },

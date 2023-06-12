@@ -3,7 +3,7 @@
         <div class="p-8" fxLayout="column">
             <div fxLayout="row wrap" fxFlex="100" fxLayoutAlign="space-between center" class="mb-6">
                 <div fxFlex>
-                    <div class="text-2xl font-medium tracking-tight leading-8">Maestro de terceros</div>
+                    <div class="text-2xl font-medium tracking-tight leading-8">Parametros de la planilla</div>
                 </div>
                 <div fxFlex>
                     <ol class="breadcrumb pull-right">
@@ -11,12 +11,12 @@
                                 <mat-icon color="accent" class="s-18 text-blue-500">home</mat-icon>Inicio
                             </a></li>
                         <li><a [routerLink]="['/ayni/personal/inicio']">Compensaciones</a></li>
-                        <li class="active"><a>Maestro de terceros</a></li>
+                        <li class="active"><a>Parametros de la planilla</a></li>
                     </ol>
                 </div>
             </div>
             <div fxLayout="row" fxFlex="100">
-                <div class="bg-card shadow fullwidth inner-scroll p-6" fxFlex="100" fxLayout="column"> <div class="page-layout carded left-sidebar inner-scroll">
+                <div class="bg-card shadow fullwidth inner-scroll p-6" fxFlex="100" fxLayout="column"> <div class="page-layout carded left-sidebar inner-scroll ">
                     <div class="center">
                         <div class="panel">
                             <div class="panel-heading">
@@ -29,16 +29,41 @@
                                         <mat-form-field
                                 appearance="fill"
                                 fxFlex="calc(33% - 12px)"
-                                fxFlex.lt-md="100%"
-                            >
-                                <mat-label>Nombre entidad </mat-label>
+                                fxFlex.lt-md="100%">
+                                <mat-label>Descripción </mat-label>
                                 <input
                                     type="text"
-                                    name="nombre_entidad"
-                                    formControlName="nombre_entidad"
+                                    name="description"
+                                    formControlName="description"
                                     matInput
                                 />
-                            </mat-form-field>
+                            </mat-form-field><mat-form-field appearance="fill" fxFlex="calc(33% - 12px)" fxFlex.lt-md="100%"
+                            >
+                            <mat-label>Tipo parámetro </mat-label>
+                            <mat-select formControlName="parameterType">
+                                  <mat-option value="">Seleccionar</mat-option>
+                                  <mat-option *ngFor="let item of listas?.parameterType"
+                                      [value]="item">
+                                      {{item}}
+                                  </mat-option>
+                              </mat-select>
+                            <mat-error>
+
+                            </mat-error>
+                        </mat-form-field><mat-form-field appearance="fill" fxFlex="calc(33% - 12px)" fxFlex.lt-md="100%"
+                            >
+                            <mat-label>Estado </mat-label>
+                            <mat-select formControlName="status">
+                                  <mat-option value="">Seleccionar</mat-option>
+                                  <mat-option *ngFor="let item of listas?.status"
+                                      [value]="item">
+                                      {{item}}
+                                  </mat-option>
+                              </mat-select>
+                            <mat-error>
+
+                            </mat-error>
+                        </mat-form-field>
                                     </div>
                                 </form>
                             </div>
@@ -83,51 +108,54 @@
             </div>
 <div ngClass.lt-lg="scroll-grid-lt-lg" fxFlex="100" fxLayout="column" class="overflow-x-auto overflow-y-hidden">
                     <table mat-table class="minedu-table" [dataSource]="dataSource" fxFlex="100">
-                                                    <ng-container matColumnDef="index">
+                        <ng-container matColumnDef="index">
                             <th mat-header-cell *matHeaderCellDef class="text-center">N°</th>
-                            <td mat-cell *matCellDef="let row; index as i">{{paginator.pageSize * paginator.pageIndex + i + 1}}</td>
-                        </ng-container><ng-container matColumnDef="codigo">
-                            <th mat-header-cell *matHeaderCellDef class="text-center">Código</th>
-                            <td mat-cell *matCellDef="let row">
-                                <p>{{row.codigo}}</p>
+                            <td mat-cell *matCellDef="let row; index as i" class="text-center">{{paginator.pageSize * paginator.pageIndex + i + 1}}</td>
+                        </ng-container>
+                                                    <ng-container matColumnDef="code">
+                            <th mat-header-cell *matHeaderCellDef class="text-left">Código</th>
+                            <td mat-cell *matCellDef="let row" class="text-left">
+                                {{row.code }}
                             </td>
-                        </ng-container><ng-container matColumnDef="nombre">
-                            <th mat-header-cell *matHeaderCellDef class="text-center">Nombre</th>
-                            <td mat-cell *matCellDef="let row">
-                                <p>{{row.nombre}}</p>
+                        </ng-container><ng-container matColumnDef="description">
+                            <th mat-header-cell *matHeaderCellDef class="text-left">Descripción</th>
+                            <td mat-cell *matCellDef="let row" class="text-left">
+                                {{row.description }}
                             </td>
-                        </ng-container><ng-container matColumnDef="grupo">
-                            <th mat-header-cell *matHeaderCellDef class="text-center">Grupo</th>
-                            <td mat-cell *matCellDef="let row">
-                                <p>{{row.grupo}}</p>
+                        </ng-container><ng-container matColumnDef="value">
+                            <th mat-header-cell *matHeaderCellDef class="text-left">Valor</th>
+                            <td mat-cell *matCellDef="let row" class="text-left">
+                                {{row.value }}
                             </td>
-                        </ng-container><ng-container matColumnDef="cpto">
-                            <th mat-header-cell *matHeaderCellDef class="text-center">Cpto. bienestar</th>
-                            <td mat-cell *matCellDef="let row">
-                                <p>{{row.cpto}}</p>
+                        </ng-container><ng-container matColumnDef="startDate">
+                            <th mat-header-cell *matHeaderCellDef class="text-left">Fecha inicio</th>
+                            <td mat-cell *matCellDef="let row" class="text-left">
+                                {{row.startDate }}
                             </td>
-                        </ng-container><ng-container matColumnDef="estado">
-                            <th mat-header-cell *matHeaderCellDef class="text-center">Estado</th>
-                            <td mat-cell *matCellDef="let row">
-                                <div fxLayout="row" fxLayoutAlign="center center">
-                                <div class="text-white w-20 text-center" [ngClass]="
-                                    {'bg-green-600':row.estado === true,
-                                    'bg-red-500' :row.estado === false}
-                                 ">
-                                    {{row.estado?'ACTIVO':'INACTIVO'}}</div>
-                                </div>
+                        </ng-container><ng-container matColumnDef="endDate">
+                            <th mat-header-cell *matHeaderCellDef class="text-left">Fecha fin</th>
+                            <td mat-cell *matCellDef="let row" class="text-left">
+                                {{row.endDate }}
+                            </td>
+                        </ng-container><ng-container matColumnDef="parameterType">
+                            <th mat-header-cell *matHeaderCellDef class="text-left">Tipo parametro</th>
+                            <td mat-cell *matCellDef="let row" class="text-left">
+                                {{row.parameterType }}
+                            </td>
+                        </ng-container><ng-container matColumnDef="status">
+                            <th mat-header-cell *matHeaderCellDef class="text-left">Estado</th>
+                            <td mat-cell *matCellDef="let row" class="text-left">
+                                {{row.status }}
+                            </td>
+                        </ng-container><ng-container matColumnDef="cancellationReason">
+                            <th mat-header-cell *matHeaderCellDef class="text-left">Motivo anulación</th>
+                            <td mat-cell *matCellDef="let row" class="text-left">
+                                {{row.cancellationReason }}
                             </td>
                         </ng-container><ng-container matColumnDef="opciones">
                             <th mat-header-cell *matHeaderCellDef class="text-center">Acciones</th>
                             <td mat-cell *matCellDef="let row; let  i = index;">
                                 <div fxLayout="row" fxLayoutAlign="space-evenly center">
-                                    <div class="mat-icon-table">
-                                        <button mat-stroked-button color="primary" class="sidebar-toggle btn-sm"
-                                            (click)="handleDetalle(row)"
-                                            aria-label="ver detalle" matTooltip="Ver detalle">
-                                            <mat-icon class="">remove_red_eye</mat-icon>
-                                        </button>
-                                    </div>
                                     <div class="mat-icon-table">
                                         <button mat-stroked-button color="primary" class="sidebar-toggle btn-sm"
                                             (click)="handleModificar(row)"
@@ -147,7 +175,7 @@
                             </td>
                         </ng-container>
                         <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
-                        <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
                         </tr>
                     </table>
                 </div>

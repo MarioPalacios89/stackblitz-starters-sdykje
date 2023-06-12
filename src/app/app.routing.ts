@@ -74,6 +74,7 @@ export const appRoutes: Route[] = [
             {path: 'example', loadChildren: () => import('app/modules/admin/example/example.module').then(m => m.ExampleModule)},
             {path: 'ayni/maestro', loadChildren: () => import('app/modules/maestro/maestro.module').then(m => m.MaestroModule)},
             {path: 'ayni/proceso-compensacion', loadChildren: () => import('app/modules/proceso-compensacion/proceso-compensacion.module').then(m => m.ProcesoCompensacionModule)},
+            {path: 'ayni/configuraciones-generales', loadChildren: () => import('app/modules/configuraciones-generales/configuraciones-generales.module').then(m => m.ConfiguracionesGeneralesModule)},
         ]
     }
 ];
