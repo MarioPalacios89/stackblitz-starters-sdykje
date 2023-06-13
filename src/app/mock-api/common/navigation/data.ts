@@ -38,48 +38,48 @@ export const defaultNavigation: FuseNavigationItem[] = [
                         type: 'basic',
                         link: '/ayni/maestro/concepto_mcpp',
                     },
-                    // {
-                    //     id: 'maestro_afp',
-                    //     title: 'Maestro de AFP',
-                    //     type: 'basic',
-                    //     link: '/ayni/maestro/afp',
-                    // },
-                    // {
-                    //     id: 'maestro_aprobador_planilla',
-                    //     title: 'Maestro de aprobadores de planilla',
-                    //     type: 'basic',
-                    //     link: '/ayni/maestro/aprobador_planilla',
-                    // },
-                    // {
-                    //     id: 'maestro-concepto-plame',
-                    //     title: 'Maestro de conceptos PLAME',
-                    //     type: 'basic',
-                    //     link: '/ayni/maestro/maestro-concepto-plame',
-                    // },
-                    // {
-                    //     id: 'indice_incremento_categoria',
-                    //     title: 'Actualizar indice de incremento',
-                    //     type: 'basic',
-                    //     link: '/ayni/maestro/indice_incremento_categoria',
-                    // },
-                    // {
-                    //     id: 'estructura_programatica',
-                    //     title: 'Estructura programática',
-                    //     type: 'basic',
-                    //     link: '/ayni/maestro/estructura_programatica',
-                    // },
-                    // {
-                    //     id: 'estructura_programatica_ue',
-                    //     title: 'Estructura programática nivel UE',
-                    //     type: 'basic',
-                    //     link: '/ayni/maestro/estructura_programatica_ue',
-                    // },
-                    // {
-                    //     id: 'maestro-tercero',
-                    //     title: 'Maestro de terceros',
-                    //     type: 'basic',
-                    //     link: '/ayni/maestro/maestro-tercero',
-                    // },
+                    {
+                        id: 'maestro_afp',
+                        title: 'Maestro de AFP',
+                        type: 'basic',
+                        link: '/ayni/maestro/afp',
+                    },
+                    {
+                        id: 'maestro_aprobador_planilla',
+                        title: 'Maestro de aprobadores de planilla',
+                        type: 'basic',
+                        link: '/ayni/maestro/aprobador_planilla',
+                    },
+                    {
+                        id: 'maestro-concepto-plame',
+                        title: 'Maestro de conceptos PLAME',
+                        type: 'basic',
+                        link: '/ayni/maestro/maestro-concepto-plame',
+                    },
+                    {
+                        id: 'indice_incremento_categoria',
+                        title: 'Actualizar indice de incremento',
+                        type: 'basic',
+                        link: '/ayni/maestro/indice_incremento_categoria',
+                    },
+                    {
+                        id: 'estructura_programatica',
+                        title: 'Estructura programática',
+                        type: 'basic',
+                        link: '/ayni/maestro/estructura_programatica',
+                    },
+                    {
+                        id: 'estructura_programatica_ue',
+                        title: 'Estructura programática nivel UE',
+                        type: 'basic',
+                        link: '/ayni/maestro/estructura_programatica_ue',
+                    },
+                    {
+                        id: 'maestro-tercero',
+                        title: 'Maestro de terceros',
+                        type: 'basic',
+                        link: '/ayni/maestro/maestro-tercero',
+                    },
                 ],
             },
             {
@@ -109,33 +109,33 @@ export const defaultNavigation: FuseNavigationItem[] = [
 
                 ]
             },
-            // {
-            //     id: 'configuraciones-generales',
-            //     title: 'Configuraciones generales',
-            //     type: 'collapsable',
-            //     icon: 'settings',
-            //     children: [
-            //         {
-            //             id: 'configuraciones-generales-parametros-planilla',
-            //             title: 'Parametros planilla',
-            //             type: 'basic',
-            //             link: '/ayni/configuraciones-generales/parametros-planilla',
-            //         },
-            //         {
-            //             id: 'configuraciones-generales-gestionar-cronograma-anual',
-            //             title: 'Gestión cronograma anual de pagos',
-            //             type: 'basic',
-            //             link: '/ayni/configuraciones-generales/gestionar-cronograma-anual',
-            //         },
-            //         {
-            //             id: 'configuraciones-generales-gestionar-cronograma-planilla',
-            //             title: 'Gestión cronograma de planillas',
-            //             type: 'basic',
-            //             link: '/ayni/configuraciones-generales/gestionar-cronograma-planilla',
-            //         }
+            {
+                id: 'configuraciones-generales',
+                title: 'Configuraciones generales',
+                type: 'collapsable',
+                icon: 'settings',
+                children: [
+                    {
+                        id: 'configuraciones-generales-parametros-planilla',
+                        title: 'Parametros planilla',
+                        type: 'basic',
+                        link: '/ayni/configuraciones-generales/parametros-planilla',
+                    },
+                    {
+                        id: 'configuraciones-generales-gestionar-cronograma-anual',
+                        title: 'Gestión cronograma anual de pagos',
+                        type: 'basic',
+                        link: '/ayni/configuraciones-generales/gestionar-cronograma-anual',
+                    },
+                    {
+                        id: 'configuraciones-generales-gestionar-cronograma-planilla',
+                        title: 'Gestión cronograma de planillas',
+                        type: 'basic',
+                        link: '/ayni/configuraciones-generales/gestionar-cronograma-planilla',
+                    }
 
-            //     ]
-            // }
+                ]
+            }
         ],
     },
 ];
