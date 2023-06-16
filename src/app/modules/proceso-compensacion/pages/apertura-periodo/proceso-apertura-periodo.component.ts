@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { AperturaPeriodoService } from 'app/core/services/proceso-compensacion/apertura-periodo.service';
 import { Subject, takeUntil } from 'rxjs';
+import { AperturaPeriodoComponent } from '../../components/modals/apertura-periodo/apertura-periodo/apertura-periodo.component';
 
 @Component({
     selector: 'proceso-apertura-periodo',
@@ -43,6 +44,8 @@ export class ProcesoAperturaPeriodoComponent {
         tipo_pago: [],
         correlativo: [],
     };
+
+
 
     constructor(
         private formBuilder: FormBuilder,
@@ -118,11 +121,53 @@ export class ProcesoAperturaPeriodoComponent {
         this.dataSource.paginator = this.paginator;
     }
 
-    handleCrear(): void {}
+    handleCrear(): void {
+        sessionStorage.setItem('loading', 'Obteniendo detalle');
+        this.dialogRef = this.materialDialog
+        .open(AperturaPeriodoComponent, {
+            disableClose: true,
+            width: '75%',
+            data: {
+                title: 'Nueva apertura de periodo',
+                listas: this.listas,
+                operation:"create",
+                isSaveActive:true,
+            },
+        })
+        .afterOpened().pipe(takeUntil(this.ngUnsubscribe))
+        .subscribe((responseDialog) => {
+            setTimeout(() => {
+                sessionStorage.removeItem('loading');
+            }, 500);
+
+        });
+    }
 
     handleExportar(): void {}
 
     handleBuscar(): void {}
 
     handleLimpiar(): void {}
+
+    handleModificar(): void {
+        sessionStorage.setItem('loading', 'Obteniendo detalle');
+        this.dialogRef = this.materialDialog
+        .open(AperturaPeriodoComponent, {
+            disableClose: true,
+            width: '75%',
+            data: {
+                title: 'Actualizar apertura de periodo',
+                listas: this.listas,
+                operation:"update",
+                isSaveActive:true,
+            },
+        })
+        .afterOpened().pipe(takeUntil(this.ngUnsubscribe))
+        .subscribe((responseDialog) => {
+            setTimeout(() => {
+                sessionStorage.removeItem('loading');
+            }, 500);
+
+        });
+    }
 }
