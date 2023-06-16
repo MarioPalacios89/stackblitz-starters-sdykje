@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ParametrosPlanillaService } from 'app/core/services/configuraciones-generales/parametros-planilla.service';
+import { ModalParametrosPlanillaComponent } from '../../components/modals/modal-parametros-planilla/modal-parametros-planilla.component';
 
 @Component({
     selector: 'parametros-planilla',
@@ -118,7 +119,27 @@ export class ParametrosPlanillaComponent {
         this.dataSource.paginator = this.paginator;
     }
 
-    handleCrear(): void {}
+    handleCrear(): void {
+        sessionStorage.setItem('loading', 'Obteniendo detalle');
+        this.dialogRef = this.materialDialog
+        .open(ModalParametrosPlanillaComponent, {
+            disableClose: true,
+            width: '75%',
+            data: {
+                title: 'Nuevo parámetro',
+                listas: this.listas,
+                operation:"create",
+                isSaveActive:true,
+            },
+        })
+        .afterOpened().pipe(takeUntil(this.ngUnsubscribe))
+        .subscribe((responseDialog) => {
+            setTimeout(() => {
+                sessionStorage.removeItem('loading');
+            }, 500);
+
+        });
+    }
 
     handleExportar(): void {}
 

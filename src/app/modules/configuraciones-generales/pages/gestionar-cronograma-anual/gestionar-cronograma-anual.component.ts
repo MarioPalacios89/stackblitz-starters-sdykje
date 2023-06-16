@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { GestionarCronogramaAnualService } from 'app/core/services/configuraciones-generales/gestionar-cronograma-anual.service';
+import { ModalGestionarCronogramaAnualComponent } from '../../components/modals/modal-gestionar-cronograma-anual/modal-gestionar-cronograma-anual.component';
 
 @Component({
     selector: 'gestionar-cronograma-anual',
@@ -115,7 +116,27 @@ export class GestionarCronogramaAnualComponent {
         this.dataSource.paginator = this.paginator;
     }
 
-    handleCrear(): void {}
+    handleCrear(): void {
+        sessionStorage.setItem('loading', 'Obteniendo detalle');
+        this.dialogRef = this.materialDialog
+        .open(ModalGestionarCronogramaAnualComponent, {
+            disableClose: true,
+            width: '40%',
+            data: {
+                title: 'Nueva fecha de pago',
+                listas: this.listas,
+                operation:"create",
+                isSaveActive:true,
+            },
+        })
+        .afterOpened().pipe(takeUntil(this.ngUnsubscribe))
+        .subscribe((responseDialog) => {
+            setTimeout(() => {
+                sessionStorage.removeItem('loading');
+            }, 500);
+
+        });
+    }
 
     handleExportar(): void {}
 

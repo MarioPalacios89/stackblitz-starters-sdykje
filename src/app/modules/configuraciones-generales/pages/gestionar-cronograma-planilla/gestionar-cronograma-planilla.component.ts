@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { GestionarCronogramaPlanillaService } from 'app/core/services/configuraciones-generales/gestionar-cronograma-planilla.service';
+import { ModalGestionarCronogramaPlanillaComponent } from '../../components/modals/modal-gestionar-cronograma-planilla/modal-gestionar-cronograma-planilla.component';
 
 @Component({
     selector: 'gestionar-cronograma-planilla',
@@ -124,7 +125,27 @@ export class GestionarCronogramaPlanillaComponent {
         this.dataSource.paginator = this.paginator;
     }
 
-    handleCrear(): void {}
+    handleCrear(): void {
+        sessionStorage.setItem('loading', 'Obteniendo detalle');
+        this.dialogRef = this.materialDialog
+        .open(ModalGestionarCronogramaPlanillaComponent, {
+            disableClose: true,
+            width: '40%',
+            data: {
+                title: 'Nueva cronograma de planillas',
+                listas: this.listas,
+                operation:"create",
+                isSaveActive:true,
+            },
+        })
+        .afterOpened().pipe(takeUntil(this.ngUnsubscribe))
+        .subscribe((responseDialog) => {
+            setTimeout(() => {
+                sessionStorage.removeItem('loading');
+            }, 500);
+
+        });
+    }
 
     handleExportar(): void {}
 
