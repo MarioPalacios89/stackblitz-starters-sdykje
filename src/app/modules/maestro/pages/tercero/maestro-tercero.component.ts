@@ -5,6 +5,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ModalTerceroComponent } from '../../components/modals/tercero/modal-tercero/modal-tercero.component';
 import { DetalleTerceroComponent } from '../../components/modals/tercero/detalle-tercero/detalle-tercero.component';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
     selector: 'maestro-tercero',
@@ -33,6 +34,8 @@ export class MaestroTerceroComponent {
     dataSource = new MatTableDataSource();
     @ViewChild(MatPaginator, { static: true })
     paginator: MatPaginator;
+
+    private ngUnsubscribe = new Subject<void>();
 
     constructor(
         private formBuilder: FormBuilder,
@@ -235,10 +238,10 @@ export class MaestroTerceroComponent {
                     title: 'Nueva maestro tercero',
                     listas: this.combo,
                     operation: 'create',
-                    isSaveActive: false,
+                    isSaveActive: true,
                 },
             })
-            .afterOpened()
+            .afterOpened().pipe(takeUntil(this.ngUnsubscribe))
             .subscribe((responseDialog) => {
                 setTimeout(() => {
                     sessionStorage.removeItem('loading');
@@ -256,10 +259,10 @@ export class MaestroTerceroComponent {
                     title: 'Actualizar maestro tercero',
                     listas: this.combo,
                     operation: 'update',
-                    isSaveActive: false,
+                    isSaveActive: true,
                 },
             })
-            .afterOpened()
+            .afterOpened().pipe(takeUntil(this.ngUnsubscribe))
             .subscribe((responseDialog) => {
                 setTimeout(() => {
                     sessionStorage.removeItem('loading');
@@ -280,7 +283,7 @@ export class MaestroTerceroComponent {
                     isSaveActive: false,
                 },
             })
-            .afterOpened()
+            .afterOpened().pipe(takeUntil(this.ngUnsubscribe))
             .subscribe((responseDialog) => {
                 setTimeout(() => {
                     sessionStorage.removeItem('loading');
@@ -293,4 +296,6 @@ export class MaestroTerceroComponent {
     handleBuscar(): void {}
 
     handleLimpiar(): void {}
+
+
 }

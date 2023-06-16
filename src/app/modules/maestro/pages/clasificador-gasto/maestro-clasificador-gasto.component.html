@@ -278,15 +278,28 @@
                                         fxLayout="row"
                                         fxLayoutAlign="space-evenly center"
                                     >
+                                    <div class="mat-icon-table">
+                                        <button
+                                            mat-stroked-button
+                                            color="primary"
+                                            class="sidebar-toggle btn-sm"
+                                            (click)="handleDetalle(row)"
+                                            aria-label="Ver detalle"
+                                            matTooltip="Ver detalle"
+                                        >
+                                            <mat-icon class=""
+                                                >remove_red_eye</mat-icon
+                                            >
+                                        </button>
+                                    </div>
                                         <div class="mat-icon-table">
                                             <button
                                                 mat-stroked-button
                                                 color="primary"
-                                                class="sidebar-toggle btn-sm"
+                                                class="sidebar-toggle btn-sm ml-2"
                                                 (click)="handleModificar(row)"
                                                 aria-label="Modificar"
                                                 matTooltip="Modificar"
-                                            disabled
                                             >
                                                 <mat-icon class=""
                                                     >create</mat-icon

@@ -30,7 +30,7 @@
                             >
                             <mat-label>Tipo de concepto MCPP </mat-label>
                             <mat-select formControlName="tipo_concepto">
-                                <mat-option value="">SELECCIONE</mat-option>
+                                <mat-option value="">Seleccionar</mat-option>
                                 <mat-option *ngFor="let item of combo?.lista"
                                     [value]="item">
                                     {{item}}
@@ -129,14 +129,35 @@
                             <th mat-header-cell *matHeaderCellDef class="text-center">Acciones</th>
                             <td mat-cell *matCellDef="let row; let  i = index;">
                                 <div fxLayout="row" fxLayoutAlign="space-evenly center">
-                                    <div class="mat-icon-table">
-                                        <button mat-stroked-button color="primary" class="sidebar-toggle btn-sm"
-                                            (click)="handleModificar(row)" disabled
-                                            aria-label="Modificar" matTooltip="Modificar">
-                                            <mat-icon class="">create</mat-icon>
+                                    <div class="mat-icon-table" fxFlex="auto">
+                                        <button
+                                            mat-stroked-button
+                                            color="primary"
+                                            class="sidebar-toggle btn-sm"
+                                            (click)="handleDetalle(row)"
+                                            aria-label="Ver detalle"
+                                            matTooltip="Ver detalle"
+                                        >
+                                            <mat-icon class=""
+                                                >remove_red_eye</mat-icon
+                                            >
                                         </button>
                                     </div>
-                                    <div class="mat-icon-table">
+                                        <div class="mat-icon-table" fxFlex="auto">
+                                            <button
+                                                mat-stroked-button
+                                                color="primary"
+                                                class="sidebar-toggle btn-sm ml-2"
+                                                (click)="handleModificar(row)"
+                                                aria-label="Modificar"
+                                                matTooltip="Modificar"
+                                            >
+                                                <mat-icon class=""
+                                                    >create</mat-icon
+                                                >
+                                            </button>
+                                        </div>
+                                    <div class="mat-icon-table" fxFlex="auto">
                                         <button mat-stroked-button color="warn" class="sidebar-toggle btn-sm ml-2"
                                              (click)="handleEliminar(row, i)" disabled
                                             aria-label="Eliminar" matTooltip="Eliminar">
@@ -148,9 +169,7 @@
                             </td>
                         </ng-container>
                         <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
-                        <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)"
-                           (mouseover)="row.hovered = true"
-                            (mouseout)="row.hovered = false">
+                        <tr mat-row *matRowDef="let row; columns: displayedColumns;">
                         </tr>
                     </table>
                 </div>

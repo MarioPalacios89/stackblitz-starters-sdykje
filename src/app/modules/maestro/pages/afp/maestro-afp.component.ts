@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ModalAfpComponent } from '../../components/modals/afp/modal-afp/modal-afp.component';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'maestro-afp',
@@ -46,6 +47,8 @@ export class MaestroAfpComponent {
       @ViewChild(MatPaginator, { static: true })
       paginator: MatPaginator;
       dialogRef: any;
+
+      private ngUnsubscribe = new Subject<void>();
   constructor(private materialDialog: MatDialog) {
 
    }
@@ -80,18 +83,24 @@ export class MaestroAfpComponent {
 }
 
   handleCrear():void{
+    sessionStorage.setItem('loading', 'Obteniendo detalle');
     this.dialogRef = this.materialDialog.open(ModalAfpComponent, {
         disableClose: true,
         width: '70%',
         panelClass:'responsive-modal',
         data: {
-          modal: {
-            icon: "save",
-            title: "Nuevo miembro de comité",
-            action: "create",
-            disabled: false
-          },
-        }
+            title: 'Nueva AFP',
+            listas: this.combo,
+            operation:"create",
+            isSaveActive:false,
+        },
+      })
+      .afterOpened().pipe(takeUntil(this.ngUnsubscribe))
+      .subscribe((responseDialog) => {
+          setTimeout(() => {
+              sessionStorage.removeItem('loading');
+          }, 500);
+
       });
   }
 
@@ -100,6 +109,50 @@ export class MaestroAfpComponent {
   handleBuscar():void{}
 
   handleLimpiar():void{}
+
+  handleModificar(): void {
+    sessionStorage.setItem('loading', 'Obteniendo detalle');
+    this.dialogRef = this.materialDialog
+    .open(ModalAfpComponent, {
+        disableClose: true,
+        width: '75%',
+        data: {
+            title: 'Actualizar AFP',
+            listas: this.combo,
+            operation:"update",
+            isSaveActive:true,
+        },
+    })
+    .afterOpened().pipe(takeUntil(this.ngUnsubscribe))
+    .subscribe((responseDialog) => {
+        setTimeout(() => {
+            sessionStorage.removeItem('loading');
+        }, 500);
+
+    });
+}
+
+handleDetalle(): void {
+    sessionStorage.setItem('loading', 'Obteniendo detalle');
+    this.dialogRef = this.materialDialog
+    .open(ModalAfpComponent, {
+        disableClose: true,
+        width: '75%',
+        data: {
+            title: 'Visualizar AFP',
+            listas: this.combo,
+            operation:"view",
+            isSaveActive:false,
+        },
+    })
+    .afterOpened().pipe(takeUntil(this.ngUnsubscribe))
+    .subscribe((responseDialog) => {
+        setTimeout(() => {
+            sessionStorage.removeItem('loading');
+        }, 500);
+
+    });
+}
 
   cargarGrilla(autoSearch: boolean = false) {
     let dataDemo=[{

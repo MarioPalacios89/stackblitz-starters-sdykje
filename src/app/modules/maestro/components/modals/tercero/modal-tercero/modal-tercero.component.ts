@@ -73,9 +73,9 @@ export class ModalTerceroComponent {
     buildForm(): void {
         this.form = this.formBuilder.group({
             code: [{ value: '', disabled: true }],
-            name: [{ value: '', disabled: true }],
-            groupDiscount: [{ value: '', disabled: true }],
-            conceptDiscount: [{ value: '', disabled: true }],
+            name: [{ value: '', disabled: false }],
+            groupDiscount: [{ value: '', disabled: false }],
+            conceptDiscount: [{ value: '', disabled: false }],
             status: [{ value: '', disabled: true }],
         });
     }

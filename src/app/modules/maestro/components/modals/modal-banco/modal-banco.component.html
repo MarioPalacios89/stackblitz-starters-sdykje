@@ -212,7 +212,8 @@
             color="primary"
             class="rounded-none shadow-none"
             (click)="(null)"
-            disabled
+            *ngIf="isSaveActive"
+            [disabled]="true"
         >
             <span class="material-icons">save</span> Guardar
         </button>

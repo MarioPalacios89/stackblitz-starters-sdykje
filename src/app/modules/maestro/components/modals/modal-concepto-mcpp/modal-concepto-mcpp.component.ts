@@ -61,8 +61,8 @@ export class ModalConceptoMcppComponent {
             typeConcept: [{ value: '', disabled: false }],
             code: [{ value: '', disabled: false }],
             description: [{ value: '', disabled: false }],
-            state: [{ value: '', disabled: false }],
-            cancellationReason: [{ value: '', disabled: false }],
+            state: [{ value: '', disabled: true }],
+            cancellationReason: [{ value: '', disabled: true }],
         });
     }
 

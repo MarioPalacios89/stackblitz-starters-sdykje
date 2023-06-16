@@ -2,9 +2,7 @@
     <mat-toolbar matDialogTitle class="mat-accent m-0">
         <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
             <div fxLayout="row" fxLayoutAlign="start center">
-                <span class="title dialog-title"
-                    >Nuevo Clasificador de gasto</span
-                >
+                <span class="title dialog-title">{{ title }}</span>
             </div>
             <button
                 mat-icon-button
@@ -146,7 +144,8 @@
             color="primary"
             class="rounded-none shadow-none"
             (click)="(null)"
-            disabled
+            *ngIf="isSaveActive"
+            [disabled]="true"
         >
             <span class="material-icons">save</span> Guardar
         </button>

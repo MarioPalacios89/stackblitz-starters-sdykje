@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ModalConceptoPlameComponent } from '../../components/modals/modal-concepto-plame/modal-concepto-plame.component';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
     selector: 'maestro-concepto-plame',
@@ -32,6 +33,8 @@ export class MaestroConceptoPlameComponent {
     @ViewChild(MatPaginator, { static: true })
     paginator: MatPaginator;
 
+    private ngUnsubscribe = new Subject<void>();
+
     constructor(
         private formBuilder: FormBuilder,
         private materialDialog: MatDialog
@@ -48,7 +51,7 @@ export class MaestroConceptoPlameComponent {
 
     buildForm() {
         this.form = this.formBuilder.group({
-            codigo_concepto_plame: [null],
+            codigo_concepto_plame: [""],
             descripcion_concepto_plame: [null],
         });
     }
@@ -210,4 +213,54 @@ export class MaestroConceptoPlameComponent {
     handleBuscar(): void {}
 
     handleLimpiar(): void {}
+
+    handleModificar(): void {
+        sessionStorage.setItem('loading', 'Obteniendo detalle');
+        this.dialogRef = this.materialDialog
+        .open(ModalConceptoPlameComponent, {
+            disableClose: true,
+            width: '75%',
+            data: {
+                title: 'Actualizar concepto PLAME',
+                listas: this.combo,
+                operation:"update",
+                isSaveActive:true,
+            },
+        })
+        .afterOpened().pipe(takeUntil(this.ngUnsubscribe))
+        .subscribe((responseDialog) => {
+            setTimeout(() => {
+                sessionStorage.removeItem('loading');
+            }, 500);
+
+        });
+    }
+
+    handleDetalle(): void {
+        sessionStorage.setItem('loading', 'Obteniendo detalle');
+        this.dialogRef = this.materialDialog
+        .open(ModalConceptoPlameComponent, {
+            disableClose: true,
+            width: '75%',
+            data: {
+                title: 'Visualizar concepto PLAME',
+                listas: this.combo,
+                operation:"view",
+                isSaveActive:false,
+            },
+        })
+        .afterOpened().pipe(takeUntil(this.ngUnsubscribe))
+        .subscribe((responseDialog) => {
+            setTimeout(() => {
+                sessionStorage.removeItem('loading');
+            }, 500);
+
+        });
+    }
+
+
+    ngOnDestroy() {
+        this.ngUnsubscribe.next();
+        this.ngUnsubscribe.complete();
+    }
 }

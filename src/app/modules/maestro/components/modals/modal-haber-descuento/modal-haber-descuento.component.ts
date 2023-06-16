@@ -234,20 +234,20 @@ export class ModalHaberDescuentoComponent {
             });
 
         this.form2 = this.formBuilder.group({
-            fichaPersonal: [null],
-            fichaPersonalDescripcion: [null],
-            conceptos: [null],
-            conceptosDescripcion: [null],
-            variables: [null],
-            variablesDescripcion: [null],
-            afectaciones: [null],
-            afectacionesDescripcion: [null],
-            situacion: [null],
-            paso: [null],
-            operador: [null],
-            operadorDescripcion: [null],
-            elementos: [null],
-            alterno: [null],
+            fichaPersonal: [{ value: '', disabled: false }],
+            fichaPersonalDescripcion:[{ value: '', disabled: false }],
+            conceptos: [{ value: '', disabled: false }],
+            conceptosDescripcion:[{ value: '', disabled: false }],
+            variables: [{ value: '', disabled: false }],
+            variablesDescripcion:[{ value: '', disabled: false }],
+            afectaciones: [{ value: '', disabled: false }],
+            afectacionesDescripcion: [{ value: '', disabled: false }],
+            situacion: [{ value: '', disabled: false }],
+            paso: [{ value: '', disabled: false }],
+            operador:[{ value: '', disabled: false }],
+            operadorDescripcion:[{ value: '', disabled: false }],
+            elementos: [{ value: '', disabled: false }],
+            alterno: [{ value: '', disabled: false }]
         });
 
         this.form3 = this.formBuilder.group({

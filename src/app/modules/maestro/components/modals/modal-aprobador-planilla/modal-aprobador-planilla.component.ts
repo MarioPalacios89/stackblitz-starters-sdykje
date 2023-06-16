@@ -83,7 +83,7 @@ export class ModalAprobadorPlanillaComponent {
             startDate: [{ value: '', disabled: false }],
             endDate: [{ value: '', disabled: false }],
             state: [{ value: '', disabled: true }],
-            cancellationReason: [{ value: '', disabled: false }],
+            cancellationReason: [{ value: '', disabled: true }],
         });
     }
 

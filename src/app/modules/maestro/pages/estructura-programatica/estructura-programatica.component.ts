@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ModalEstructuraProgramaticaComponent } from '../../components/modals/modal-estructura-programatica/modal-estructura-programatica.component';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
     selector: 'estructura-programatica',
@@ -37,6 +38,8 @@ export class EstructuraProgramaticaComponent {
     @ViewChild(MatPaginator, { static: true })
     paginator: MatPaginator;
 
+    private ngUnsubscribe = new Subject<void>();
+
     constructor(
         private formBuilder: FormBuilder,
         private materialDialog: MatDialog
@@ -53,11 +56,11 @@ export class EstructuraProgramaticaComponent {
 
     buildForm() {
         this.form = this.formBuilder.group({
-            ano: [null],
-            producto: [null],
-            actividad: [null],
-            funcion: [null],
-            division_funcional: [null],
+            ano: [""],
+            producto: [""],
+            actividad: [""],
+            funcion: [""],
+            division_funcional: [""],
         });
     }
 
@@ -301,10 +304,10 @@ export class EstructuraProgramaticaComponent {
                 title: 'Nueva estructura programatica',
                 listas: this.combo,
                 operation:"create",
-                isSaveActive:false,
+                isSaveActive:true,
             },
         })
-        .afterOpened()
+        .afterOpened().pipe(takeUntil(this.ngUnsubscribe))
         .subscribe((responseDialog) => {
             setTimeout(() => {
                 sessionStorage.removeItem('loading');
@@ -318,4 +321,54 @@ export class EstructuraProgramaticaComponent {
     handleBuscar(): void {}
 
     handleLimpiar(): void {}
+
+    handleModificar(): void {
+        sessionStorage.setItem('loading', 'Obteniendo detalle');
+        this.dialogRef = this.materialDialog
+        .open(ModalEstructuraProgramaticaComponent, {
+            disableClose: true,
+            width: '75%',
+            data: {
+                title: 'Actualizar estructura programatica',
+                listas: this.combo,
+                operation:"update",
+                isSaveActive:true,
+            },
+        })
+        .afterOpened().pipe(takeUntil(this.ngUnsubscribe))
+        .subscribe((responseDialog) => {
+            setTimeout(() => {
+                sessionStorage.removeItem('loading');
+            }, 500);
+
+        });
+    }
+
+    handleDetalle(): void {
+        sessionStorage.setItem('loading', 'Obteniendo detalle');
+        this.dialogRef = this.materialDialog
+        .open(ModalEstructuraProgramaticaComponent, {
+            disableClose: true,
+            width: '75%',
+            data: {
+                title: 'Visualizar estructura programatica',
+                listas: this.combo,
+                operation:"view",
+                isSaveActive:false,
+            },
+        })
+        .afterOpened().pipe(takeUntil(this.ngUnsubscribe))
+        .subscribe((responseDialog) => {
+            setTimeout(() => {
+                sessionStorage.removeItem('loading');
+            }, 500);
+
+        });
+    }
+
+
+    ngOnDestroy() {
+        this.ngUnsubscribe.next();
+        this.ngUnsubscribe.complete();
+    }
 }

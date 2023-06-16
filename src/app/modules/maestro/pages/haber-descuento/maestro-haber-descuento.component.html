@@ -226,6 +226,13 @@
                                             </button>
                                         </div>
                                         <div class="mat-icon-table">
+                                            <button mat-stroked-button color="primary" class="sidebar-toggle btn-sm"
+                                                (click)="handleModificar(row)"
+                                                 [matTooltip]="'Modificar'">
+                                                <mat-icon class="" >create</mat-icon>
+                                            </button>
+                                        </div>
+                                        <div class="mat-icon-table">
                                             <button disabled="true" mat-stroked-button color="warn" class="sidebar-toggle btn-sm ml-2"
                                                  (click)="handleEliminar(row, i)"
                                                 aria-label="Eliminar" matTooltip="Eliminar">

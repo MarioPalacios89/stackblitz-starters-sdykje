@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ModalConceptoMcppComponent } from '../../components/modals/modal-concepto-mcpp/modal-concepto-mcpp.component';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
     selector: 'maestro-concepto-mcpp',
@@ -32,6 +33,8 @@ export class MaestroConceptoMcppComponent {
     @ViewChild(MatPaginator, { static: true })
     paginator: MatPaginator;
 
+        private ngUnsubscribe = new Subject<void>();
+
     constructor(
         private formBuilder: FormBuilder,
         private materialDialog: MatDialog
@@ -48,7 +51,7 @@ export class MaestroConceptoMcppComponent {
 
     buildForm() {
         this.form = this.formBuilder.group({
-            tipo_concepto: [null],
+            tipo_concepto: [""],
             descripcion_concepto: [null],
         });
     }
@@ -210,4 +213,48 @@ export class MaestroConceptoMcppComponent {
     handleBuscar(): void {}
 
     handleLimpiar(): void {}
+
+        handleModificar(): void {
+        sessionStorage.setItem('loading', 'Obteniendo detalle');
+        this.dialogRef = this.materialDialog
+        .open(ModalConceptoMcppComponent, {
+            disableClose: true,
+            width: '75%',
+            data: {
+                title: 'Actualizar concepto',
+                listas: this.combo,
+                operation:"update",
+                isSaveActive:false,
+            },
+        })
+        .afterOpened().pipe(takeUntil(this.ngUnsubscribe))
+        .subscribe((responseDialog) => {
+            setTimeout(() => {
+                sessionStorage.removeItem('loading');
+            }, 500);
+
+        });
+    }
+
+    handleDetalle(): void {
+        sessionStorage.setItem('loading', 'Obteniendo detalle');
+        this.dialogRef = this.materialDialog
+        .open(ModalConceptoMcppComponent, {
+            disableClose: true,
+            width: '75%',
+            data: {
+                title: 'Visualizar concepto',
+                listas: this.combo,
+                operation:"view",
+                isSaveActive:false,
+            },
+        })
+        .afterOpened().pipe(takeUntil(this.ngUnsubscribe))
+        .subscribe((responseDialog) => {
+            setTimeout(() => {
+                sessionStorage.removeItem('loading');
+            }, 500);
+
+        });
+    }
 }

@@ -89,6 +89,7 @@
                                                 color="primary"
                                                 class="rounded-none shadow-none"
                                                 (click)="handleLimpiar()"
+                                                disabled
                                             >
                                                 Limpiar
                                             </button>
@@ -99,6 +100,7 @@
                                                 color="primary"
                                                 class="rounded-none shadow-none"
                                                 (click)="handleBuscar()"
+                                                disabled
                                             >
                                                 Buscar
                                             </button>
@@ -142,8 +144,8 @@
                                     mat-stroked-button
                                     color="primary"
                                     (click)="handleExportar()"
-                                    [disabled]="export"
                                     class="rounded-none shadow-none"
+                                    disabled
                                 >
                                     <span class="material-icons">get_app</span>
                                     Exportar
@@ -243,11 +245,25 @@
                                         fxLayout="row"
                                         fxLayoutAlign="space-evenly center"
                                     >
+                                    <div class="mat-icon-table">
+                                        <button
+                                            mat-stroked-button
+                                            color="primary"
+                                            class="sidebar-toggle btn-sm"
+                                            (click)="handleDetalle(row)"
+                                            aria-label="Ver detalle"
+                                            matTooltip="Ver detalle"
+                                        >
+                                            <mat-icon class=""
+                                                >remove_red_eye</mat-icon
+                                            >
+                                        </button>
+                                    </div>
                                         <div class="mat-icon-table">
                                             <button
                                                 mat-stroked-button
                                                 color="primary"
-                                                class="sidebar-toggle btn-sm"
+                                                class="sidebar-toggle btn-sm ml-2"
                                                 (click)="handleModificar(row)"
                                                 aria-label="Modificar"
                                                 matTooltip="Modificar"
@@ -265,6 +281,7 @@
                                                 (click)="handleEliminar(row, i)"
                                                 aria-label="Eliminar"
                                                 matTooltip="Eliminar"
+                                                disabled
                                             >
                                                 <mat-icon class=""
                                                     >restore_from_trash</mat-icon

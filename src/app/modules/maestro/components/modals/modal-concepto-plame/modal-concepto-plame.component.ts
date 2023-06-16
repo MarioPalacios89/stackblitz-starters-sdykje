@@ -61,7 +61,7 @@ export class ModalConceptoPlameComponent {
             code: [{ value: '', disabled: true }],
             description: [{ value: '', disabled: false }],
             state: [{ value: '', disabled: true }],
-            cancellationReason: [{ value: '', disabled: false }],
+            cancellationReason: [{ value: '', disabled: true }],
         });
     }
 
